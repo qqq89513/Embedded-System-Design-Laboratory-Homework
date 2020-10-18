@@ -9,10 +9,10 @@
   * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                             www.st.com/SLA0044
   *
   ******************************************************************************
   */
@@ -22,7 +22,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <stm32746g_discovery.h>
+#include <stm32746g_discovery_lcd.h>
+#include <stm32746g_discovery_sdram.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -74,7 +77,21 @@ UART_HandleTypeDef huart1;
 SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
-
+/** @brief using printf() as HAL_UART_Transmit() */
+#ifdef __GNUC__
+/* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+ set to 'Yes') calls __io_putchar() */
+  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+PUTCHAR_PROTOTYPE{
+ /* Place your implementation of fputc here */
+ /* e.g. write a character to the USART1 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFF);
+//HAL_UART_Transmit(UART_HandleTypeDef* huart, uint8_t pData, uint16_t Size, uint32_t Timeout);
+  return ch;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -157,12 +174,70 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  // LCD Initial
+  BSP_LCD_Init();
+  BSP_SDRAM_Init();  // seems to have no effect, comment this line also works. But you can't DeInit it.
+  BSP_LCD_LayerDefaultInit(0, LCD_FB_START_ADDRESS);
+  BSP_LCD_SelectLayer(0);
+  BSP_LCD_Clear(LCD_COLOR_WHITE);
+  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+  BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+  BSP_LCD_SetFont(&Font24);
+  // BSP_LCD_DisplayStringAtLine(1, (uint8_t *)"Hello world");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint32_t now_tick = 0;
+  uint32_t btn_tick = UINT32_MAX;
+  uint32_t led_tick = HAL_GetTick();
+  uint32_t led_interval = UINT32_MAX;
+  uint8_t mode=0;
+
+  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, 0);  // LED should be off when initialized
+//  printf("Program initialized.\n");
   while (1)
   {
+    now_tick = HAL_GetTick();
+
+    // button debounce and update mode
+    if(HAL_GPIO_ReadPin(GPIOI, GPIO_PIN_11)) btn_tick = now_tick;
+    if(now_tick > btn_tick && (now_tick - btn_tick) >= 300){  // 300 ms of debounce
+      btn_tick = UINT32_MAX;
+      mode++;
+      if(mode > 3)  mode=1;
+      led_tick = 0; // trigger the mode immediately
+
+      switch(mode){
+        case 1:
+          led_interval = 100;
+          printf("MODE 1, LED FLASH = 5Hz\r\n");
+          BSP_LCD_DisplayStringAtLine(1, (uint8_t *)"MODE 1, LED FLASH = 5Hz");
+          break;
+        case 2:
+          led_interval = 500;
+          printf("MODE 2, LED FLASH = 1Hz\r\n");
+          BSP_LCD_DisplayStringAtLine(1, (uint8_t *)"MODE 2, LED FLASH = 1Hz");
+          break;
+        case 3:
+          HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, 0);
+          led_interval = UINT32_MAX;  // to skip the blink led
+          printf("MODE 3, LED FLASH = 0Hz\r\n");
+          BSP_LCD_DisplayStringAtLine(1, (uint8_t *)"MODE 3, LED FLASH = 0Hz");
+          break;
+        default:
+          printf("Error, mode unknow.\n");
+          BSP_LCD_DisplayStringAtLine(1, (uint8_t *)"Error, mode unknow.");
+      }
+    }
+
+    // blink LED
+    if(now_tick - led_tick >= led_interval){
+      led_tick = now_tick;
+      HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_1);
+    }
+    // mode implmentation
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
