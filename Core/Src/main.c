@@ -202,7 +202,7 @@ int main(void)
 
     // button debounce and update mode
     if(HAL_GPIO_ReadPin(GPIOI, GPIO_PIN_11)) btn_tick = now_tick;
-    if(now_tick > btn_tick && (now_tick - btn_tick) >= 300){  // 300 ms of debounce
+    if(now_tick > btn_tick && (now_tick - btn_tick) >= 30){  // 300 ms of debounce
       btn_tick = UINT32_MAX;
       mode++;
       if(mode > 3)  mode=1;
