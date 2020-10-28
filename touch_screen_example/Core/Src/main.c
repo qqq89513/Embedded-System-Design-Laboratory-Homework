@@ -202,8 +202,24 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint32_t tk_disp_cord = 0;  // the previous tick refresh display of touch screen coordinates.
+  uint32_t tk_now = HAL_GetTick();
+  char str[32];   // format string buffer
+  printf("Initialized.\r\n");
   while (1)
   {
+    tk_now = HAL_GetTick();
+    if(tk_now-tk_disp_cord > 50){
+      tk_disp_cord = tk_now;
+      BSP_TS_GetState(&TS_State); // polling for touch screen state
+      if(TS_State.touchDetected){ // at least one touch point detected
+        for(uint8_t i=0; i<TS_MAX_NB_TOUCH; i++){
+          sprintf(str, "x[%d]:%03d, y[%d]:%03d", i, TS_State.touchX[i], i, TS_State.touchY[i]);
+          BSP_LCD_DisplayStringAtLine(i, (uint8_t*)str);
+          TS_State.touchX[i] = TS_State.touchY[i] = 0;
+        }
+      }
+    }
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
   }
