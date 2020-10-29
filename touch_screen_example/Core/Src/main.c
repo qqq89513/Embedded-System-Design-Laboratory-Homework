@@ -24,7 +24,6 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <stdlib.h>
-#include <stm32746g_discovery.h>
 #include <stm32746g_discovery_sdram.h>
 #include <stm32746g_discovery_lcd.h>
 #include <stm32746g_discovery_ts.h>
