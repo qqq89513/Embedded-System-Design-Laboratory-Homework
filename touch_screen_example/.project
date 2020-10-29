@@ -30,16 +30,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>STM32746G-Discovery</name>
-			<type>2</type>
-			<location>C:/Users/QM/STM32Cube/Repository/STM32Cube_FW_F7_V1.16.0/Drivers/BSP/STM32746G-Discovery</location>
-		</link>
-		<link>
-			<name>ft5336</name>
-			<type>2</type>
-			<location>C:/Users/QM/STM32Cube/Repository/STM32Cube_FW_F7_V1.16.0/Drivers/BSP/Components/ft5336</location>
-		</link>
-	</linkedResources>
 </projectDescription>
