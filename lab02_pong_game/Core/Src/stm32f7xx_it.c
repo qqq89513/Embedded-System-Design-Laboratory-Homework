@@ -61,7 +61,7 @@ extern LTDC_HandleTypeDef hltdc;
 extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
-
+extern int Pressed;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -205,7 +205,10 @@ void SysTick_Handler(void)
 void EXTI15_10_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI15_10_IRQn 0 */
-
+  // if specific button(EXTI) triggered. The pin is set to GPIO_MODE_IT_RISING.
+  if(HAL_GPIO_ReadPin(IO_USR_BTN_GPIO_Port, IO_USR_BTN_Pin)){
+    Pressed++;
+  }
   /* USER CODE END EXTI15_10_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */

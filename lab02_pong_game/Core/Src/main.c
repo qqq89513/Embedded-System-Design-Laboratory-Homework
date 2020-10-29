@@ -5,12 +5,18 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+// whether to print debug message via huart1
+#define DEBUG_CORD 1          // print coordinates of touch screen
+
+#include <Coordinates.h>      // type defines and coordinates of graphs
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stm32746g_discovery_sdram.h>
 #include <stm32746g_discovery_lcd.h>
 #include <stm32746g_discovery_ts.h>
-
+#include <ft5336.h>
 // Folding Private variables by Cube
 #if 1
 /* USER CODE END Includes */
@@ -69,8 +75,18 @@ SDRAM_HandleTypeDef hsdram1;
 /* USER CODE BEGIN PV */
 /** @brief using printf() as HAL_UART_Transmit() */
 #endif
-TS_StateTypeDef TS_State; // type of touch screen state
 
+// Global variables, firt letter Capitalized for global
+char Str[32];               // format string buffer
+int Speed = 5;              // speed of ball, initially 5. could be 1~10 corresponding 10ms~100ms
+int Mode = MODE_SETTING;    // could be MODE_PLAY or MODE_SETTING
+int Pressed = 1;            // incremented by 1 when EXTI ISR triggered, set to 0 for finishing initial graphs of Mode
+int PointsL = 0, PointsR = 0;
+int PointsGrapgh = 1;      // refresh display of scores if 1
+TS_StateTypeDef *TS_state;  // type of touch screen state
+RectTypeDef BarLeft, BarRight;
+BallTypeDef Ball;
+// Wrapping printf
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
  set to 'Yes') calls __io_putchar() */
@@ -85,7 +101,6 @@ PUTCHAR_PROTOTYPE{
 //HAL_UART_Transmit(UART_HandleTypeDef* huart, uint8_t pData, uint16_t Size, uint32_t Timeout);
   return ch;
 }
-
 // Folding Private function prototypes of Cube
 #if 1
 /* USER CODE END PV */
@@ -121,7 +136,12 @@ static void MX_USART6_UART_Init(void);
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-
+void graph_mode(uint8_t mode, TS_StateTypeDef *TS_state);
+void graph_bar(RectTypeDef *rect);
+void graph_bar_clear();
+void graph_ball(BallTypeDef *ball);
+void ball_init(BallTypeDef *ball);
+void bar_move_to_y(RectTypeDef *rect, int16_t y);
 /**
   * @brief  The application entry point.
   * @retval int
@@ -176,7 +196,7 @@ int main(void)
 #endif
 
   // LCD initial
-  BSP_TS_Init(480, 272);  // touch screen 480*272
+  BSP_TS_Init(PX_MAX_X, PX_MAX_Y);  // touch screen 480*272
   BSP_LCD_Init();
   BSP_SDRAM_Init();  // seems to have no effect, comment this line also works. But you can't DeInit it.
   BSP_LCD_LayerDefaultInit(0, LCD_FB_START_ADDRESS);
@@ -184,37 +204,115 @@ int main(void)
   BSP_LCD_Clear(LCD_COLOR_BLACK);
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
-  BSP_LCD_SetFont(&Font12);
-
+  BSP_LCD_SetFont(&Font20); // Font8, 12, 16, 20, 24
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint32_t tk_disp_cord = 0;  // the previous tick refresh display of touch screen coordinates.
-  uint32_t tk_now = HAL_GetTick();
+  int32_t tk_poll_ts  = 0;    // the previous tick refresh data of touch screen, include number of touching points and coordinates
+  int32_t tk_disp_graph = 0;  // the previous tick refresh display of touch screen coordinates.
+  int32_t tk_change_mode = 0; // the previous tick of changing Mode.
+  int32_t tk_move_ball = 0;   // the previous tick of moving ball
+  int32_t tk_now = HAL_GetTick();
   printf("Initialized.\r\n");
-  while (1)
-  {
+  while (1){
     tk_now = HAL_GetTick();
-    if(tk_now-tk_disp_cord > 50){
-      tk_disp_cord = tk_now;
-      BSP_TS_GetState(&TS_State); // polling for touch screen state
+
+    // Touch screen data refresh
+    if(tk_now-tk_poll_ts > TK_REFRESH_TS){
+      tk_poll_ts = tk_now;
+      BSP_TS_GetState(TS_state); // polling for touch screen state
       // at least one touch point detected
-      if(TS_State.touchDetected){
+      if(TS_state->touchDetected){
+        switch(Mode){
+          case MODE_PLAY:
+            for(uint8_t i=0; i<2; i++){
+              if(TS_state->touchX[0] > PX_MAX_X/2)
+                bar_move_to_y(&BarRight, TS_state->touchY[0]);
+              else
+                bar_move_to_y(&BarLeft,  TS_state->touchY[0]);
+            }
+            break;
+          case MODE_SETTING:
+            if(TS_state->touchX[0] > PX_MAX_X/2)   Speed++;
+            else                                   Speed--;
+            if      (Speed <  1) Speed =  1;
+            else if (Speed > 10) Speed = 10;
+            tk_poll_ts += TK_DB_SETTING;    // touch screen debouncing
+            break;
+        }
+        // print coordinates via huart1
         #if DEBUG_CORD
-          for(uint8_t i=0; i<2; i++){
-            printf(str, "x[%d]:%03d, y[%d]:%03d", i, TS_State.touchX[i], i, TS_State.touchY[i]);
-            TS_State.touchX[i] = TS_State.touchY[i] = 0;
-          }
+          for(uint8_t i=0; i<2; i++)
+            printf("x[%d]:%03d, y[%d]:%03d; ", i, TS_state->touchX[i], i, TS_state->touchY[i]);
+          printf("\r\n");
         #endif
       }
     }
-    /* USER CODE END WHILE */
 
+    // Graph refresh
+    if(tk_now-tk_disp_graph > TK_REFRESH_GRAPH){
+      tk_disp_graph = tk_now;
+      switch(Mode){
+        case MODE_PLAY:
+          graph_bar_clear();
+          graph_bar(&BarLeft);
+          graph_bar(&BarRight);
+          graph_ball(&Ball);
+          if(PointsGrapgh){
+            PointsGrapgh = 0;
+            sprintf(Str, "%d:%d", PointsL, PointsR);
+            BSP_LCD_DisplayStringAt(0, 0, (uint8_t*)Str, CENTER_MODE);
+          }
+          break;
+        case MODE_SETTING:
+          sprintf(Str, "speed     -  %2d  +", Speed);
+          BSP_LCD_DisplayStringAt(POS_SETTING_X, POS_SETTING_Y, (uint8_t*)Str, LEFT_MODE);
+          break;
+        default:
+          printf("Error: unknow MODE:%d\r\n", Mode);
+      }
+    }
+
+    // Move ball
+    if(tk_now-tk_move_ball > Speed*10){
+      tk_move_ball = tk_now;
+      Ball.x += Ball.dx ? 1: -1;
+      Ball.y += Ball.dy ? 1: -1;
+
+      // ball touches upper or lower edge
+      if(Ball.y < PX_BORDER || Ball.y > PX_MAX_Y-PX_BORDER)
+        Ball.dy = !Ball.dy;
+    }
+
+    // Change Mode
+    if(tk_now-tk_change_mode > TK_CH_MODE){
+      tk_change_mode = tk_now;
+      // change Mode if EXTI triggered
+      if(Pressed){
+        Pressed = 0;
+        Mode = (Mode==MODE_PLAY) ? MODE_SETTING:MODE_PLAY;
+        BSP_LCD_Clear(LCD_COLOR_BLACK);
+        switch(Mode){
+          case MODE_PLAY:
+            BarRight = BarRight_default;
+            BarLeft  = BarLeft_default;
+            ball_init(&Ball);
+            PointsL = PointsR = 0;
+            PointsGrapgh = 1;
+            break;
+          case MODE_SETTING:
+            break;
+          default:
+            printf("Error: unknow MODE:%d\r\n", Mode);
+        }
+      }
+    }
+
+    /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
   }
-
 // Folding Private functions implementation of Cube
 #if 1
   /* USER CODE END 3 */
@@ -1547,6 +1645,46 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 #endif
+
+void graph_bar(RectTypeDef *rect){
+  BSP_LCD_FillRect(rect->x1, rect->y1, rect->x2-rect->x1, rect->y2-rect->y1);
+}
+void graph_bar_clear(){
+  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+
+  // clear left, right bar
+  BSP_LCD_FillRect(BarLeft_default.x1,  0, PX_BAR_WIDTH, PX_MAX_Y-1);
+  BSP_LCD_FillRect(BarRight_default.x1, 0, PX_BAR_WIDTH, PX_MAX_Y-1);
+
+  // change color to normal
+  BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+}
+void graph_ball(BallTypeDef *ball){
+  static int old_x = 10, old_y = 10;
+  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+  BSP_LCD_FillCircle(old_x, old_y, PX_BALL_RADIUS);
+  BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+  BSP_LCD_FillCircle(ball->x, ball->y, PX_BALL_RADIUS);
+  old_x = ball->x;
+  old_y = ball->y;
+}
+
+void ball_init(BallTypeDef *ball){
+  ball->x  = Ball_default.x;
+  ball->y  = Ball_default.y;
+  srand(HAL_GetTick());
+  ball->dx = rand()%2;
+  ball->dy = rand()%2;
+}
+void bar_move_to_y(RectTypeDef *rect, int16_t y){
+  rect->y1 = y - PX_BAR_LENGTH/2;
+  rect->y2 = y + PX_BAR_LENGTH/2;
+
+  // boundary
+  if(rect->y1 < PX_BORDER)  rect->y1 = PX_BORDER;
+  if(rect->y2 > PX_MAX_Y)   rect->y2 = PX_MAX_Y-PX_BORDER;
+}
+
 
 /* USER CODE END 4 */
 
