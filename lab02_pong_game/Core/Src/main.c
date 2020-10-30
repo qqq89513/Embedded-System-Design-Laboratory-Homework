@@ -51,6 +51,8 @@ LTDC_HandleTypeDef hltdc;
 
 QSPI_HandleTypeDef hqspi;
 
+RNG_HandleTypeDef hrng;
+
 RTC_HandleTypeDef hrtc;
 
 SAI_HandleTypeDef hsai_BlockA2;
@@ -78,7 +80,7 @@ SDRAM_HandleTypeDef hsdram1;
 
 // Global variables, firt letter Capitalized for global
 char Str[32];               // format string buffer
-int Speed = 5;              // speed of ball, initially 5. could be 1~10 corresponding 10ms~100ms
+int Speed = 1;              // speed of ball, initially 5. could be 1~10 corresponding 10ms~100ms
 int Mode = MODE_SETTING;    // could be MODE_PLAY or MODE_SETTING
 int Pressed = 1;            // incremented by 1 when EXTI ISR triggered, set to 0 for finishing initial graphs of Mode
 int PointsL = 0, PointsR = 0;
@@ -128,20 +130,20 @@ static void MX_TIM8_Init(void);
 static void MX_TIM12_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART6_UART_Init(void);
+static void MX_RNG_Init(void);
 /* USER CODE BEGIN PFP */
 #endif
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-void graph_mode(uint8_t mode, TS_StateTypeDef *TS_state);
 void graph_bar(RectTypeDef *rect);
 void graph_bar_clear();
 void graph_ball(BallTypeDef *ball);
 void ball_init(BallTypeDef *ball);
 void bar_move_to_y(RectTypeDef *rect, int16_t y);
+/* USER CODE END 0 */
+
 /**
   * @brief  The application entry point.
   * @retval int
@@ -192,6 +194,7 @@ int main(void)
   MX_TIM12_Init();
   MX_USART1_UART_Init();
   MX_USART6_UART_Init();
+  MX_RNG_Init();
   /* USER CODE BEGIN 2 */
 #endif
 
@@ -215,6 +218,7 @@ int main(void)
   int32_t tk_change_mode = 0; // the previous tick of changing Mode.
   int32_t tk_move_ball = 0;   // the previous tick of moving ball
   int32_t tk_now = HAL_GetTick();
+  ball_init(&Ball);   // this line is maybe useless
   printf("Initialized.\r\n");
   while (1){
     tk_now = HAL_GetTick();
@@ -276,14 +280,32 @@ int main(void)
     }
 
     // Move ball
-    if(tk_now-tk_move_ball > Speed*10){
+    if(tk_now-tk_move_ball > Speed*5){
       tk_move_ball = tk_now;
       Ball.x += Ball.dx ? 1: -1;
       Ball.y += Ball.dy ? 1: -1;
 
+      // ball touches left or right edge: scores
+      if(Ball.x < PX_BORDER){
+        PointsGrapgh = 1;
+        PointsR++;  // left side touched, right scores
+        ball_init(&Ball);
+      }
+      else if(Ball.x > PX_MAX_X-PX_BORDER){
+        PointsGrapgh = 1;
+        PointsL++;  // right side touched, left scores
+        ball_init(&Ball);
+      }
+
       // ball touches upper or lower edge
-      if(Ball.y < PX_BORDER || Ball.y > PX_MAX_Y-PX_BORDER)
+      else if(Ball.y < PX_BORDER || Ball.y > PX_MAX_Y-PX_BORDER)
         Ball.dy = !Ball.dy;
+
+      // ball touches left or right bar
+      else if((Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
+              (Ball.x+5 >= BarRight.x1 && BarRight.y1 <= Ball.y && Ball.y <= BarRight.y2)){
+        Ball.dx = !Ball.dx;
+      }
     }
 
     // Change Mode
@@ -311,6 +333,7 @@ int main(void)
     }
 
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
 // Folding Private functions implementation of Cube
@@ -729,6 +752,32 @@ static void MX_QUADSPI_Init(void)
   /* USER CODE BEGIN QUADSPI_Init 2 */
 
   /* USER CODE END QUADSPI_Init 2 */
+
+}
+
+/**
+  * @brief RNG Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_RNG_Init(void)
+{
+
+  /* USER CODE BEGIN RNG_Init 0 */
+
+  /* USER CODE END RNG_Init 0 */
+
+  /* USER CODE BEGIN RNG_Init 1 */
+
+  /* USER CODE END RNG_Init 1 */
+  hrng.Instance = RNG;
+  if (HAL_RNG_Init(&hrng) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN RNG_Init 2 */
+
+  /* USER CODE END RNG_Init 2 */
 
 }
 
@@ -1668,13 +1717,11 @@ void graph_ball(BallTypeDef *ball){
   old_x = ball->x;
   old_y = ball->y;
 }
-
 void ball_init(BallTypeDef *ball){
   ball->x  = Ball_default.x;
   ball->y  = Ball_default.y;
-  srand(HAL_GetTick());
-  ball->dx = rand()%2;
-  ball->dy = rand()%2;
+  ball->dx = HAL_RNG_GetRandomNumber(&hrng)%2;
+  ball->dy = HAL_RNG_GetRandomNumber(&hrng)%2;
 }
 void bar_move_to_y(RectTypeDef *rect, int16_t y){
   rect->y1 = y - PX_BAR_LENGTH/2;

@@ -20,10 +20,10 @@
 #define PX_BAR_LENGTH    60   // pixels of length of bar
 #define PX_BAR_X_PADDING 30   // pixels of distance from a bar to edge
 #define PX_BALL_RADIUS    5   // pixels of radius of ball
-#define PX_BORDER         5   // pixels of border, distance that graphs should stay away from edges
+#define PX_BORDER         7   // pixels of border, distance that graphs should stay away from edges
 
 #define TK_REFRESH_TS     50  // interval of refreshing touch screen data in milli second
-#define TK_REFRESH_GRAPH  50  // interval of refreshing graph in play mode
+#define TK_REFRESH_GRAPH  41  // interval of refreshing graph in play mode
 #define TK_CH_MODE        10  // interval of checking change of Mode
 #define TK_DB_SETTING    100  // debounce of setting: increase or decrease Speed
 
