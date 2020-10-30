@@ -25,11 +25,11 @@
 #define PX_SCORE_WIDTH   60   // for determining if ball is overlapped with the score display. change this doesn't change the size of score
 #define PX_SCORE_HEIGHT  30   // for determining if ball is overlapped with the score display. change this doesn't change the size of score
 
-#define TK_REFRESH_TS     50  // interval of refreshing touch screen data in milli second
-#define TK_REFRESH_GRAPH  41  // interval of refreshing graph in play mode
+#define TK_REFRESH_TS     30  // interval of refreshing touch screen data in milli second
+#define TK_REFRESH_GRAPH  20  // interval of refreshing graph in play mode
 #define TK_CH_MODE        10  // interval of checking change of Mode
 #define TK_DB_SETTING    100  // debounce of setting: increase or decrease Speed
-#define TK_REFRESH_BALL_BASE 10 // (11-Speed)*TK_REFRESH_BALL_BASE
+#define TK_REFRESH_BALL_BASE 5 // (11-Speed)*TK_REFRESH_BALL_BASE
 
 #define MODE_PLAY 0
 #define MODE_SETTING 1
