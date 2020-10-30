@@ -235,11 +235,11 @@ int main(void)
       if(TS_state->touchDetected){
         switch(Mode){
           case MODE_PLAY:
-            for(uint8_t i=0; i<2; i++){
-              if(TS_state->touchX[0] > PX_MAX_X/2)
-                bar_move_to_y(&BarRight, TS_state->touchY[0]);
+            for(uint8_t i=0; i<TS_state->touchDetected; i++){
+              if(TS_state->touchX[i] > PX_MAX_X/2)
+                bar_move_to_y(&BarRight, TS_state->touchY[i]);
               else
-                bar_move_to_y(&BarLeft,  TS_state->touchY[0]);
+                bar_move_to_y(&BarLeft,  TS_state->touchY[i]);
             }
             break;
           case MODE_SETTING:
