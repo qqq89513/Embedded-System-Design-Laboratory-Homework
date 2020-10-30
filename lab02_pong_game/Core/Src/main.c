@@ -80,7 +80,7 @@ SDRAM_HandleTypeDef hsdram1;
 
 // Global variables, firt letter Capitalized for global
 char Str[32];               // format string buffer
-int Speed = 1;              // speed of ball, initially 5. could be 1~10 corresponding 10ms~100ms
+int Speed = 5;              // speed of ball, initially 5. could be 1~10 corresponding 10ms~100ms
 int Mode = MODE_SETTING;    // could be MODE_PLAY or MODE_SETTING
 int Pressed = 1;            // incremented by 1 when EXTI ISR triggered, set to 0 for finishing initial graphs of Mode
 int PointsL = 0, PointsR = 0;
@@ -284,7 +284,7 @@ int main(void)
     }
 
     // Move ball
-    if(tk_now-tk_move_ball > Speed*5){
+    if(tk_now-tk_move_ball > (11-Speed)*TK_REFRESH_BALL_BASE){
       tk_move_ball = tk_now;
       Ball.x += Ball.dx ? 1: -1;
       Ball.y += Ball.dy ? 1: -1;
