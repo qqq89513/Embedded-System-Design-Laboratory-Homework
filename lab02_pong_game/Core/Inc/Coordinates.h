@@ -18,9 +18,10 @@
 
 #define PX_BAR_WIDTH      5   // pixels of width of bar
 #define PX_BAR_LENGTH    60   // pixels of length of bar
-#define PX_BAR_X_PADDING 30   // pixels of distance from a bar to edge
+#define PX_BAR_PADDING_X 30   // pixels of distance from a bar to edge
 #define PX_BALL_RADIUS    5   // pixels of radius of ball
-#define PX_BORDER         7   // pixels of border, distance that graphs should stay away from edges
+#define PX_BORDER_Y       7   // pixels of border, distance that graphs should stay away from edges
+#define PX_BORDER_X       2   // pixels of border, distance that graphs should stay away from edges
 
 #define TK_REFRESH_TS     50  // interval of refreshing touch screen data in milli second
 #define TK_REFRESH_GRAPH  41  // interval of refreshing graph in play mode
@@ -39,20 +40,20 @@ typedef struct {
     int16_t x2, y2;   // end coordinate, right bottom corner
 } RectTypeDef;
 RectTypeDef BarLeft_default = {
-    .x1 = 0 + PX_BAR_X_PADDING,
-    .x2 = 0 + PX_BAR_X_PADDING + PX_BAR_WIDTH,
+    .x1 = 0 + PX_BAR_PADDING_X,
+    .x2 = 0 + PX_BAR_PADDING_X + PX_BAR_WIDTH,
     .y1 = PX_MAX_Y/2 - PX_BAR_LENGTH/2,
     .y2 = PX_MAX_Y/2 + PX_BAR_LENGTH/2,
 };
 RectTypeDef BarRight_default = {
-    .x1 = PX_MAX_X - PX_BAR_X_PADDING - PX_BAR_WIDTH,
-    .x2 = PX_MAX_X - PX_BAR_X_PADDING,
+    .x1 = PX_MAX_X - PX_BAR_PADDING_X - PX_BAR_WIDTH,
+    .x2 = PX_MAX_X - PX_BAR_PADDING_X,
     .y1 = PX_MAX_Y/2 - PX_BAR_LENGTH/2,
     .y2 = PX_MAX_Y/2 + PX_BAR_LENGTH/2,
 };
 
 typedef struct {
-    uint16_t x, y;  // coordinates of ball
+    int16_t x, y;  // coordinates of ball
     uint8_t dx, dy; // direction
 } BallTypeDef;
 BallTypeDef Ball_default = {

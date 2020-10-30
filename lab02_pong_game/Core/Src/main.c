@@ -209,6 +209,10 @@ int main(void)
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
   BSP_LCD_SetFont(&Font20); // Font8, 12, 16, 20, 24
 
+  // Stop jumpping to TIM6_DAC_IRQHandler when debugging
+  DBGMCU->APB1FZ = 0xFFFFFFFF;
+  DBGMCU->APB2FZ = 0xFFFFFFFF;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -286,26 +290,34 @@ int main(void)
       Ball.y += Ball.dy ? 1: -1;
 
       // ball touches left or right edge: scores
-      if(Ball.x < PX_BORDER){
+      if(Ball.x-PX_BALL_RADIUS < PX_BORDER_X){
         PointsGrapgh = 1;
         PointsR++;  // left side touched, right scores
         ball_init(&Ball);
       }
-      else if(Ball.x > PX_MAX_X-PX_BORDER){
+      else if(Ball.x+PX_BALL_RADIUS > PX_MAX_X-PX_BORDER_X){
         PointsGrapgh = 1;
         PointsL++;  // right side touched, left scores
         ball_init(&Ball);
       }
 
       // ball touches upper or lower edge
-      else if(Ball.y < PX_BORDER || Ball.y > PX_MAX_Y-PX_BORDER)
+      else if(Ball.y < PX_BORDER_Y || Ball.y > PX_MAX_Y-PX_BORDER_Y)
         Ball.dy = !Ball.dy;
 
       // ball touches left or right bar
-      else if((Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
-              (Ball.x+5 >= BarRight.x1 && BarRight.y1 <= Ball.y && Ball.y <= BarRight.y2)){
+      else if((BarLeft.x1  <= Ball.x-5 && Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
+              (BarRight.x2 >= Ball.x+5 && Ball.x+5 >= BarRight.x1 && BarRight.y1 <= Ball.y && Ball.y <= BarRight.y2)){
+              Ball.dx = !Ball.dx;
+              Ball.x = Ball.x < PX_MAX_X/2 ? BarLeft.x2+5 : BarRight.x1-5;
+      /*else if((BarLeft.x1  <= Ball.x-5 && Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
+                (BarRight.x2 >= Ball.x+5 && Ball.x+5 >= BarRight.x1 && BarRight.y1 <= Ball.y && Ball.y <= BarRight.y2)){
         Ball.dx = !Ball.dx;
+        Ball.x += Ball.x < PX_MAX_X/2 ? 1 : -1;*/
       }
+
+      // ball erase the scores
+      if(0);
     }
 
     // Change Mode
@@ -1728,8 +1740,8 @@ void bar_move_to_y(RectTypeDef *rect, int16_t y){
   rect->y2 = y + PX_BAR_LENGTH/2;
 
   // boundary
-  if(rect->y1 < PX_BORDER)  rect->y1 = PX_BORDER;
-  if(rect->y2 > PX_MAX_Y)   rect->y2 = PX_MAX_Y-PX_BORDER;
+  if(rect->y1 < PX_BORDER_Y)  rect->y1 = PX_BORDER_Y;
+  if(rect->y2 > PX_MAX_Y)   rect->y2 = PX_MAX_Y-PX_BORDER_Y;
 }
 
 
