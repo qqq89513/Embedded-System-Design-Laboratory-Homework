@@ -264,15 +264,15 @@ int main(void)
       tk_disp_graph = tk_now;
       switch(Mode){
         case MODE_PLAY:
-          graph_bar_clear();
-          graph_bar(&BarLeft);
-          graph_bar(&BarRight);
-          graph_ball(&Ball);
           if(PointsGrapgh){
             PointsGrapgh = 0;
             sprintf(Str, "%d:%d", PointsL, PointsR);
             BSP_LCD_DisplayStringAt(0, 0, (uint8_t*)Str, CENTER_MODE);
           }
+          graph_bar_clear();
+          graph_bar(&BarLeft);
+          graph_bar(&BarRight);
+          graph_ball(&Ball);
           break;
         case MODE_SETTING:
           sprintf(Str, "speed     -  %2d  +", Speed);
@@ -317,7 +317,8 @@ int main(void)
       }
 
       // ball erase the scores
-      if(0);
+      if((PX_MAX_X-PX_SCORE_WIDTH)/2 <= Ball.x && Ball.x <= (PX_MAX_X+PX_SCORE_WIDTH)/2 && Ball.y < PX_SCORE_HEIGHT)
+        PointsGrapgh = 1;
     }
 
     // Change Mode

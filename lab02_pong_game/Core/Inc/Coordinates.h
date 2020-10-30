@@ -22,6 +22,8 @@
 #define PX_BALL_RADIUS    5   // pixels of radius of ball
 #define PX_BORDER_Y       7   // pixels of border, distance that graphs should stay away from edges
 #define PX_BORDER_X       2   // pixels of border, distance that graphs should stay away from edges
+#define PX_SCORE_WIDTH   60   // for determining if ball is overlapped with the score display. change this doesn't change the size of score
+#define PX_SCORE_HEIGHT  30   // for determining if ball is overlapped with the score display. change this doesn't change the size of score
 
 #define TK_REFRESH_TS     50  // interval of refreshing touch screen data in milli second
 #define TK_REFRESH_GRAPH  41  // interval of refreshing graph in play mode
