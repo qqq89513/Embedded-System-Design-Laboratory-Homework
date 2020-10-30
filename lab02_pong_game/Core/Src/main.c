@@ -86,7 +86,7 @@ int Pressed = 1;            // incremented by 1 when EXTI ISR triggered, set to 
 int PointsL = 0, PointsR = 0;
 int PointsGrapgh = 1;      // refresh display of scores if 1
 TS_StateTypeDef *TS_state;  // type of touch screen state
-RectTypeDef BarLeft, BarRight;
+RectTypeDef BarL, BarR;
 BallTypeDef Ball;
 // Wrapping printf
 #ifdef __GNUC__
@@ -237,9 +237,9 @@ int main(void)
           case MODE_PLAY:
             for(uint8_t i=0; i<TS_state->touchDetected; i++){
               if(TS_state->touchX[i] > PX_MAX_X/2)
-                bar_move_to_y(&BarRight, TS_state->touchY[i]);
+                bar_move_to_y(&BarR, TS_state->touchY[i]);
               else
-                bar_move_to_y(&BarLeft,  TS_state->touchY[i]);
+                bar_move_to_y(&BarL, TS_state->touchY[i]);
             }
             break;
           case MODE_SETTING:
@@ -270,8 +270,8 @@ int main(void)
             BSP_LCD_DisplayStringAt(0, 0, (uint8_t*)Str, CENTER_MODE);
           }
           graph_bar_clear();
-          graph_bar(&BarLeft);
-          graph_bar(&BarRight);
+          graph_bar(&BarL);
+          graph_bar(&BarR);
           graph_ball(&Ball);
           break;
         case MODE_SETTING:
@@ -306,11 +306,11 @@ int main(void)
         Ball.dy = !Ball.dy;
 
       // ball touches left or right bar
-      else if((BarLeft.x1  <= Ball.x-5 && Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
-              (BarRight.x2 >= Ball.x+5 && Ball.x+5 >= BarRight.x1 && BarRight.y1 <= Ball.y && Ball.y <= BarRight.y2)){
+      else if((BarL.x1 <= Ball.x-5 && Ball.x-5 <= BarL.x2 && BarL.y1 <= Ball.y && Ball.y <= BarL.y2) ||
+              (BarR.x2 >= Ball.x+5 && Ball.x+5 >= BarR.x1 && BarR.y1 <= Ball.y && Ball.y <= BarR.y2)){
               Ball.dx = !Ball.dx;
-              Ball.x = Ball.x < PX_MAX_X/2 ? BarLeft.x2+5 : BarRight.x1-5;
-      /*else if((BarLeft.x1  <= Ball.x-5 && Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
+              Ball.x = Ball.x < PX_MAX_X/2 ? BarL.x2+5 : BarR.x1-5;
+      /*else if((BarL.x1  <= Ball.x-5 && Ball.x-5 <= BarLeft.x2  && BarLeft.y1  <= Ball.y && Ball.y <= BarLeft.y2) ||
                 (BarRight.x2 >= Ball.x+5 && Ball.x+5 >= BarRight.x1 && BarRight.y1 <= Ball.y && Ball.y <= BarRight.y2)){
         Ball.dx = !Ball.dx;
         Ball.x += Ball.x < PX_MAX_X/2 ? 1 : -1;*/
@@ -331,8 +331,8 @@ int main(void)
         BSP_LCD_Clear(LCD_COLOR_BLACK);
         switch(Mode){
           case MODE_PLAY:
-            BarRight = BarRight_default;
-            BarLeft  = BarLeft_default;
+            BarR = BarR_default;
+            BarL = BarL_default;
             ball_init(&Ball);
             PointsL = PointsR = 0;
             PointsGrapgh = 1;
@@ -1715,8 +1715,8 @@ void graph_bar_clear(){
   BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 
   // clear left, right bar
-  BSP_LCD_FillRect(BarLeft_default.x1,  0, PX_BAR_WIDTH, PX_MAX_Y-1);
-  BSP_LCD_FillRect(BarRight_default.x1, 0, PX_BAR_WIDTH, PX_MAX_Y-1);
+  BSP_LCD_FillRect(BarL_default.x1,  0, PX_BAR_WIDTH, PX_MAX_Y-1);
+  BSP_LCD_FillRect(BarR_default.x1, 0, PX_BAR_WIDTH, PX_MAX_Y-1);
 
   // change color to normal
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);

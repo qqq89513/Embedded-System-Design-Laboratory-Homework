@@ -42,13 +42,13 @@ typedef struct {
     int16_t x1, y1;   // start coordinate, left up corner
     int16_t x2, y2;   // end coordinate, right bottom corner
 } RectTypeDef;
-RectTypeDef BarLeft_default = {
+RectTypeDef BarL_default = {
     .x1 = 0 + PX_BAR_PADDING_X,
     .x2 = 0 + PX_BAR_PADDING_X + PX_BAR_WIDTH,
     .y1 = PX_MAX_Y/2 - PX_BAR_LENGTH/2,
     .y2 = PX_MAX_Y/2 + PX_BAR_LENGTH/2,
 };
-RectTypeDef BarRight_default = {
+RectTypeDef BarR_default = {
     .x1 = PX_MAX_X - PX_BAR_PADDING_X - PX_BAR_WIDTH,
     .x2 = PX_MAX_X - PX_BAR_PADDING_X,
     .y1 = PX_MAX_Y/2 - PX_BAR_LENGTH/2,
