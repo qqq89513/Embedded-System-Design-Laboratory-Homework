@@ -222,7 +222,13 @@ int main(void)
   int32_t tk_change_mode = 0; // the previous tick of changing Mode.
   int32_t tk_move_ball = 0;   // the previous tick of moving ball
   int32_t tk_now = HAL_GetTick();
-  ball_init(&Ball);   // this line is maybe useless
+
+  // initial graph obejcts
+  ball_init(&Ball);
+  BarL = BarL_default;
+  BarR = BarR_default;
+
+
   printf("Initialized.\r\n");
   while (1){
     tk_now = HAL_GetTick();
@@ -284,7 +290,7 @@ int main(void)
     }
 
     // Move ball
-    if(tk_now-tk_move_ball > (11-Speed)*TK_REFRESH_BALL_BASE){
+    if(tk_now-tk_move_ball > (11-Speed)*TK_REFRESH_BALL_BASE && Mode == MODE_PLAY){
       tk_move_ball = tk_now;
       Ball.x += Ball.dx ? 1: -1;
       Ball.y += Ball.dy ? 1: -1;
@@ -331,10 +337,12 @@ int main(void)
         BSP_LCD_Clear(LCD_COLOR_BLACK);
         switch(Mode){
           case MODE_PLAY:
-            BarR = BarR_default;
-            BarL = BarL_default;
-            ball_init(&Ball);
-            PointsL = PointsR = 0;
+            #if GAME_RESTAR_AFTER_SETTING
+              BarR = BarR_default;
+              BarL = BarL_default;
+              ball_init(&Ball);
+              PointsL = PointsR = 0;
+            #endif
             PointsGrapgh = 1;
             break;
           case MODE_SETTING:
