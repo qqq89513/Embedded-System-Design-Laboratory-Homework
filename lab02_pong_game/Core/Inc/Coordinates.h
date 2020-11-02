@@ -29,7 +29,7 @@
 #define TK_REFRESH_GRAPH  20  // interval of refreshing graph in play mode
 #define TK_CH_MODE        10  // interval of checking change of Mode
 #define TK_DB_SETTING    100  // debounce of setting: increase or decrease Speed
-#define TK_REFRESH_BALL_BASE 5 // (11-Speed)*TK_REFRESH_BALL_BASE
+#define TK_REFRESH_BALL_BASE 10 // (11-Speed)*TK_REFRESH_BALL_BASE
 
 // 0: enter settting mode as a game pause, exit setting mode to resume
 // 1: enter setting mode and exit setting mode to restart game
