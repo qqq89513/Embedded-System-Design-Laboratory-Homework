@@ -1752,8 +1752,14 @@ void bar_move_to_y(RectTypeDef *rect, int16_t y){
   rect->y2 = y + PX_BAR_LENGTH/2;
 
   // boundary
-  if(rect->y1 < PX_BORDER_Y)            rect->y1 = PX_BORDER_Y;
-  if(rect->y2 > PX_MAX_Y-PX_BORDER_Y)   rect->y2 = PX_MAX_Y-PX_BORDER_Y;
+  if(rect->y1 <= PX_BORDER_Y){
+    rect->y1 = PX_BORDER_Y;
+    rect->y2 = rect->y1 + PX_BAR_LENGTH;
+  }
+  if(rect->y2 >= PX_MAX_Y-PX_BORDER_Y){
+    rect->y2 = PX_MAX_Y - PX_BORDER_Y;
+    rect->y1 = rect->y2 - PX_BAR_LENGTH;
+  }
 }
 
 
