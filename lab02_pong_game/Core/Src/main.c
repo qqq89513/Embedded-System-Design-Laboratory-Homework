@@ -253,6 +253,9 @@ int main(void)
             else                                   Speed--;
             if      (Speed <  1) Speed =  1;
             else if (Speed > 10) Speed = 10;
+
+            // debounce of touch screen
+            while(TS_state->touchDetected) BSP_TS_GetState(TS_state); // polling for touch screen state
             tk_poll_ts += TK_DB_SETTING;    // touch screen debouncing
             break;
         }
