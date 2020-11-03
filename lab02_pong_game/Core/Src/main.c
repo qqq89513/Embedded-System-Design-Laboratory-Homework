@@ -293,7 +293,7 @@ int main(void)
     }
 
     // Move ball
-    if(tk_now-tk_move_ball > (11-Speed)*TK_REFRESH_BALL_BASE && Mode == MODE_PLAY){
+    if(tk_now-tk_move_ball > ((11-Speed)*TK_REFRESH_BALL_BASE+TK_REFRESH_BALL_OFFSET) && Mode == MODE_PLAY){
       tk_move_ball = tk_now;
       Ball.x += Ball.dx ? 1: -1;
       Ball.y += Ball.dy ? 1: -1;
