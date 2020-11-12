@@ -122,7 +122,7 @@ protected:
     touchgfx::Box __background;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_0;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_1;
-    touchgfx::TextArea btn_txt;
+    touchgfx::TextArea btn_txt_0;
     touchgfx::TextArea btn_txt_1;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_2;
     touchgfx::TextArea btn_txt_2;
@@ -149,14 +149,15 @@ protected:
     touchgfx::TextArea btn_txt_clear;
     touchgfx::TextArea btn_txt_equal;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_plus;
-    touchgfx::TextArea btn_txt_2_1;
+    touchgfx::TextArea btn_txt_plus;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_minus;
-    touchgfx::TextArea btn_txt_5_1;
+    touchgfx::TextArea btn_txt_minus;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_multiply;
-    touchgfx::TextArea btn_txt_8_1;
+    touchgfx::TextArea btn_txt_multiply;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_devide;
-    touchgfx::TextArea btn_txt_11_1;
+    touchgfx::TextArea btn_txt_devide;
     touchgfx::TextArea txt_result;
+    touchgfx::TextArea txt_debug;
 
 private:
 

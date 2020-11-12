@@ -24,10 +24,10 @@ screenViewBase::screenViewBase() :
     btn_1.setPosition(110, 84, 87, 41);
     btn_1.setAction(flexButtonCallback);
 
-    btn_txt.setXY(60, 92);
-    btn_txt.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    btn_txt.setLinespacing(0);
-    btn_txt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1));
+    btn_txt_0.setXY(60, 92);
+    btn_txt_0.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    btn_txt_0.setLinespacing(0);
+    btn_txt_0.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1));
 
     btn_txt_1.setXY(147, 92);
     btn_txt_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -172,10 +172,10 @@ screenViewBase::screenViewBase() :
     btn_plus.setPosition(284, 84, 87, 41);
     btn_plus.setAction(flexButtonCallback);
 
-    btn_txt_2_1.setXY(319, 92);
-    btn_txt_2_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    btn_txt_2_1.setLinespacing(0);
-    btn_txt_2_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID15));
+    btn_txt_plus.setXY(319, 92);
+    btn_txt_plus.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    btn_txt_plus.setLinespacing(0);
+    btn_txt_plus.setTypedText(touchgfx::TypedText(T_SINGLEUSEID15));
 
     btn_minus.setBoxWithBorderPosition(0, 0, 87, 41);
     btn_minus.setBorderSize(5);
@@ -183,10 +183,10 @@ screenViewBase::screenViewBase() :
     btn_minus.setPosition(284, 125, 87, 41);
     btn_minus.setAction(flexButtonCallback);
 
-    btn_txt_5_1.setXY(323, 133);
-    btn_txt_5_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    btn_txt_5_1.setLinespacing(0);
-    btn_txt_5_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
+    btn_txt_minus.setXY(323, 133);
+    btn_txt_minus.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    btn_txt_minus.setLinespacing(0);
+    btn_txt_minus.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
 
     btn_multiply.setBoxWithBorderPosition(0, 0, 87, 41);
     btn_multiply.setBorderSize(5);
@@ -194,10 +194,10 @@ screenViewBase::screenViewBase() :
     btn_multiply.setPosition(284, 166, 87, 41);
     btn_multiply.setAction(flexButtonCallback);
 
-    btn_txt_8_1.setXY(321, 174);
-    btn_txt_8_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    btn_txt_8_1.setLinespacing(0);
-    btn_txt_8_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
+    btn_txt_multiply.setXY(321, 174);
+    btn_txt_multiply.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    btn_txt_multiply.setLinespacing(0);
+    btn_txt_multiply.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
 
     btn_devide.setBoxWithBorderPosition(0, 0, 87, 41);
     btn_devide.setBorderSize(5);
@@ -205,20 +205,25 @@ screenViewBase::screenViewBase() :
     btn_devide.setPosition(284, 207, 87, 41);
     btn_devide.setAction(flexButtonCallback);
 
-    btn_txt_11_1.setXY(323, 215);
-    btn_txt_11_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    btn_txt_11_1.setLinespacing(0);
-    btn_txt_11_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
+    btn_txt_devide.setXY(323, 215);
+    btn_txt_devide.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    btn_txt_devide.setLinespacing(0);
+    btn_txt_devide.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
     txt_result.setXY(371, 53);
     txt_result.setColor(touchgfx::Color::getColorFrom24BitRGB(243, 0, 0));
     txt_result.setLinespacing(0);
     txt_result.setTypedText(touchgfx::TypedText(T_SINGLEUSEID20));
 
+    txt_debug.setXY(0, 247);
+    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 255, 40));
+    txt_debug.setLinespacing(0);
+    txt_debug.setTypedText(touchgfx::TypedText(T_RES_TXT_DEBUG));
+
     add(__background);
     add(btn_0);
     add(btn_1);
-    add(btn_txt);
+    add(btn_txt_0);
     add(btn_txt_1);
     add(btn_2);
     add(btn_txt_2);
@@ -245,14 +250,15 @@ screenViewBase::screenViewBase() :
     add(btn_txt_clear);
     add(btn_txt_equal);
     add(btn_plus);
-    add(btn_txt_2_1);
+    add(btn_txt_plus);
     add(btn_minus);
-    add(btn_txt_5_1);
+    add(btn_txt_minus);
     add(btn_multiply);
-    add(btn_txt_8_1);
+    add(btn_txt_multiply);
     add(btn_devide);
-    add(btn_txt_11_1);
+    add(btn_txt_devide);
     add(txt_result);
+    add(txt_debug);
 }
 
 void screenViewBase::setupScreen()
