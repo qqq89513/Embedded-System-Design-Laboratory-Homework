@@ -1342,7 +1342,224 @@
             "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction_btn_equal_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_equal"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_equal_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_clear_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_clear"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_clear_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_plus_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_plus"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_plus_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_minus_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_minus"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_minus_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_multiply_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_multiply"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_multiply_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_devide_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_devide"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_devide_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_dot_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_dot"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_dot_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_0_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_0"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_0_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_1_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_1_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_2_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_2"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_2_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_3_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_3"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_3_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_4_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_4"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_4_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_5_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_5"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_5_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_6_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_6"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_6_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_7_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_7"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_7_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_8_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_8"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_8_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_9_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_9"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_9_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_00_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_00"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_00_onclick"
+            }
+          }
+        ],
         "Name": "screen",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0

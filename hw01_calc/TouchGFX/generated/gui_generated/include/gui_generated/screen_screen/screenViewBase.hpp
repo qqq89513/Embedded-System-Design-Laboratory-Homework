@@ -18,6 +18,99 @@ public:
     virtual ~screenViewBase() {}
     virtual void setupScreen();
 
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void btn_equal_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_clear_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_plus_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_minus_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_multiply_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_devide_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_dot_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_0_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_1_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_2_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_3_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_4_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_5_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_6_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_7_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_8_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_9_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_00_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -66,6 +159,16 @@ protected:
     touchgfx::TextArea txt_result;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<screenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 
