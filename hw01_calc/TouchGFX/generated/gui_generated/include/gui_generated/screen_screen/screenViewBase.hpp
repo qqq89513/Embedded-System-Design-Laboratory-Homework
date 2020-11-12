@@ -8,8 +8,9 @@
 #include <mvp/View.hpp>
 #include <gui/screen_screen/screenPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/containers/Container.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -120,44 +121,46 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_0;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_1;
-    touchgfx::TextArea btn_txt_0;
-    touchgfx::TextArea btn_txt_1;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_2;
-    touchgfx::TextArea btn_txt_2;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_3;
-    touchgfx::TextArea btn_txt_3;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_4;
-    touchgfx::TextArea btn_txt_4;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_5;
-    touchgfx::TextArea btn_txt_5;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_6;
-    touchgfx::TextArea btn_txt_6;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_7;
-    touchgfx::TextArea btn_txt_7;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_8;
-    touchgfx::TextArea btn_txt_8;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_9;
-    touchgfx::TextArea btn_txt_9;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_dot;
-    touchgfx::TextArea btn_txt_dot;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_00;
-    touchgfx::TextArea btn_txt_00;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_clear;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_equal;
-    touchgfx::TextArea btn_txt_clear;
-    touchgfx::TextArea btn_txt_equal;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_plus;
-    touchgfx::TextArea btn_txt_plus;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_minus;
-    touchgfx::TextArea btn_txt_minus;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_multiply;
-    touchgfx::TextArea btn_txt_multiply;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_devide;
-    touchgfx::TextArea btn_txt_devide;
     touchgfx::TextArea txt_result;
     touchgfx::TextArea txt_debug;
+    touchgfx::Container container_btns;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_00;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_0;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_1;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_2;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_3;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_4;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_5;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_6;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_7;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_8;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_9;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_dot;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_clear;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_equal;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_devide;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_multiply;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_minus;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_plus;
+    touchgfx::Container container_txts;
+    touchgfx::TextArea btn_txt_00;
+    touchgfx::TextArea btn_txt_0;
+    touchgfx::TextArea btn_txt_1;
+    touchgfx::TextArea btn_txt_2;
+    touchgfx::TextArea btn_txt_3;
+    touchgfx::TextArea btn_txt_4;
+    touchgfx::TextArea btn_txt_5;
+    touchgfx::TextArea btn_txt_6;
+    touchgfx::TextArea btn_txt_7;
+    touchgfx::TextArea btn_txt_8;
+    touchgfx::TextArea btn_txt_9;
+    touchgfx::TextArea btn_txt_dot;
+    touchgfx::TextArea btn_txt_clear;
+    touchgfx::TextArea btn_txt_equal;
+    touchgfx::TextArea btn_txt_devide;
+    touchgfx::TextArea btn_txt_multiply;
+    touchgfx::TextArea btn_txt_minus;
+    touchgfx::TextArea btn_txt_plus;
 
 private:
 
