@@ -21,3 +21,6 @@ Release/
 # for user
 .vscode/
 /Archives/
+
+# for touchGFX
+*/TouchGFX/build/
