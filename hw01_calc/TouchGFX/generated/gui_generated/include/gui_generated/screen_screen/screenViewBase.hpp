@@ -8,9 +8,10 @@
 #include <mvp/View.hpp>
 #include <gui/screen_screen/screenPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -121,8 +122,8 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::TextArea txt_result;
-    touchgfx::TextArea txt_debug;
+    touchgfx::TextAreaWithOneWildcard txt_result;
+    touchgfx::TextAreaWithOneWildcard txt_debug;
     touchgfx::Container container_btns;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_00;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_0;

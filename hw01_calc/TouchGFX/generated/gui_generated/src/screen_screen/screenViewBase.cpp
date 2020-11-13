@@ -12,15 +12,17 @@ screenViewBase::screenViewBase() :
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    txt_result.setXY(371, 53);
+    txt_result.setPosition(23, 55, 435, 29);
     txt_result.setColor(touchgfx::Color::getColorFrom24BitRGB(243, 0, 0));
     txt_result.setLinespacing(0);
-    txt_result.setTypedText(touchgfx::TypedText(T_SINGLEUSEID20));
+    txt_result.setWildcard(touchgfx::TypedText(T_SINGLEUSEID22).getText());
+    txt_result.setTypedText(touchgfx::TypedText(T_SINGLEUSEID21));
 
-    txt_debug.setXY(0, 247);
+    txt_debug.setPosition(0, 247, 78, 25);
     txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 255, 40));
     txt_debug.setLinespacing(0);
-    txt_debug.setTypedText(touchgfx::TypedText(T_RES_TXT_DEBUG));
+    txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID24).getText());
+    txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID23));
 
     container_btns.setPosition(23, 84, 435, 164);
 
