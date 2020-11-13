@@ -16,7 +16,7 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId22",
+              "TextId": "SingleUseId25",
               "UseBuffer": false,
               "BufferSize": 0
             },
@@ -45,7 +45,6 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId24",
               "UseBuffer": false,
               "BufferSize": 0
             },
@@ -54,7 +53,7 @@
             "Y": 248,
             "Width": 197,
             "Height": 24,
-            "Visible": true,
+            "Visible": false,
             "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
@@ -1263,9 +1262,9 @@
                 "AutoSize": true,
                 "LineSpacing": 0,
                 "Name": "btn_txt_clear",
-                "X": 367,
+                "X": 365,
                 "Y": 29,
-                "Width": 48,
+                "Width": 52,
                 "Height": 25,
                 "Visible": true,
                 "LockPosition": false,
@@ -1404,6 +1403,30 @@
             "Height": 164,
             "Visible": true,
             "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId24",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 1,
+              "Green": 51,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "txt_school",
+            "X": 188,
+            "Y": 248,
+            "Width": 68,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1716,15 +1739,15 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId22",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId23",
         "IsResource": false
       },
       {
         "TextEntryId": "SingleUseId24",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId25",
         "IsResource": false
       }
     ],

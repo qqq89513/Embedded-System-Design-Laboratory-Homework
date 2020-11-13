@@ -15,13 +15,13 @@ screenViewBase::screenViewBase() :
     txt_result.setPosition(23, 55, 435, 29);
     txt_result.setColor(touchgfx::Color::getColorFrom24BitRGB(243, 0, 0));
     txt_result.setLinespacing(0);
-    txt_result.setWildcard(touchgfx::TypedText(T_SINGLEUSEID22).getText());
+    txt_result.setWildcard(touchgfx::TypedText(T_SINGLEUSEID25).getText());
     txt_result.setTypedText(touchgfx::TypedText(T_SINGLEUSEID21));
 
     txt_debug.setPosition(0, 248, 197, 24);
+    txt_debug.setVisible(false);
     txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 255, 40));
     txt_debug.setLinespacing(0);
-    txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID24).getText());
     txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID23));
 
     container_btns.setPosition(23, 84, 435, 164);
@@ -226,7 +226,7 @@ screenViewBase::screenViewBase() :
     btn_txt_dot.setTypedText(touchgfx::TypedText(T_SINGLEUSEID11));
     container_txts.add(btn_txt_dot);
 
-    btn_txt_clear.setXY(367, 29);
+    btn_txt_clear.setXY(365, 29);
     btn_txt_clear.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     btn_txt_clear.setLinespacing(0);
     btn_txt_clear.setTypedText(touchgfx::TypedText(T_SINGLEUSEID13));
@@ -262,11 +262,17 @@ screenViewBase::screenViewBase() :
     btn_txt_plus.setTypedText(touchgfx::TypedText(T_SINGLEUSEID15));
     container_txts.add(btn_txt_plus);
 
+    txt_school.setXY(188, 248);
+    txt_school.setColor(touchgfx::Color::getColorFrom24BitRGB(1, 51, 255));
+    txt_school.setLinespacing(0);
+    txt_school.setTypedText(touchgfx::TypedText(T_SINGLEUSEID24));
+
     add(__background);
     add(txt_result);
     add(txt_debug);
     add(container_btns);
     add(container_txts);
+    add(txt_school);
 }
 
 void screenViewBase::setupScreen()

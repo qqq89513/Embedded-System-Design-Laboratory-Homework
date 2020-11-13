@@ -162,6 +162,7 @@ protected:
     touchgfx::TextArea btn_txt_multiply;
     touchgfx::TextArea btn_txt_minus;
     touchgfx::TextArea btn_txt_plus;
+    touchgfx::TextArea txt_school;
 
 private:
 
