@@ -104,6 +104,11 @@ void screenView::btn_equal_onclick(){
 }
 void screenView::btn_clear_onclick(){
   showString(txt_debug, btn_txt_clear.getTypedText().getText());
+  oprd1 = 0;
+  oprd2 = 0;
+  oprd_sel = 1;
+  oprd_str[0] = '\0';
+  showString(txt_result, buffer_result, "0");
 }
 
 void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touchgfx::Unicode::UnicodeChar *str){
