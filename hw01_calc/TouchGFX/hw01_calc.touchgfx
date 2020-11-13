@@ -5,7 +5,7 @@
         "Components": [
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId20",
+            "TextId": "SingleUseId21",
             "TextRotation": "0",
             "Color": {
               "Red": 243,
@@ -13,13 +13,18 @@
               "Blue": 0
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId22",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "txt_result",
-            "X": 371,
-            "Y": 53,
-            "Width": 64,
-            "Height": 25,
+            "X": 23,
+            "Y": 55,
+            "Width": 435,
+            "Height": 29,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -29,7 +34,7 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "res_txt_debug",
+            "TextId": "SingleUseId23",
             "TextRotation": "0",
             "Color": {
               "Red": 0,
@@ -37,12 +42,17 @@
               "Blue": 40
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId24",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "txt_debug",
             "X": 0,
             "Y": 247,
-            "Width": 65,
+            "Width": 78,
             "Height": 25,
             "Visible": true,
             "LockPosition": false,
@@ -1698,12 +1708,24 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId20",
+        "TextEntryId": "res_txt_debug",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId21",
         "IsResource": false
       },
       {
-        "TextEntryId": "res_txt_debug",
-        "IsResource": true
+        "TextEntryId": "SingleUseId22",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId23",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId24",
+        "IsResource": false
       }
     ],
     "Name": "hw01_calc",
