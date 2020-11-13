@@ -18,7 +18,7 @@ screenViewBase::screenViewBase() :
     txt_result.setWildcard(touchgfx::TypedText(T_SINGLEUSEID22).getText());
     txt_result.setTypedText(touchgfx::TypedText(T_SINGLEUSEID21));
 
-    txt_debug.setPosition(0, 247, 78, 25);
+    txt_debug.setPosition(0, 248, 197, 24);
     txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 255, 40));
     txt_debug.setLinespacing(0);
     txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID24).getText());
