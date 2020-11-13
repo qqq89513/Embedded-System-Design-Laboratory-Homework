@@ -141,6 +141,10 @@ void screenView::btn_equal_onclick(){
       ans = oprd1*oprd2;
       break;
     case '/':
+      if(oprd2 == 0){
+        showString(txt_result, buffer_result, "error");
+        return;
+      }
       ans = oprd1/oprd2;
       break;
     default:
