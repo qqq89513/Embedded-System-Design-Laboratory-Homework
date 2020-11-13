@@ -1,13 +1,10 @@
 #include <gui/screen_screen/screenView.hpp>
 
 #include <stdio.h>      // using sprintf() for c-like string
-
-// result = operand1 +-*/ operand2
-float oprd1 = 0, oprd2 = 0;
-int oprd_sel = 1;   // 1 for oprd1 and 2 for oprd2
+#include <string.h>
 
 // String buffer for converting
-static const uint16_t TEXTAREA_SIZE = 16;
+static const uint16_t TEXTAREA_SIZE = 32;
 touchgfx::Unicode::UnicodeChar buffer_result[TEXTAREA_SIZE];
 touchgfx::Unicode::UnicodeChar buffer_debug[TEXTAREA_SIZE];
 static char oprd_str[TEXTAREA_SIZE];  // c-like string that will be converted to oprd1 or oprd2
@@ -89,24 +86,81 @@ void screenView::btn_dot_onclick(){
 }
 void screenView::btn_plus_onclick(){
   showString(txt_debug, btn_txt_plus.getTypedText().getText());
+  addCharToStr(oprd_str, '+');
+  showString(txt_result, buffer_result, oprd_str);
 }
 void screenView::btn_minus_onclick(){
   showString(txt_debug, btn_txt_minus.getTypedText().getText());
+  addCharToStr(oprd_str, '-');
+  showString(txt_result, buffer_result, oprd_str);
 }
 void screenView::btn_multiply_onclick(){
   showString(txt_debug, btn_txt_multiply.getTypedText().getText());
+  addCharToStr(oprd_str, '*');
+  showString(txt_result, buffer_result, oprd_str);
 }
 void screenView::btn_devide_onclick(){
   showString(txt_debug, btn_txt_devide.getTypedText().getText());
+  addCharToStr(oprd_str, '/');
+  showString(txt_result, buffer_result, oprd_str);
 }
 void screenView::btn_equal_onclick(){
   showString(txt_debug, btn_txt_equal.getTypedText().getText());
+
+  int cnt_var = 0;          // how many varialbes converted by sscanf()
+  char opr = 0;             // Operator, can be +-*/
+  double oprd1=0, oprd2=0;  // Operand, can be 123.456
+  double ans;               // ans = oprd1 opr oprd2
+
+  // Extract two operands from oprd_str
+  // %*[^0-9] skips every non number character: to skip +-*/
+  cnt_var = sscanf(oprd_str, "%lf%*[^0-9]%lf", &oprd1, &oprd2);
+
+  // Return if less than two of operand
+  if     (cnt_var == 1) return;
+  else if(cnt_var == 0){
+    // No operand, there must be something messy. Clean it
+    btn_clear_onclick();
+    return;
+  }
+
+  // Extract the operator, it could be +-*/
+  // %*[-0-9.] to skip the first operand.
+  cnt_var = sscanf(oprd_str, "%*[0-9.]%c", &opr);
+  if(cnt_var == 0) return;  // No operator
+
+  // Elementary Arithmetic
+  switch(opr){
+    case '+':
+      ans = oprd1+oprd2;
+      break;
+    case '-':
+      ans = oprd1-oprd2;
+      break;
+    case '*':
+      ans = oprd1*oprd2;
+      break;
+    case '/':
+      ans = oprd1/oprd2;
+      break;
+    default:
+      showString(txt_debug, buffer_debug, "Unknow operator.");
+      return;
+  }
+
+  // Stupid feature required: On ly display the begining 10 digits
+  if(ans > 1e10){
+    sprintf(oprd_str, "%lf", ans);
+    oprd_str[10] = '\0';
+  }
+  else
+    sprintf(oprd_str, "%.8lg", ans);
+
+  // Print the result
+  showString(txt_result, buffer_result, oprd_str);
 }
 void screenView::btn_clear_onclick(){
   showString(txt_debug, btn_txt_clear.getTypedText().getText());
-  oprd1 = 0;
-  oprd2 = 0;
-  oprd_sel = 1;
   oprd_str[0] = '\0';
   showString(txt_result, buffer_result, "0");
 }
