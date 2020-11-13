@@ -31,6 +31,7 @@ protected:
     virtual void btn_devide_onclick();
     virtual void btn_equal_onclick();
     virtual void btn_clear_onclick();
+    void addCharToStr( char *str, char c);
 };
 
 #endif // SCREENVIEW_HPP
