@@ -125,8 +125,8 @@ void screenView::btn_equal_onclick(){
   }
 
   // Extract the operator, it could be +-*/
-  // %*[-0-9.] to skip the first operand.
-  cnt_var = sscanf(oprd_str, "%*[0-9.]%c", &opr);
+  // %*f to skip the first operand.
+  cnt_var = sscanf(oprd_str, "%*f%c", &opr);
   if(cnt_var == 0) return;  // No operator
 
   // Elementary Arithmetic
