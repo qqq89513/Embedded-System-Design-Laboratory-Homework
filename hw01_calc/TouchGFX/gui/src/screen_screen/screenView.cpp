@@ -152,19 +152,8 @@ void screenView::btn_equal_onclick(){
       return;
   }
 
-  // Stupid feature required: On ly display the begining 10 digits
-  if(ans > 1e10){
-    sprintf(oprd_str, "%lf", ans);
-    oprd_str[10] = '\0';
-  }
-  else if(ans > 1e8 || ans <= -1e8)
-    sprintf(oprd_str, "%ld", (long)ans);
-  else
-    sprintf(oprd_str, "%.8lg", ans);
-
-  if(strlen(oprd_str)==9){
-    sprintf(oprd_str, "%.9lg", ans);
-  }
+  // Convert result to string
+  sprintf(oprd_str, "%.16lg", ans);
 
   // Print the result
   showString(txt_result, buffer_result, oprd_str);
