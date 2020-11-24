@@ -1,0 +1,26 @@
+# for STM32CubeIDE
+*.crf
+*.d
+*.o
+*.su
+*.mk
+*.axf
+*.lnp
+*.map
+*.sct
+*.dep
+*.htm
+*.iex
+*.uvguix.*
+*.hex
+*.bin
+*.elf
+Debug/
+Release/
+
+# for user
+.vscode/
+/Archives/
+
+# for touchGFX
+*/TouchGFX/build/

@@ -1,0 +1,21 @@
+
+{
+  "Application": {
+    "Name": "lab03_minesweeper",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "AvailableColorDepths": [ 16 ],
+    "AvailableLCDs":
+    {
+      "16": "LCD16bpp"
+    },
+    "AvailableResolutions" : [
+      {
+        "Width": 480,
+        "Height": 272
+      }
+    ],
+    "PostGenerateTargetCommand" : "touchgfx update_project --project-file=../lab03_minesweeper.ioc --platform=m7",
+    "Family" : "STM32F7"
+  },
+  "Version": "4.15.0"
+}
