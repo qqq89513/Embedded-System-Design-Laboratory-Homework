@@ -23,5 +23,4 @@ Release/
 /Archives/
 
 # for touchGFX
-generated/
-*generated/
+*/TouchGFX/build/
