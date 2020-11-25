@@ -249,14 +249,14 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/model/Model.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/Screen1Presenter.cpp</name>
+			<name>Application/User/gui/screenPresenter.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen1_screen/Screen1Presenter.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_screen/screenPresenter.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/Screen1View.cpp</name>
+			<name>Application/User/gui/screenView.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen1_screen/Screen1View.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_screen/screenView.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/ApplicationFontProvider.cpp</name>
@@ -274,9 +274,24 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/FontCache.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/Font_verdana_10_4bpp_0.cpp</name>
+			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_0.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_12.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_12.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_14.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_14.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_18.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_18.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Font_verdana_20_4bpp_0.cpp</name>
@@ -284,19 +299,14 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_20_4bpp_0.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/Font_verdana_40_4bpp_0.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_40_4bpp_0.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/GeneratedFont.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/GeneratedFont.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/Kerning_verdana_10_4bpp.cpp</name>
+			<name>Application/User/generated/Kerning_GenYoMinTW_Heavy_20_4bpp.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_GenYoMinTW_Heavy_20_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Kerning_verdana_20_4bpp.cpp</name>
@@ -304,24 +314,14 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_20_4bpp.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/Kerning_verdana_40_4bpp.cpp</name>
+			<name>Application/User/generated/Table_GenYoMinTW_Heavy_20_4bpp.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_40_4bpp.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/Table_verdana_10_4bpp.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdana_10_4bpp.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_GenYoMinTW_Heavy_20_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Table_verdana_20_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdana_20_4bpp.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/Table_verdana_40_4bpp.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdana_40_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/UnmappedDataFont.cpp</name>
@@ -334,14 +334,19 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/Screen1ViewBase.cpp</name>
+			<name>Application/User/generated/screenViewBase.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen_screen/screenViewBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/BitmapDatabase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/BitmapDatabase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/LanguageGb.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/texts/src/LanguageGb.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Texts.cpp</name>

@@ -61,8 +61,31 @@ extern const touchgfx::TypedText::TypedTextData* const typedTextDatabaseArray[];
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::Unicode::UnicodeChar texts_all_languages[] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
-    0 // No characters in application
+    0x62, 0x6f, 0x6d, 0x62, 0x20, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x0, // @0 "bomb count"
+    0x4e, 0x54, 0x55, 0x53, 0x54, 0x20, 0x6797, 0x7428, 0x9716, 0x0, // @11 "NTUST ???"
+    0x2, 0x0, // @21 "<>"
+    0x4e, 0x65, 0x77, 0x20, 0x54, 0x65, 0x78, 0x74, 0x0, // @23 "New Text"
+    0x4e, 0x54, 0x55, 0x53, 0x54, 0x0, // @32 "NTUST"
+    0x44, 0x65, 0x62, 0x75, 0x67, 0x0, // @38 "Debug"
+    0x2b, 0x0, // @44 "+"
+    0x43, 0x0, // @46 "C"
+    0x45, 0x0, // @48 "E"
+    0x38, 0x0, // @50 "8"
+    0x39, 0x0, // @52 "9"
+    0x2d, 0x0, // @54 "-"
+    0x2a, 0x0, // @56 "*"
+    0x2f, 0x0, // @58 "/"
+    0x37, 0x0, // @60 "7"
+    0x36, 0x0, // @62 "6"
+    0x35, 0x0, // @64 "5"
+    0x34, 0x0, // @66 "4"
+    0x30, 0x0, // @68 "0"
+    0x33, 0x0, // @70 "3"
+    0x32, 0x0, // @72 "2"
+    0x31, 0x0 // @74 "1"
 };
+TEXT_LOCATION_FLASH_PRAGMA
+KEEP extern uint32_t const indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 
 //array holding dynamically installed languages
 struct TranslationHeader
@@ -76,7 +99,7 @@ static const TranslationHeader* languagesArray[1] = { 0 };
 //Compiled and linked in languages
 static const uint32_t* const staticLanguageIndices[] =
 {
-    0
+    indicesGb
 };
 
 touchgfx::LanguageId touchgfx::Texts::currentLanguage = static_cast<touchgfx::LanguageId>(0);

@@ -22,6 +22,7 @@
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <CortexMMCUInstrumentation.hpp>
 
+
 using namespace touchgfx;
 CortexMMCUInstrumentation instrumentation;
 

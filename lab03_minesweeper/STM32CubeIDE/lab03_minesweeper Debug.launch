@@ -61,7 +61,7 @@
 <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug\lab03_minesweeper.elf"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="lab03_minesweeper"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.624734783"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1239209865"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/lab03_minesweeper"/>
 </listAttribute>
