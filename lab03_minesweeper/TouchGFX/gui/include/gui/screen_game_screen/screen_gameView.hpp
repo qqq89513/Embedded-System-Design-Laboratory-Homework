@@ -11,7 +11,13 @@ public:
     virtual ~screen_gameView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void handleTickEvent();
+
 protected:
+    int tickCounter;
+    int digitalHours;
+    int digitalMinutes;
+    int digitalSeconds;
 };
 
 #endif // SCREEN_GAMEVIEW_HPP
