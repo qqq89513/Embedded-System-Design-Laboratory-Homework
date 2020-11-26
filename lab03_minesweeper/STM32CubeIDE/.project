@@ -244,11 +244,6 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/container_grids.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/container_grids.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/gui/Model.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/model/Model.cpp</locationURI>
@@ -347,11 +342,6 @@
 			<name>Application/User/generated/FrontendApplicationBase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/container_gridsBase.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/container_gridsBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/screen_gameViewBase.cpp</name>
