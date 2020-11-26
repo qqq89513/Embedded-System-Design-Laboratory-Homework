@@ -23,6 +23,8 @@ protected:
     virtual void btn_7_onclick();
     virtual void btn_8_onclick();
     virtual void btn_9_onclick();
+    virtual void btn_engage_onclick();
+    virtual void btn_clear_onclick();
     void addCharToStr( char *str, char c);
 };
 

@@ -74,6 +74,16 @@ public:
         // Override and implement this function in screen
     }
 
+    virtual void btn_engage_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
+    virtual void btn_clear_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -94,8 +104,8 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_7;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_8;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_9;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_10;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_e;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_clear;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_engage;
     touchgfx::Container container_txt;
     touchgfx::TextArea txt_0;
     touchgfx::TextArea txt_1;

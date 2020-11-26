@@ -532,7 +532,7 @@
                     }
                   }
                 ],
-                "Name": "btn_10",
+                "Name": "btn_clear",
                 "X": 150,
                 "Y": 50,
                 "Width": 50,
@@ -581,7 +581,7 @@
                     }
                   }
                 ],
-                "Name": "btn_e",
+                "Name": "btn_engage",
                 "X": 150,
                 "Y": 100,
                 "Width": 50,
@@ -792,7 +792,7 @@
                 "LineSpacing": 0,
                 "Name": "txt_7",
                 "X": 19,
-                "Y": 113,
+                "Y": 115,
                 "Width": 13,
                 "Height": 25,
                 "Visible": true,
@@ -1141,6 +1141,30 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "btn_9_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_engage_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_clear"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_engage_onclick"
+            }
+          },
+          {
+            "InteractionName": "Interaction_btn_clear_onclick",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_clear"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btn_clear_onclick"
             }
           }
         ],
