@@ -14,11 +14,12 @@ screenViewBase::screenViewBase() :
 
     container_btn.setPosition(140, 88, 200, 150);
 
-    btn.setBoxWithBorderPosition(0, 0, 50, 50);
-    btn.setBorderSize(5);
-    btn.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(0, 102, 153), touchgfx::Color::getColorFrom24BitRGB(0, 153, 204), touchgfx::Color::getColorFrom24BitRGB(0, 51, 102), touchgfx::Color::getColorFrom24BitRGB(51, 102, 153));
-    btn.setPosition(150, 0, 50, 50);
-    container_btn.add(btn);
+    btn_0.setBoxWithBorderPosition(0, 0, 50, 50);
+    btn_0.setBorderSize(5);
+    btn_0.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(0, 102, 153), touchgfx::Color::getColorFrom24BitRGB(0, 153, 204), touchgfx::Color::getColorFrom24BitRGB(0, 51, 102), touchgfx::Color::getColorFrom24BitRGB(51, 102, 153));
+    btn_0.setPosition(150, 0, 50, 50);
+    btn_0.setAction(flexButtonCallback);
+    container_btn.add(btn_0);
 
     btn_1.setBoxWithBorderPosition(0, 0, 50, 50);
     btn_1.setBorderSize(5);
@@ -177,6 +178,7 @@ screenViewBase::screenViewBase() :
     txt_bomb_cnt.setPosition(140, 63, 196, 25);
     txt_bomb_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     txt_bomb_cnt.setLinespacing(0);
+    txt_bomb_cnt.setWildcard(touchgfx::TypedText(T_SINGLEUSEID30).getText());
     txt_bomb_cnt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID13));
 
     textArea1.setXY(171, 248);
@@ -206,7 +208,14 @@ void screenViewBase::setupScreen()
 
 void screenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-    if (&src == &btn_1)
+    if (&src == &btn_0)
+    {
+        //Interaction_btn_0_onclick
+        //When btn_0 clicked call virtual function
+        //Call btn_0_onclick
+        btn_0_onclick();
+    }
+    else if (&src == &btn_1)
     {
         //Interaction_btn_1_onclick
         //When btn_1 clicked call virtual function

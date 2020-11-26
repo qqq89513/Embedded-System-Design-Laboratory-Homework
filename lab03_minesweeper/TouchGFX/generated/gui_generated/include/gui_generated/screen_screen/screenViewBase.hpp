@@ -24,6 +24,11 @@ public:
     /*
      * Virtual Action Handlers
      */
+    virtual void btn_0_onclick()
+    {
+        // Override and implement this function in screen
+    }
+
     virtual void btn_1_onclick()
     {
         // Override and implement this function in screen
@@ -79,7 +84,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Container container_btn;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_0;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_1;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_2;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_3;
@@ -105,7 +110,7 @@ protected:
     touchgfx::TextArea txt_c;
     touchgfx::TextArea txt_e;
     touchgfx::BoxWithBorder boxWithBorder1;
-    touchgfx::TextArea txt_bomb_cnt;
+    touchgfx::TextAreaWithOneWildcard txt_bomb_cnt;
     touchgfx::TextArea textArea1;
     touchgfx::TextAreaWithOneWildcard txt_debug;
 

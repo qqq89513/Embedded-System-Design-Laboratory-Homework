@@ -23,6 +23,57 @@ void screenView::tearDownScreen(){
   screenViewBase::tearDownScreen();
 }
 
+void screenView::btn_0_onclick(){
+  showString(txt_debug, txt_0.getTypedText().getText());
+  addCharToStr(oprd_str, '0');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_1_onclick(){
+  showString(txt_debug, txt_1.getTypedText().getText());
+  addCharToStr(oprd_str, '1');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_2_onclick(){
+  showString(txt_debug, txt_2.getTypedText().getText());
+  addCharToStr(oprd_str, '2');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_3_onclick(){
+  showString(txt_debug, txt_3.getTypedText().getText());
+  addCharToStr(oprd_str, '3');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_4_onclick(){
+  showString(txt_debug, txt_4.getTypedText().getText());
+  addCharToStr(oprd_str, '4');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_5_onclick(){
+  showString(txt_debug, txt_5.getTypedText().getText());
+  addCharToStr(oprd_str, '5');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_6_onclick(){
+  showString(txt_debug, txt_6.getTypedText().getText());
+  addCharToStr(oprd_str, '6');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_7_onclick(){
+  showString(txt_debug, txt_7.getTypedText().getText());
+  addCharToStr(oprd_str, '7');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_8_onclick(){
+  showString(txt_debug, txt_8.getTypedText().getText());
+  addCharToStr(oprd_str, '8');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+void screenView::btn_9_onclick(){
+  showString(txt_debug, txt_9.getTypedText().getText());
+  addCharToStr(oprd_str, '9');
+  showString(txt_bomb_cnt, buffer_result, oprd_str);
+}
+
 void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touchgfx::Unicode::UnicodeChar *str){
   txtWidget.setWildcard(str);
   txtWidget.invalidate();

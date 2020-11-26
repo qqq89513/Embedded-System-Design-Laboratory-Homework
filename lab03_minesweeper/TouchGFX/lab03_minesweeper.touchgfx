@@ -42,7 +42,7 @@
                     }
                   }
                 ],
-                "Name": "btn",
+                "Name": "btn_0",
                 "X": 150,
                 "Y": 0,
                 "Width": 50,
@@ -951,6 +951,11 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId30",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "txt_bomb_cnt",
             "X": 140,
             "Y": 63,
@@ -1022,7 +1027,8 @@
             "InteractionName": "Interaction_btn_0_onclick",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "Type": "TriggerClicked"
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_0"
             },
             "Action": {
               "Type": "ActionCustom",
@@ -1247,6 +1253,10 @@
       },
       {
         "TextEntryId": "SingleUseId29",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId30",
         "IsResource": false
       }
     ],
