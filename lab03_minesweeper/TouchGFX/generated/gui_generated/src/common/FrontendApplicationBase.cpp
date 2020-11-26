@@ -11,6 +11,8 @@
 #include <platform/driver/lcd/LCD16bpp.hpp>
 #include <gui/screen_screen/screenView.hpp>
 #include <gui/screen_screen/screenPresenter.hpp>
+#include <gui/screen_game_screen/screen_gameView.hpp>
+#include <gui/screen_game_screen/screen_gamePresenter.hpp>
 
 using namespace touchgfx;
 
@@ -40,4 +42,17 @@ void FrontendApplicationBase::gotoscreenScreenNoTransition()
 void FrontendApplicationBase::gotoscreenScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<screenView, screenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// screen_game
+
+void FrontendApplicationBase::gotoscreen_gameScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoscreen_gameScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoscreen_gameScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<screen_gameView, screen_gamePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

@@ -95,6 +95,7 @@ screenViewBase::screenViewBase() :
     btn_engage.setBorderSize(5);
     btn_engage.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(0, 102, 153), touchgfx::Color::getColorFrom24BitRGB(0, 153, 204), touchgfx::Color::getColorFrom24BitRGB(0, 51, 102), touchgfx::Color::getColorFrom24BitRGB(51, 102, 153));
     btn_engage.setPosition(150, 100, 50, 50);
+    btn_engage.setAction(flexButtonCallback);
     container_btn.add(btn_engage);
 
     container_txt.setPosition(140, 88, 200, 150);
@@ -281,14 +282,21 @@ void screenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonCon
     }
     else if (&src == &btn_clear)
     {
-        //Interaction_btn_engage_onclick
-        //When btn_clear clicked call virtual function
-        //Call btn_engage_onclick
-        btn_engage_onclick();
-
         //Interaction_btn_clear_onclick
         //When btn_clear clicked call virtual function
         //Call btn_clear_onclick
         btn_clear_onclick();
+    }
+    else if (&src == &btn_engage)
+    {
+        //Interaction_btn_engage_onclick
+        //When btn_engage clicked call virtual function
+        //Call btn_engage_onclick
+        btn_engage_onclick();
+
+        //Interaction_change_screen_game
+        //When Interaction_btn_engage_onclick completed change screen to screen_game
+        //Go to screen_game with no screen transition
+        application().gotoscreen_gameScreenNoTransition();
     }
 }

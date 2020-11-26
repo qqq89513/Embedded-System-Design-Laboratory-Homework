@@ -23,6 +23,11 @@
     <ClCompile Include="..\..\gui\src\screen_screen\screenView.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_screen\screenPresenter.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_screen\screenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen_game_screen\screen_gamePresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen_game_screen\screen_gameView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_game_screen\screen_gameViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\container_grids.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\container_gridsBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -173,6 +178,11 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_screen\screenPresenter.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_screen\screenViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen_game_screen\screen_gamePresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen_game_screen\screen_gameView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_game_screen\screen_gameViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\container_grids.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\container_gridsBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

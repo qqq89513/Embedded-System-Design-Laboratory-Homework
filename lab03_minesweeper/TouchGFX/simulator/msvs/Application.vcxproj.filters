@@ -172,6 +172,30 @@
     <Filter Include="Header Files\generated\gui_generated\screen_screen">
       <UniqueIdentifier>B9091406-91D3-FB79-A077-BBB5148EAA11</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\screen_game_screen">
+      <UniqueIdentifier>736A264D-3D2B-5714-739B-23E877072497</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_game_screen">
+      <UniqueIdentifier>29D80FE3-3076-09F8-095B-4AC7CA5F7FD3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_game_screen">
+      <UniqueIdentifier>AFA74968-DBB6-AF81-52D0-3438F2B3224E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_game_screen">
+      <UniqueIdentifier>62825764-34C7-730E-6C5F-CA6854B126D3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\containers">
+      <UniqueIdentifier>F092816C-3378-BF6A-279E-1C9987425B76</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\containers">
+      <UniqueIdentifier>F6D64765-209C-39B0-DB5A-BD631E8023AE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\containers">
+      <UniqueIdentifier>74F35FE6-394B-18D3-6C35-5797BB14E1BB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\containers">
+      <UniqueIdentifier>CB676DA6-75C3-2C44-292A-F3848C8B6874</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -209,6 +233,21 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_screen\screenViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_game_screen\screen_gamePresenter.cpp">
+      <Filter>Source Files\gui\screen_game_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_game_screen\screen_gameView.cpp">
+      <Filter>Source Files\gui\screen_game_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_game_screen\screen_gameViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_game_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\container_grids.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\container_gridsBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -651,6 +690,21 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_screen\screenViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_game_screen\screen_gamePresenter.hpp">
+      <Filter>Header Files\gui\screen_game_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_game_screen\screen_gameView.hpp">
+      <Filter>Header Files\gui\screen_game_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_game_screen\screen_gameViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_game_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\container_grids.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\container_gridsBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

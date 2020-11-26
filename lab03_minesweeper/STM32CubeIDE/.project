@@ -244,9 +244,24 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/container_grids.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/container_grids.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/Model.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/model/Model.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/screen_gamePresenter.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_game_screen/screen_gamePresenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/screen_gameView.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_game_screen/screen_gameView.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/screenPresenter.cpp</name>
@@ -334,6 +349,16 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/container_gridsBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/container_gridsBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/screen_gameViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen_game_screen/screen_gameViewBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/screenViewBase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen_screen/screenViewBase.cpp</locationURI>
@@ -342,6 +367,66 @@
 			<name>Application/User/generated/BitmapDatabase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/BitmapDatabase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_bomb.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_bomb.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_clicked.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_clicked.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_1.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_1.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_2.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_2.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_3.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_3.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_4.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_4.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_5.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_5.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_6.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_6.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_7.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_7.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_8.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_8.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_num_9.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_9.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_unclicked.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_unclicked.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/LanguageGb.cpp</name>

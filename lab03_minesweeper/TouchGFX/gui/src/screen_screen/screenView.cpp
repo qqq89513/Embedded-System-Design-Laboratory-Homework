@@ -77,7 +77,9 @@ void screenView::btn_engage_onclick(){
 
 }
 void screenView::btn_clear_onclick(){
-
+  showString(txt_debug, txt_c.getTypedText().getText());
+  str_bomb[0] = '\0';
+  showString(txt_bomb_cnt, buffer_result, "0");
 }
 
 void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touchgfx::Unicode::UnicodeChar *str){
