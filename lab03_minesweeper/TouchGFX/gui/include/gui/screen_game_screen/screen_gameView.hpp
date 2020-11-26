@@ -13,11 +13,17 @@ public:
     virtual void tearDownScreen();
     virtual void handleTickEvent();
 
+    // Declaring callback handler for Box
+    void BtnHandler(const Button& Btn, const ClickEvent& Event);
+
 protected:
     int tickCounter;
     int digitalHours;
     int digitalMinutes;
     int digitalSeconds;
+    
+    // Declaring callback type of box and clickEvent
+    Callback<screen_gameView, const Button&, const ClickEvent&> BtnCallback;
 };
 
 #endif // SCREEN_GAMEVIEW_HPP

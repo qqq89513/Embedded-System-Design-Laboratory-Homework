@@ -1252,7 +1252,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1269,7 +1269,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1286,7 +1286,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1303,7 +1303,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1320,7 +1320,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1337,7 +1337,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1354,7 +1354,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1371,7 +1371,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1388,7 +1388,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1405,7 +1405,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1422,7 +1422,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1439,7 +1439,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1456,7 +1456,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1473,7 +1473,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1490,7 +1490,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1507,7 +1507,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1524,7 +1524,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1541,7 +1541,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1558,7 +1558,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1575,7 +1575,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1592,7 +1592,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1609,7 +1609,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1626,7 +1626,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1643,7 +1643,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1660,7 +1660,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1677,7 +1677,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1694,7 +1694,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1711,7 +1711,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1728,7 +1728,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1745,7 +1745,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1762,7 +1762,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1779,7 +1779,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1796,7 +1796,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1813,7 +1813,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1830,7 +1830,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1847,7 +1847,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1864,7 +1864,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1881,7 +1881,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1898,7 +1898,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1915,7 +1915,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1932,7 +1932,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1949,7 +1949,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1966,7 +1966,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -1983,7 +1983,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2000,7 +2000,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2017,7 +2017,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2034,7 +2034,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2051,7 +2051,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2068,7 +2068,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2085,7 +2085,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2102,7 +2102,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2119,7 +2119,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2136,7 +2136,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2153,7 +2153,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2170,7 +2170,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2187,7 +2187,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2204,7 +2204,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2221,7 +2221,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2238,7 +2238,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2255,7 +2255,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2272,7 +2272,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2289,7 +2289,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2306,7 +2306,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2323,7 +2323,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2340,7 +2340,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2357,7 +2357,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2374,7 +2374,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2391,7 +2391,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2408,7 +2408,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2425,7 +2425,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2442,7 +2442,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2459,7 +2459,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2476,7 +2476,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2493,7 +2493,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2510,7 +2510,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2527,7 +2527,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2544,7 +2544,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2561,7 +2561,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2578,7 +2578,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2595,7 +2595,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2612,7 +2612,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2629,7 +2629,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2646,7 +2646,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2663,7 +2663,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2680,7 +2680,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2697,7 +2697,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2714,7 +2714,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2731,7 +2731,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2748,7 +2748,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2765,7 +2765,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2774,7 +2774,7 @@
                 "Pressed": "clicked.png",
                 "Released": "unclicked.png",
                 "Alpha": 255,
-                "Name": "btn_6",
+                "Name": "btn_6_0",
                 "X": 0,
                 "Y": 149,
                 "Width": 25,
@@ -2782,7 +2782,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2799,7 +2799,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2816,7 +2816,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2833,7 +2833,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2850,7 +2850,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2867,7 +2867,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2884,7 +2884,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2901,7 +2901,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2918,7 +2918,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2935,7 +2935,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2952,7 +2952,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2969,7 +2969,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -2986,7 +2986,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3003,7 +3003,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3020,7 +3020,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3029,7 +3029,7 @@
                 "Pressed": "clicked.png",
                 "Released": "unclicked.png",
                 "Alpha": 255,
-                "Name": "btn_7",
+                "Name": "btn_7_0",
                 "X": 0,
                 "Y": 174,
                 "Width": 25,
@@ -3037,7 +3037,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3054,7 +3054,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3071,7 +3071,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3088,7 +3088,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3105,7 +3105,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3122,7 +3122,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3139,7 +3139,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3156,7 +3156,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3173,7 +3173,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3190,7 +3190,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3207,7 +3207,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3224,7 +3224,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3241,7 +3241,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3258,7 +3258,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               },
@@ -3275,7 +3275,7 @@
                 "Visible": true,
                 "LockPosition": false,
                 "Draggable": false,
-                "Clickable": false,
+                "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
               }

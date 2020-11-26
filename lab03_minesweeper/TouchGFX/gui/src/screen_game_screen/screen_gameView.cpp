@@ -11,10 +11,10 @@ extern touchgfx::Unicode::UnicodeChar buffer_debug[];
 extern char str_bomb[];  // c-like string that will be converted to oprd1 or oprd2
 extern int bomb_cnt;
 
-screen_gameView::screen_gameView()
-{
+screen_gameView::screen_gameView() :
+  // In constructor for callback, bind to this view object and bind which function to handle the event.
+  BtnCallback(this, &screen_gameView::BtnHandler) { }
 
-}
 
 void screen_gameView::setupScreen()
 {
@@ -23,11 +23,28 @@ void screen_gameView::setupScreen()
   digitalHours = digiClock.getCurrentHour();
   digitalMinutes = digiClock.getCurrentMinute();
   digitalSeconds = digiClock.getCurrentSecond();
+
+  btn_0_0.setClickAction(BtnCallback);
+  btn_0_1.setClickAction(BtnCallback);
+  btn_0_2.setClickAction(BtnCallback);
 }
 
 void screen_gameView::tearDownScreen()
 {
   screen_gameViewBase::tearDownScreen();
+}
+
+void screen_gameView::BtnHandler(const Button& Btn, const ClickEvent& Event)
+{
+  if(&Btn == &btn_0_0){
+    showString(txt_debug, buffer_debug, "0 0");
+  }
+  else if(&Btn == &btn_0_1){
+    showString(txt_debug, buffer_debug, "0 1");
+  }
+  else if(&Btn == &btn_0_2){
+    showString(txt_debug, buffer_debug, "0 2");
+  }
 }
 
 void screen_gameView::handleTickEvent(){
