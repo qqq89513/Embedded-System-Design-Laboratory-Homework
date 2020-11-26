@@ -4,6 +4,26 @@
       {
         "Components": [
           {
+            "Type": "Box",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "Name": "box_background",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Components": [
               {
                 "Type": "FlexButton",
@@ -927,7 +947,7 @@
             },
             "BorderSize": 2,
             "Alpha": 255,
-            "Name": "boxWithBorder1",
+            "Name": "box_bomb_count",
             "X": 140,
             "Y": 61,
             "Width": 200,
@@ -973,9 +993,9 @@
             "TextId": "SingleUseId27",
             "TextRotation": "0",
             "Color": {
-              "Red": 131,
-              "Green": 125,
-              "Blue": 251
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -997,8 +1017,8 @@
             "TextId": "SingleUseId28",
             "TextRotation": "0",
             "Color": {
-              "Red": 183,
-              "Green": 140,
+              "Red": 255,
+              "Green": 255,
               "Blue": 255
             },
             "Alpha": 255,
@@ -1197,6 +1217,26 @@
       },
       {
         "Components": [
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "Name": "box_background",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
           {
             "Components": [
               {
@@ -3257,22 +3297,38 @@
           {
             "Type": "BoxWithBorder",
             "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
+              "Red": 198,
+              "Green": 198,
+              "Blue": 198
             },
             "BorderColor": {
-              "Red": 255,
-              "Green": 255,
+              "Red": 194,
+              "Green": 109,
               "Blue": 255
             },
             "BorderSize": 2,
             "Alpha": 255,
-            "Name": "box_time",
+            "Name": "box_bomb_cnt",
             "X": 6,
-            "Y": 3,
-            "Width": 99,
-            "Height": 30,
+            "Y": 4,
+            "Width": 100,
+            "Height": 34,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "bomb.png",
+            "Alpha": 255,
+            "Name": "img_bomb",
+            "X": 9,
+            "Y": 8,
+            "Width": 25,
+            "Height": 25,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -3285,8 +3341,8 @@
             "TextId": "SingleUseId31",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 255,
+              "Red": 194,
+              "Green": 109,
               "Blue": 255
             },
             "Alpha": 255,
@@ -3298,8 +3354,8 @@
               "BufferSize": 0
             },
             "Name": "txt_bomb_cnt",
-            "X": 9,
-            "Y": 6,
+            "X": 6,
+            "Y": 7,
             "Width": 96,
             "Height": 27,
             "Visible": true,
@@ -3312,22 +3368,22 @@
           {
             "Type": "BoxWithBorder",
             "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
+              "Red": 198,
+              "Green": 198,
+              "Blue": 198
             },
             "BorderColor": {
-              "Red": 255,
-              "Green": 255,
+              "Red": 194,
+              "Green": 109,
               "Blue": 255
             },
             "BorderSize": 2,
             "Alpha": 255,
-            "Name": "box_bomb_cnt",
-            "X": 405,
-            "Y": 6,
+            "Name": "box_time",
+            "X": 404,
+            "Y": 4,
             "Width": 68,
-            "Height": 30,
+            "Height": 32,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -3338,8 +3394,8 @@
           {
             "Type": "DigitalClock",
             "TextColor": {
-              "Red": 255,
-              "Green": 255,
+              "Red": 194,
+              "Green": 109,
               "Blue": 255
             },
             "TextId": "SingleUseId33",
@@ -3352,7 +3408,7 @@
             "InitialSecond": 0,
             "Name": "digiClock",
             "X": 406,
-            "Y": 9,
+            "Y": 7,
             "Width": 62,
             "Height": 27,
             "Visible": true,
@@ -3415,9 +3471,9 @@
             "TextId": "SingleUseId36",
             "TextRotation": "0",
             "Color": {
-              "Red": 223,
-              "Green": 114,
-              "Blue": 245
+              "Red": 194,
+              "Green": 109,
+              "Blue": 255
             },
             "Alpha": 255,
             "AutoSize": true,

@@ -11,6 +11,7 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
@@ -31,6 +32,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Box box_background;
     touchgfx::Container container_grids;
     touchgfx::Button btn_0_0;
     touchgfx::Button btn_0_1;
@@ -152,9 +154,10 @@ protected:
     touchgfx::Button btn_7_12;
     touchgfx::Button btn_7_13;
     touchgfx::Button btn_7_14;
-    touchgfx::BoxWithBorder box_time;
-    touchgfx::TextAreaWithOneWildcard txt_bomb_cnt;
     touchgfx::BoxWithBorder box_bomb_cnt;
+    touchgfx::Image img_bomb;
+    touchgfx::TextAreaWithOneWildcard txt_bomb_cnt;
+    touchgfx::BoxWithBorder box_time;
     touchgfx::DigitalClock digiClock;
     touchgfx::TextArea txt_win;
     touchgfx::TextArea txt_bomb;

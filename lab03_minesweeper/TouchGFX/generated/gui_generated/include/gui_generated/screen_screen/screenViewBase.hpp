@@ -93,6 +93,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Box box_background;
     touchgfx::Container container_btn;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_0;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_1;
@@ -119,7 +120,7 @@ protected:
     touchgfx::TextArea txt_9;
     touchgfx::TextArea txt_c;
     touchgfx::TextArea txt_e;
-    touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::BoxWithBorder box_bomb_count;
     touchgfx::TextAreaWithOneWildcard txt_bomb_cnt;
     touchgfx::TextArea textArea1;
     touchgfx::TextAreaWithOneWildcard txt_debug;

@@ -12,6 +12,9 @@ screenViewBase::screenViewBase() :
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
+    box_background.setPosition(0, 0, 480, 272);
+    box_background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+
     container_btn.setPosition(140, 88, 200, 150);
 
     btn_0.setBoxWithBorderPosition(0, 0, 50, 50);
@@ -172,10 +175,10 @@ screenViewBase::screenViewBase() :
     txt_e.setTypedText(touchgfx::TypedText(T_SINGLEUSEID12));
     container_txt.add(txt_e);
 
-    boxWithBorder1.setPosition(140, 61, 200, 27);
-    boxWithBorder1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    boxWithBorder1.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    boxWithBorder1.setBorderSize(2);
+    box_bomb_count.setPosition(140, 61, 200, 27);
+    box_bomb_count.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    box_bomb_count.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    box_bomb_count.setBorderSize(2);
 
     txt_bomb_cnt.setPosition(140, 63, 196, 25);
     txt_bomb_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -184,20 +187,21 @@ screenViewBase::screenViewBase() :
     txt_bomb_cnt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID13));
 
     textArea1.setXY(171, 248);
-    textArea1.setColor(touchgfx::Color::getColorFrom24BitRGB(131, 125, 251));
+    textArea1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea1.setLinespacing(0);
     textArea1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
     txt_debug.setPosition(0, 248, 140, 24);
-    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(183, 140, 255));
+    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     txt_debug.setLinespacing(0);
     txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID29).getText());
     txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID28));
 
     add(__background);
+    add(box_background);
     add(container_btn);
     add(container_txt);
-    add(boxWithBorder1);
+    add(box_bomb_count);
     add(txt_bomb_cnt);
     add(textArea1);
     add(txt_debug);

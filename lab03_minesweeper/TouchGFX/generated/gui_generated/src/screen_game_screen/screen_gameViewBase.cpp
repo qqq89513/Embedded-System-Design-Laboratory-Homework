@@ -12,6 +12,9 @@ screen_gameViewBase::screen_gameViewBase()
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
+    box_background.setPosition(0, 0, 480, 272);
+    box_background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+
     container_grids.setPosition(53, 67, 375, 199);
 
     btn_0_0.setXY(0, 0);
@@ -494,24 +497,27 @@ screen_gameViewBase::screen_gameViewBase()
     btn_7_14.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_14);
 
-    box_time.setPosition(6, 3, 99, 30);
-    box_time.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    box_time.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    box_time.setBorderSize(2);
+    box_bomb_cnt.setPosition(6, 4, 100, 34);
+    box_bomb_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(198, 198, 198));
+    box_bomb_cnt.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
+    box_bomb_cnt.setBorderSize(2);
 
-    txt_bomb_cnt.setPosition(9, 6, 96, 27);
-    txt_bomb_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    img_bomb.setXY(9, 8);
+    img_bomb.setBitmap(touchgfx::Bitmap(BITMAP_BOMB_ID));
+
+    txt_bomb_cnt.setPosition(6, 7, 96, 27);
+    txt_bomb_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
     txt_bomb_cnt.setLinespacing(0);
     txt_bomb_cnt.setWildcard(touchgfx::TypedText(T_SINGLEUSEID32).getText());
     txt_bomb_cnt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID31));
 
-    box_bomb_cnt.setPosition(405, 6, 68, 30);
-    box_bomb_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    box_bomb_cnt.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    box_bomb_cnt.setBorderSize(2);
+    box_time.setPosition(404, 4, 68, 32);
+    box_time.setColor(touchgfx::Color::getColorFrom24BitRGB(198, 198, 198));
+    box_time.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
+    box_time.setBorderSize(2);
 
-    digiClock.setPosition(406, 9, 62, 27);
-    digiClock.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    digiClock.setPosition(406, 7, 62, 27);
+    digiClock.setColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
     digiClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
     digiClock.displayLeadingZeroForHourIndicator(true);
     digiClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR_NO_SECONDS);
@@ -530,17 +536,19 @@ screen_gameViewBase::screen_gameViewBase()
     txt_bomb.setTypedText(touchgfx::TypedText(T_SINGLEUSEID35));
 
     txt_debug.setXY(53, 42);
-    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(223, 114, 245));
+    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
     txt_debug.setLinespacing(0);
     txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID37).getText());
     txt_debug.resizeToCurrentText();
     txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID36));
 
     add(__background);
+    add(box_background);
     add(container_grids);
-    add(box_time);
-    add(txt_bomb_cnt);
     add(box_bomb_cnt);
+    add(img_bomb);
+    add(txt_bomb_cnt);
+    add(box_time);
     add(digiClock);
     add(txt_win);
     add(txt_bomb);
