@@ -317,183 +317,183 @@ screen_gameViewBase::screen_gameViewBase()
     btn_4_14.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_4_14);
 
-    btn_5_0.setXY(0, 124);
+    btn_5_0.setXY(0, 125);
     btn_5_0.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_0);
 
-    btn_5_1.setXY(25, 124);
+    btn_5_1.setXY(25, 125);
     btn_5_1.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_1);
 
-    btn_5_2.setXY(50, 124);
+    btn_5_2.setXY(50, 125);
     btn_5_2.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_2);
 
-    btn_5_3.setXY(75, 124);
+    btn_5_3.setXY(75, 125);
     btn_5_3.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_3);
 
-    btn_5_4.setXY(100, 124);
+    btn_5_4.setXY(100, 125);
     btn_5_4.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_4);
 
-    btn_5_5.setXY(125, 124);
+    btn_5_5.setXY(125, 125);
     btn_5_5.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_5);
 
-    btn_5_6.setXY(150, 124);
+    btn_5_6.setXY(150, 125);
     btn_5_6.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_6);
 
-    btn_5_7.setXY(175, 124);
+    btn_5_7.setXY(175, 125);
     btn_5_7.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_7);
 
-    btn_5_8.setXY(200, 124);
+    btn_5_8.setXY(200, 125);
     btn_5_8.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_8);
 
-    btn_5_9.setXY(225, 124);
+    btn_5_9.setXY(225, 125);
     btn_5_9.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_9);
 
-    btn_5_10.setXY(250, 124);
+    btn_5_10.setXY(250, 125);
     btn_5_10.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_10);
 
-    btn_5_11.setXY(275, 124);
+    btn_5_11.setXY(275, 125);
     btn_5_11.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_11);
 
-    btn_5_12.setXY(300, 124);
+    btn_5_12.setXY(300, 125);
     btn_5_12.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_12);
 
-    btn_5_13.setXY(325, 124);
+    btn_5_13.setXY(325, 125);
     btn_5_13.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_13);
 
-    btn_5_14.setXY(350, 124);
+    btn_5_14.setXY(350, 125);
     btn_5_14.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_5_14);
 
-    btn_6_0.setXY(0, 149);
+    btn_6_0.setXY(0, 150);
     btn_6_0.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_0);
 
-    btn_6_1.setXY(25, 149);
+    btn_6_1.setXY(25, 150);
     btn_6_1.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_1);
 
-    btn_6_2.setXY(50, 149);
+    btn_6_2.setXY(50, 150);
     btn_6_2.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_2);
 
-    btn_6_3.setXY(75, 149);
+    btn_6_3.setXY(75, 150);
     btn_6_3.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_3);
 
-    btn_6_4.setXY(100, 149);
+    btn_6_4.setXY(100, 150);
     btn_6_4.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_4);
 
-    btn_6_5.setXY(125, 149);
+    btn_6_5.setXY(125, 150);
     btn_6_5.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_5);
 
-    btn_6_6.setXY(150, 149);
+    btn_6_6.setXY(150, 150);
     btn_6_6.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_6);
 
-    btn_6_7.setXY(175, 149);
+    btn_6_7.setXY(175, 150);
     btn_6_7.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_7);
 
-    btn_6_8.setXY(200, 149);
+    btn_6_8.setXY(200, 150);
     btn_6_8.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_8);
 
-    btn_6_9.setXY(225, 149);
+    btn_6_9.setXY(225, 150);
     btn_6_9.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_9);
 
-    btn_6_10.setXY(250, 149);
+    btn_6_10.setXY(250, 150);
     btn_6_10.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_10);
 
-    btn_6_11.setXY(275, 149);
+    btn_6_11.setXY(275, 150);
     btn_6_11.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_11);
 
-    btn_6_12.setXY(300, 149);
+    btn_6_12.setXY(300, 150);
     btn_6_12.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_12);
 
-    btn_6_13.setXY(325, 149);
+    btn_6_13.setXY(325, 150);
     btn_6_13.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_13);
 
-    btn_6_14.setXY(350, 149);
+    btn_6_14.setXY(350, 150);
     btn_6_14.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_6_14);
 
-    btn_7_0.setXY(0, 174);
+    btn_7_0.setXY(0, 175);
     btn_7_0.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_0);
 
-    btn_7_1.setXY(25, 174);
+    btn_7_1.setXY(25, 175);
     btn_7_1.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_1);
 
-    btn_7_2.setXY(50, 174);
+    btn_7_2.setXY(50, 175);
     btn_7_2.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_2);
 
-    btn_7_3.setXY(75, 174);
+    btn_7_3.setXY(75, 175);
     btn_7_3.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_3);
 
-    btn_7_4.setXY(100, 174);
+    btn_7_4.setXY(100, 175);
     btn_7_4.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_4);
 
-    btn_7_5.setXY(125, 174);
+    btn_7_5.setXY(125, 175);
     btn_7_5.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_5);
 
-    btn_7_6.setXY(150, 174);
+    btn_7_6.setXY(150, 175);
     btn_7_6.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_6);
 
-    btn_7_7.setXY(175, 174);
+    btn_7_7.setXY(175, 175);
     btn_7_7.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_7);
 
-    btn_7_8.setXY(200, 174);
+    btn_7_8.setXY(200, 175);
     btn_7_8.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_8);
 
-    btn_7_9.setXY(225, 174);
+    btn_7_9.setXY(225, 175);
     btn_7_9.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_9);
 
-    btn_7_10.setXY(250, 174);
+    btn_7_10.setXY(250, 175);
     btn_7_10.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_10);
 
-    btn_7_11.setXY(275, 174);
+    btn_7_11.setXY(275, 175);
     btn_7_11.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_11);
 
-    btn_7_12.setXY(300, 174);
+    btn_7_12.setXY(300, 175);
     btn_7_12.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_12);
 
-    btn_7_13.setXY(325, 174);
+    btn_7_13.setXY(325, 175);
     btn_7_13.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_13);
 
-    btn_7_14.setXY(350, 174);
+    btn_7_14.setXY(350, 175);
     btn_7_14.setBitmaps(touchgfx::Bitmap(BITMAP_UNCLICKED_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
     container_grids.add(btn_7_14);
 
