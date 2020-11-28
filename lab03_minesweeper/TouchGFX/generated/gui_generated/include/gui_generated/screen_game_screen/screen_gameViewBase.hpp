@@ -166,8 +166,19 @@ protected:
     touchgfx::BoxWithBorder box_bomb_cnt_1;
     touchgfx::Image img_unclicked;
     touchgfx::TextAreaWithOneWildcard txt_unclick_cnt;
+    touchgfx::Button btn_goback;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<screen_gameViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

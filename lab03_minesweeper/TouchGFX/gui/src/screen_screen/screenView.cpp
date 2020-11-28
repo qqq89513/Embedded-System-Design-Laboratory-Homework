@@ -22,6 +22,7 @@ screenView::screenView(){}
 
 void screenView::setupScreen(){
   screenViewBase::setupScreen();
+  str_bomb[0] = '\0'; // Clear the string
 }
 
 void screenView::tearDownScreen(){

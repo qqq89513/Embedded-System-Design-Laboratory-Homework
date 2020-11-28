@@ -18,8 +18,10 @@ public:
     // screen
     void gotoscreenScreenNoTransition();
 
+    void gotoscreenScreenSlideTransitionWest();
+
     // screen_game
-    void gotoscreen_gameScreenNoTransition();
+    void gotoscreen_gameScreenSlideTransitionEast();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
@@ -29,8 +31,10 @@ protected:
     // screen
     void gotoscreenScreenNoTransitionImpl();
 
+    void gotoscreenScreenSlideTransitionWestImpl();
+
     // screen_game
-    void gotoscreen_gameScreenNoTransitionImpl();
+    void gotoscreen_gameScreenSlideTransitionEastImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

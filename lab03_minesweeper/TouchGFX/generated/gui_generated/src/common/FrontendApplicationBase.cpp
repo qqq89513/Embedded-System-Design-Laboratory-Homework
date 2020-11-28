@@ -44,15 +44,26 @@ void FrontendApplicationBase::gotoscreenScreenNoTransitionImpl()
     touchgfx::makeTransition<screenView, screenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// screen_game
-
-void FrontendApplicationBase::gotoscreen_gameScreenNoTransition()
+void FrontendApplicationBase::gotoscreenScreenSlideTransitionWest()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoscreen_gameScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoscreenScreenSlideTransitionWestImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoscreen_gameScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoscreenScreenSlideTransitionWestImpl()
 {
-    touchgfx::makeTransition<screen_gameView, screen_gamePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<screenView, screenPresenter, touchgfx::SlideTransition<WEST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// screen_game
+
+void FrontendApplicationBase::gotoscreen_gameScreenSlideTransitionEast()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoscreen_gameScreenSlideTransitionEastImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoscreen_gameScreenSlideTransitionEastImpl()
+{
+    touchgfx::makeTransition<screen_gameView, screen_gamePresenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

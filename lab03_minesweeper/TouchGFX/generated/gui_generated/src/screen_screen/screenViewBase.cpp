@@ -192,6 +192,7 @@ screenViewBase::screenViewBase() :
     textArea1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
     txt_debug.setPosition(0, 248, 140, 24);
+    txt_debug.setVisible(false);
     txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     txt_debug.setLinespacing(0);
     txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID29).getText());
@@ -300,7 +301,7 @@ void screenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonCon
 
         //Interaction_change_screen_game
         //When Interaction_btn_engage_onclick completed change screen to screen_game
-        //Go to screen_game with no screen transition
-        application().gotoscreen_gameScreenNoTransition();
+        //Go to screen_game with screen transition towards East
+        application().gotoscreen_gameScreenSlideTransitionEast();
     }
 }

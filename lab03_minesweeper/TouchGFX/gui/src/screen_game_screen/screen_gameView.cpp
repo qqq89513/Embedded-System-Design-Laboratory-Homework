@@ -40,7 +40,16 @@ screen_gameView::screen_gameView() :
 void screen_gameView::setupScreen()
 {
   screen_gameViewBase::setupScreen();
-  showString(txt_bomb_cnt, buffer_bomb_cnt, str_bomb);
+  Unicode::snprintf(buffer_bomb_cnt, TEXTAREA_SIZE, "%d", bomb_cnt);
+  showString(txt_bomb_cnt, buffer_bomb_cnt);
+
+  for(int8_t row=0+1; row < ROW+1; row++){
+    for(int8_t col=0+1; col < COL+1; col++){
+      table[row][col] = GRID_EMPTY;
+      displayed[row][col] = 0;
+      time_stop = 0;
+    }
+  }
 
   // Fill the table with bombs
   {

@@ -424,6 +424,11 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_clicked.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_goback.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_goback.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_num_1.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_num_1.cpp</locationURI>

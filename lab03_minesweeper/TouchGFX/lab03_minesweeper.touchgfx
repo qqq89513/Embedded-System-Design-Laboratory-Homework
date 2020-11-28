@@ -1034,7 +1034,7 @@
             "Y": 248,
             "Width": 140,
             "Height": 24,
-            "Visible": true,
+            "Visible": false,
             "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
@@ -1196,7 +1196,8 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
               "ActionComponent": "screen_game"
             }
           }
@@ -3555,9 +3556,41 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "goback.png",
+            "Released": "goback.png",
+            "Alpha": 255,
+            "Name": "btn_goback",
+            "X": 0,
+            "Y": 231,
+            "Width": 45,
+            "Height": 45,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction_change_screen_screen",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_goback"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "screen"
+            }
+          }
+        ],
         "Name": "screen_game",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0

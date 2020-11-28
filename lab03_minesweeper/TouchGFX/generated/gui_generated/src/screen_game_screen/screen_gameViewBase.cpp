@@ -6,7 +6,8 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-screen_gameViewBase::screen_gameViewBase()
+screen_gameViewBase::screen_gameViewBase() :
+    buttonCallback(this, &screen_gameViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -557,6 +558,10 @@ screen_gameViewBase::screen_gameViewBase()
     txt_unclick_cnt.setWildcard(touchgfx::TypedText(T_SINGLEUSEID39).getText());
     txt_unclick_cnt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID38));
 
+    btn_goback.setXY(0, 231);
+    btn_goback.setBitmaps(touchgfx::Bitmap(BITMAP_GOBACK_ID), touchgfx::Bitmap(BITMAP_GOBACK_ID));
+    btn_goback.setAction(buttonCallback);
+
     add(__background);
     add(box_background);
     add(container_grids);
@@ -571,9 +576,21 @@ screen_gameViewBase::screen_gameViewBase()
     add(box_bomb_cnt_1);
     add(img_unclicked);
     add(txt_unclick_cnt);
+    add(btn_goback);
 }
 
 void screen_gameViewBase::setupScreen()
 {
 
+}
+
+void screen_gameViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &btn_goback)
+    {
+        //Interaction_change_screen_screen
+        //When btn_goback clicked change screen to screen
+        //Go to screen with screen transition towards West
+        application().gotoscreenScreenSlideTransitionWest();
+    }
 }
