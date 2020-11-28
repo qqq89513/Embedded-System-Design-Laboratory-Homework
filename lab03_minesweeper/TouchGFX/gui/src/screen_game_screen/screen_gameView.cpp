@@ -203,6 +203,8 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Boom! Game lost.
   else{
     time_stop = 1;   // stop the timer
+    txt_win.setVisible(false);
+    txt_win.invalidate();
     txt_bomb.setVisible(true);
     txt_bomb.invalidate();
     for(int8_t row=0+1; row < ROW+1; row++){
@@ -227,6 +229,8 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Win yeeeeee~
   if(displayed_cnt == ROW*COL-bomb_cnt){
     time_stop = 1;
+    txt_bomb.setVisible(false);
+    txt_bomb.invalidate();
     txt_win.setVisible(true);
     txt_win.invalidate();
   }
