@@ -134,7 +134,7 @@ void screen_gameView::setupScreen()
   digitalMinutes = digiClock.getCurrentMinute();
   digitalSeconds = digiClock.getCurrentSecond();
 
-  // Buttons setAction to asscociate with BtnHandler()
+  // Buttons setClickAction to asscociate with BtnHandler()
   for(int8_t row=0+1; row < ROW+1; row++){
     for(int8_t col=0+1; col < COL+1; col++){
       get_btn_by_index(row, col).setClickAction(BtnCallback);
