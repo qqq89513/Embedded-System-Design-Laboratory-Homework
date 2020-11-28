@@ -18,6 +18,7 @@ extern void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touch
 extern void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, touchgfx::Unicode::UnicodeChar *buffer, const char *str); // show c-like string
 
 // String buffer for converting
+extern const uint16_t TEXTAREA_SIZE;
 extern touchgfx::Unicode::UnicodeChar buffer_bomb_cnt[];
 extern touchgfx::Unicode::UnicodeChar buffer_debug[];
 extern char str_bomb[];  // c-like string that will be converted to oprd1 or oprd2
@@ -129,7 +130,9 @@ void screen_gameView::setupScreen()
     }
     #endif
   }
-  
+
+  Unicode::snprintf(buffer_debug, TEXTAREA_SIZE, "%d", ROW*COL-bomb_cnt);
+  showString(txt_unclick_cnt, buffer_debug);
 
   digitalHours = digiClock.getCurrentHour();
   digitalMinutes = digiClock.getCurrentMinute();
@@ -211,11 +214,17 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   #ifdef SIMULATOR
     touchgfx_printf("Displayed count:%d, ROW*COL-bomb_cnt:%d\n", displayed_cnt, ROW*COL-bomb_cnt);
   #endif
+
+  // Win yeeeeee~
   if(displayed_cnt == ROW*COL-bomb_cnt){
     time_stop = 1;
     txt_win.setVisible(true);
     txt_win.invalidate();
   }
+
+  // Display the remaining non-bomb to click
+  Unicode::snprintf(buffer_debug, TEXTAREA_SIZE, "%d", ROW*COL-bomb_cnt-displayed_cnt);
+  showString(txt_unclick_cnt, buffer_debug);
 
   #ifdef SIMULATOR
     touchgfx_printf("row:%3d, col:%3d\n", row, col);

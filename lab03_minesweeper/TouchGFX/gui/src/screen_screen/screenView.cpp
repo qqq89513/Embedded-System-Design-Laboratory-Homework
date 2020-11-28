@@ -9,7 +9,7 @@ int bomb_cnt = 0;
 
 
 // String buffer for converting
-const uint16_t TEXTAREA_SIZE = 16;
+extern const uint16_t TEXTAREA_SIZE = 16;
 touchgfx::Unicode::UnicodeChar buffer_bomb_cnt[TEXTAREA_SIZE];
 touchgfx::Unicode::UnicodeChar buffer_debug[TEXTAREA_SIZE];
 char str_bomb[TEXTAREA_SIZE];  // c-like string that will be converted to oprd1 or oprd2
