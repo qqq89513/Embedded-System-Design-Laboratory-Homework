@@ -23,8 +23,11 @@ extern touchgfx::Unicode::UnicodeChar buffer_debug[];
 extern char str_bomb[];  // c-like string that will be converted to oprd1 or oprd2
 extern int bomb_cnt;
 
-// Grids datatype and table
+// Grids table
 static enum screen_gameView::Grid table[ROW+2][COL+2] = {screen_gameView::Grid::GRID_EMPTY};  // +2 for edge condition when placing numbers in table
+
+// Whether to refresh timer on the right-top corner
+int8_t time_stop = 0;
 
 screen_gameView::screen_gameView() :
   // In constructor for callback, bind to this view object and bind which function to handle the event.
@@ -155,8 +158,10 @@ void screen_gameView::BtnHandler(const Button& Btn, const ClickEvent& Event)
 }
 
 void screen_gameView::handleTickEvent(){
-  tickCounter++;
+  if(time_stop)
+    return;
 
+  tickCounter++;
   if (tickCounter % 60 == 0){
     if (++digitalSeconds >= 60){
       digitalSeconds = 0;
@@ -181,7 +186,18 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Show the empty and neighbor grids
   if(table[row][col] != GRID_MINE)
     show_blank_nearby(row, col);
-
+  // Boom! Game loose.
+  else{
+    time_stop = 1;   // stop the timer
+    txt_bomb.setVisible(true);
+    txt_bomb.invalidate();
+    for(int8_t row=0+1; row < ROW+1; row++){
+      for(int8_t col=0+1; col < COL+1; col++){
+        if(table[row][col]==GRID_MINE)
+          show_btn_grid(row, col);
+      }
+    }
+  }
   #ifdef SIMULATOR
     touchgfx_printf("row:%3d, col:%3d\n", row, col);
   #endif
