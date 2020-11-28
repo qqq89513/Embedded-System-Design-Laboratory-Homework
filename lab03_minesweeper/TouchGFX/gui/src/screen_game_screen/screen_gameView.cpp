@@ -120,7 +120,6 @@ void screen_gameView::setupScreen()
           case N6: grid_char = '6';    break;
           case N7: grid_char = '7';    break;
           case N8: grid_char = '8';    break;
-          case N9: grid_char = '9';    break;
           default:
             touchgfx_printf("[Error] table[%d][%d] not an enum. @line%d\n", row, col, __LINE__);
         }
@@ -155,7 +154,6 @@ void screen_gameView::setupScreen()
           case N6:   bitmap_ID = BITMAP_NUM_6_ID;       break;
           case N7:   bitmap_ID = BITMAP_NUM_7_ID;       break;
           case N8:   bitmap_ID = BITMAP_NUM_8_ID;       break;
-          case N9:   bitmap_ID = BITMAP_NUM_9_ID;       break;
         
         default:
           break;

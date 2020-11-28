@@ -16,8 +16,7 @@ const uint16_t BITMAP_NUM_5_ID = 6;
 const uint16_t BITMAP_NUM_6_ID = 7;
 const uint16_t BITMAP_NUM_7_ID = 8;
 const uint16_t BITMAP_NUM_8_ID = 9;
-const uint16_t BITMAP_NUM_9_ID = 10;
-const uint16_t BITMAP_UNCLICKED_ID = 11;
+const uint16_t BITMAP_UNCLICKED_ID = 10;
 
 namespace BitmapDatabase
 {
