@@ -1199,16 +1199,6 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "screen_game"
             }
-          },
-          {
-            "InteractionName": "Interaction1",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "Type": "ActionNone"
-            }
           }
         ],
         "Name": "screen",
