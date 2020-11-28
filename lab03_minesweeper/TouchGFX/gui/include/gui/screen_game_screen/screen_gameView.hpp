@@ -23,6 +23,7 @@ protected:
     int digitalSeconds;
     
     touchgfx::ClickListener<touchgfx::Button>& get_btn_by_index(int8_t row, int8_t col);
+    void show_btn_grid(int8_t row, int8_t col);
     void grids_clicked(Button &Btn, ClickEvent &Event);
 
     // Declaring callback type of box and clickEvent

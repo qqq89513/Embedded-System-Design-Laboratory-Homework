@@ -142,24 +142,7 @@ void screen_gameView::setupScreen()
       
       // Show grid content(bomb, counts near by or empty)
       #if DEBUG_SHOW_ON_GRIDS
-        int16_t bitmap_ID = 0;
-        switch(table[row][col]){
-          case GRID_EMPTY:  bitmap_ID = BITMAP_CLICKED_ID;  break;
-          case GRID_MINE:   bitmap_ID = BITMAP_BOMB_ID;     break;
-          case N1:   bitmap_ID = BITMAP_NUM_1_ID;       break;
-          case N2:   bitmap_ID = BITMAP_NUM_2_ID;       break;
-          case N3:   bitmap_ID = BITMAP_NUM_3_ID;       break;
-          case N4:   bitmap_ID = BITMAP_NUM_4_ID;       break;
-          case N5:   bitmap_ID = BITMAP_NUM_5_ID;       break;
-          case N6:   bitmap_ID = BITMAP_NUM_6_ID;       break;
-          case N7:   bitmap_ID = BITMAP_NUM_7_ID;       break;
-          case N8:   bitmap_ID = BITMAP_NUM_8_ID;       break;
-        
-        default:
-          break;
-        }
-        get_btn_by_index(row, col).setBitmaps(Bitmap(bitmap_ID), Bitmap(BITMAP_CLICKED_ID));
-        get_btn_by_index(row, col).invalidate();
+        show_btn_grid(row, col);
       #endif
     }
   }
@@ -194,6 +177,7 @@ void screen_gameView::handleTickEvent(){
   }
 }
 
+// Button click implementation
 void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Btn.setBitmaps(touchgfx::Bitmap(BITMAP_BOMB_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
   int8_t row = Btn.getY()/25 + 1; // row start at 1
@@ -251,4 +235,29 @@ touchgfx::ClickListener<touchgfx::Button>& screen_gameView::get_btn_by_index(int
       #endif
       return btn_0_0;   // to prevent no return warning
   }
+}
+
+// Show the content of a button corresponding to table[row][col]
+void screen_gameView::show_btn_grid(int8_t row, int8_t col){
+  int16_t bitmap_ID = 0;
+  switch(table[row][col]){
+    case GRID_EMPTY:  bitmap_ID = BITMAP_CLICKED_ID;  break;
+    case GRID_MINE:   bitmap_ID = BITMAP_BOMB_ID;     break;
+    case N1:   bitmap_ID = BITMAP_NUM_1_ID;       break;
+    case N2:   bitmap_ID = BITMAP_NUM_2_ID;       break;
+    case N3:   bitmap_ID = BITMAP_NUM_3_ID;       break;
+    case N4:   bitmap_ID = BITMAP_NUM_4_ID;       break;
+    case N5:   bitmap_ID = BITMAP_NUM_5_ID;       break;
+    case N6:   bitmap_ID = BITMAP_NUM_6_ID;       break;
+    case N7:   bitmap_ID = BITMAP_NUM_7_ID;       break;
+    case N8:   bitmap_ID = BITMAP_NUM_8_ID;       break;
+  
+  default:
+    #ifdef SIMULATOR
+    touchgfx_printf("[Error] table[%d][%d] not an enum. @line%d\n", row, col, __LINE__);
+    #endif
+    break;
+  }
+  get_btn_by_index(row, col).setBitmaps(Bitmap(bitmap_ID), Bitmap(BITMAP_CLICKED_ID));
+  get_btn_by_index(row, col).invalidate();
 }
