@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #ifdef SIMULATOR
   #include <time.h>
+#else
+  extern volatile uint32_t uwTick;
 #endif
 
 #define ROW 8
 #define COL 15
 #define RANDOM(min, max) rand() % (max - min + 1) + min
-
+#define DEBUG_SHOW_ON_GRIDS 1
 
 // Globals
 // Show Unicode string or c-like string on TextArea that has one wildcard
@@ -45,7 +47,7 @@ void screen_gameView::setupScreen()
     #ifdef SIMULATOR
       srand( time(NULL) );
     #else
-      srand(0);
+      srand(uwTick);
     #endif
 
     // Place bomb
@@ -53,7 +55,7 @@ void screen_gameView::setupScreen()
     while(bomb_rest>0){
       for(int8_t row=0+1; row < ROW+1; row++){
         for(int8_t col=0+1; col < COL+1; col++){
-          if(bomb_rest>0 && RANDOM(0, (ROW*COL)/bomb_cnt - 1)==0 && table[row][col]!=GRID_MINE){
+          if(bomb_rest>0 && RANDOM(0, (ROW*COL)/bomb_rest - 1)==0 && table[row][col]!=GRID_MINE){
             bomb_rest--;
             table[row][col] = GRID_MINE;
             #ifdef SIMULATOR
@@ -138,6 +140,29 @@ void screen_gameView::setupScreen()
   for(int8_t row=0+1; row < ROW+1; row++){
     for(int8_t col=0+1; col < COL+1; col++){
       get_btn_by_index(row, col).setClickAction(BtnCallback);
+      
+      // Show grid content(bomb, counts near by or empty)
+      #if DEBUG_SHOW_ON_GRIDS
+        int16_t bitmap_ID = 0;
+        switch(table[row][col]){
+          case GRID_EMPTY:  bitmap_ID = BITMAP_CLICKED_ID;  break;
+          case GRID_MINE:   bitmap_ID = BITMAP_BOMB_ID;     break;
+          case N1:   bitmap_ID = BITMAP_NUM_1_ID;       break;
+          case N2:   bitmap_ID = BITMAP_NUM_2_ID;       break;
+          case N3:   bitmap_ID = BITMAP_NUM_3_ID;       break;
+          case N4:   bitmap_ID = BITMAP_NUM_4_ID;       break;
+          case N5:   bitmap_ID = BITMAP_NUM_5_ID;       break;
+          case N6:   bitmap_ID = BITMAP_NUM_6_ID;       break;
+          case N7:   bitmap_ID = BITMAP_NUM_7_ID;       break;
+          case N8:   bitmap_ID = BITMAP_NUM_8_ID;       break;
+          case N9:   bitmap_ID = BITMAP_NUM_9_ID;       break;
+        
+        default:
+          break;
+        }
+        get_btn_by_index(row, col).setBitmaps(Bitmap(bitmap_ID), Bitmap(BITMAP_CLICKED_ID));
+        get_btn_by_index(row, col).invalidate();
+      #endif
     }
   }
 }
@@ -176,7 +201,6 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   int8_t row = Btn.getY()/25 + 1; // row start at 1
   int8_t col = Btn.getX()/25 + 1; // col start at 1
   Button &btn_ret = get_btn_by_index(row, col);
-  btn_ret.setBitmaps(touchgfx::Bitmap(BITMAP_BOMB_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
   btn_ret.invalidate();
   #ifdef SIMULATOR
     touchgfx_printf("row:%3d, col:%3d\n", row, col);
