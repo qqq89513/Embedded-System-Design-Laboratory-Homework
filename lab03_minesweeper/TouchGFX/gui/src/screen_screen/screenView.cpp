@@ -80,6 +80,10 @@ void screenView::btn_9_onclick(){
 }
 void screenView::btn_engage_onclick(){
   bomb_cnt = atoi(str_bomb);
+  if(bomb_cnt<5)
+    bomb_cnt = 5;
+  else if(bomb_cnt > 99)
+    bomb_cnt = 99;
 }
 void screenView::btn_clear_onclick(){
   showString(txt_debug, txt_c.getTypedText().getText());
