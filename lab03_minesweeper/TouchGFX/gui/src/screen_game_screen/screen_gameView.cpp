@@ -10,7 +10,7 @@
 #define ROW 8
 #define COL 15
 #define RANDOM(min, max) rand() % (max - min + 1) + min
-#define DEBUG_SHOW_ON_GRIDS 1
+#define DEBUG_SHOW_ON_GRIDS 0
 
 // Globals
 // Show Unicode string or c-like string on TextArea that has one wildcard
@@ -24,12 +24,7 @@ extern char str_bomb[];  // c-like string that will be converted to oprd1 or opr
 extern int bomb_cnt;
 
 // Grids datatype and table
-enum Grid {
-  GRID_EMPTY,                 // The grid is empty and has no mine near by
-  GRID_MINE,                  // The grid is land mine
-  N1,N2,N3,N4,N5,N6,N7,N8,N9  // The grid has 1~9 mines near by
-};
-static enum Grid table[ROW+2][COL+2] = {GRID_EMPTY};  // +2 for edge condition when placing numbers in table
+static enum screen_gameView::Grid table[ROW+2][COL+2] = {screen_gameView::Grid::GRID_EMPTY};  // +2 for edge condition when placing numbers in table
 
 screen_gameView::screen_gameView() :
   // In constructor for callback, bind to this view object and bind which function to handle the event.
@@ -182,8 +177,11 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Btn.setBitmaps(touchgfx::Bitmap(BITMAP_BOMB_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
   int8_t row = Btn.getY()/25 + 1; // row start at 1
   int8_t col = Btn.getX()/25 + 1; // col start at 1
-  Button &btn_ret = get_btn_by_index(row, col);
-  btn_ret.invalidate();
+  
+  // Show the empty and neighbor grids
+  if(table[row][col] != GRID_MINE)
+    show_blank_nearby(row, col);
+
   #ifdef SIMULATOR
     touchgfx_printf("row:%3d, col:%3d\n", row, col);
   #endif
@@ -258,6 +256,38 @@ void screen_gameView::show_btn_grid(int8_t row, int8_t col){
     #endif
     break;
   }
-  get_btn_by_index(row, col).setBitmaps(Bitmap(bitmap_ID), Bitmap(BITMAP_CLICKED_ID));
+  get_btn_by_index(row, col).setBitmaps(Bitmap(bitmap_ID), Bitmap(bitmap_ID));
   get_btn_by_index(row, col).invalidate();
+}
+
+// Recursive display non-mine grids nearby
+void screen_gameView::show_blank_nearby(int8_t row, int8_t col){
+  static int8_t displayed[ROW+2][COL+2] = {0};  // An array
+
+  if(row>ROW || row<1 || col>COL || col<1 || displayed[row][col])
+    return;
+
+  displayed[row][col] = 1;
+  switch(table[row][col]){
+    case GRID_MINE:
+      break;       // Do not show mine
+    
+    case GRID_EMPTY:
+      // Show itself and the the neighbors
+      show_btn_grid(row, col);
+      show_blank_nearby(row-1, col-1);  show_blank_nearby(row-1, col);  show_blank_nearby(row-1, col+1);
+      show_blank_nearby(row  , col-1);                              show_blank_nearby(row  , col+1);
+      show_blank_nearby(row+1, col-1);  show_blank_nearby(row+1, col);  show_blank_nearby(row+1, col+1);
+      break;
+    case N1:;  case N2:;  case N3:;  case N4:;
+    case N5:;  case N6:;  case N7:;  case N8:
+      show_btn_grid(row, col); // Show itself and pop
+      break;
+  
+  default:
+    #ifdef SIMULATOR
+    touchgfx_printf("[Error] table[%d][%d] not an enum. @line%d\n", row, col, __LINE__);
+    #endif
+    break;
+  }
 }
