@@ -1,5 +1,14 @@
 #include <gui/screen_game_screen/screen_gameView.hpp>
 #include "BitmapDatabase.hpp"
+#include <stdlib.h>
+#ifdef SIMULATOR
+  #include <time.h>
+#endif
+
+#define ROW 8
+#define COL 15
+#define RANDOM(min, max) rand() % (max - min + 1) + min
+
 
 // Globals
 // Show Unicode string or c-like string on TextArea that has one wildcard
@@ -13,12 +22,12 @@ extern char str_bomb[];  // c-like string that will be converted to oprd1 or opr
 extern int bomb_cnt;
 
 // Grids datatype and table
-enum grid {
+enum Grid {
   GRID_EMPTY,                 // The grid is empty and has no mine near by
   GRID_MINE,                  // The grid is land mine
   N1,N2,N3,N4,N5,N6,N7,N8,N9  // The grid has 1~9 mines near by
 };
-enum grid table[8+2][15+2] = {GRID_EMPTY};
+static enum Grid table[ROW+2][COL+2] = {GRID_EMPTY};  // +2 for edge condition when placing numbers in table
 
 screen_gameView::screen_gameView() :
   // In constructor for callback, bind to this view object and bind which function to handle the event.
@@ -29,6 +38,98 @@ void screen_gameView::setupScreen()
 {
   screen_gameViewBase::setupScreen();
   showString(txt_bomb_cnt, buffer_bomb_cnt, str_bomb);
+
+  // Fill the table with bombs
+  {
+    // Random seed initialize
+    #ifdef SIMULATOR
+      srand( time(NULL) );
+    #else
+      srand(0);
+    #endif
+
+    // Place bomb
+    int bomb_rest = bomb_cnt; // how many bombs need to be placed in table
+    while(bomb_rest>0){
+      for(int8_t row=0+1; row < ROW+1; row++){
+        for(int8_t col=0+1; col < COL+1; col++){
+          if(bomb_rest>0 && RANDOM(0, (ROW*COL)/bomb_cnt - 1)==0 && table[row][col]!=GRID_MINE){
+            bomb_rest--;
+            table[row][col] = GRID_MINE;
+            #ifdef SIMULATOR
+            touchgfx_printf("Num.%02d mine. table[%02d][%02d] = GRID_MINE\n", bomb_cnt-bomb_rest, row, col);
+            #endif
+          }
+        }
+      }
+    }
+    
+    // Place numbers that represent the bomb count nearby
+    for(int8_t row=0+1; row < ROW+1; row++){
+      for(int8_t col=0+1; col < COL+1; col++){
+         if(table[row][col] != GRID_MINE){
+           int8_t nearby = (table[row-1][col-1]==GRID_MINE) + (table[row-1][col]==GRID_MINE) + (table[row-1][col+1]==GRID_MINE) + \
+                           (table[row  ][col-1]==GRID_MINE) +                                  (table[row  ][col+1]==GRID_MINE) + \
+                           (table[row+1][col-1]==GRID_MINE) + (table[row+1][col]==GRID_MINE) + (table[row+1][col+1]==GRID_MINE) ;
+            switch (nearby) {
+              case 0: table[row][col] = GRID_EMPTY;  break;
+              case 1: table[row][col] = N1;  break;
+              case 2: table[row][col] = N2;  break;
+              case 3: table[row][col] = N3;  break;
+              case 4: table[row][col] = N4;  break;
+              case 5: table[row][col] = N5;  break;
+              case 6: table[row][col] = N6;  break;
+              case 7: table[row][col] = N7;  break;
+              case 8: table[row][col] = N8;  break;
+              case 9: table[row][col] = N9;  break;
+              
+              default:;
+                #ifdef SIMULATOR
+                touchgfx_printf("[Error] Wrong bomb nearby count, nearby=%d. @line%d\n", nearby, __LINE__);
+                #endif
+            }
+         }
+      }
+    }
+  
+    // Print the table when simulation
+    #ifdef SIMULATOR
+    touchgfx_printf("--------The tabble-----------\n");
+    touchgfx_printf("X: the grid is a mine/bomb.\n");
+    touchgfx_printf("1~9: the grid has 1~9 mine/bomb nearby.\n");
+    touchgfx_printf("space: the grid has no mine/bomb neither has mine/bomb nearby.\n");
+    touchgfx_printf("    ");
+    for(int8_t col=0+1; col < COL+1; col++) touchgfx_printf("%3d", col);
+    touchgfx_printf("\n    ");
+    for(int8_t col=0+1; col < COL+1; col++) touchgfx_printf("___");
+    touchgfx_printf("\n");
+    for(int8_t row=0+1; row < ROW+1; row++){
+      touchgfx_printf("%3d|", row);
+      for(int8_t col=0+1; col < COL+1; col++){
+        char grid_char = '\0';
+        switch (table[row][col]){
+          case GRID_MINE:   grid_char = 'X';    break;
+          case GRID_EMPTY:  grid_char = '0';    break;
+          case N1: grid_char = '1';    break;
+          case N2: grid_char = '2';    break;
+          case N3: grid_char = '3';    break;
+          case N4: grid_char = '4';    break;
+          case N5: grid_char = '5';    break;
+          case N6: grid_char = '6';    break;
+          case N7: grid_char = '7';    break;
+          case N8: grid_char = '8';    break;
+          case N9: grid_char = '9';    break;
+          default:
+            touchgfx_printf("[Error] table[%d][%d] not an enum. @line%d\n", row, col, __LINE__);
+        }
+        touchgfx_printf("  %c", grid_char);
+      }
+      touchgfx_printf("\n");
+    }
+    #endif
+  }
+  
+
   digitalHours = digiClock.getCurrentHour();
   digitalMinutes = digiClock.getCurrentMinute();
   digitalSeconds = digiClock.getCurrentSecond();
@@ -103,8 +204,8 @@ void screen_gameView::handleTickEvent(){
 
 void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Btn.setBitmaps(touchgfx::Bitmap(BITMAP_BOMB_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
-  int8_t row = Btn.getY()/25;
-  int8_t col = Btn.getX()/25;
+  int8_t row = Btn.getY()/25 + 1; // row start at 1
+  int8_t col = Btn.getX()/25 + 1; // col start at 1
   Button &btn_ret = get_btn_by_index(row, col);
   btn_ret.setBitmaps(touchgfx::Bitmap(BITMAP_BOMB_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
   btn_ret.invalidate();
@@ -115,6 +216,8 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
 
 // Return a button reference corresponding to row:col
 Button& screen_gameView::get_btn_by_index(int8_t row, int8_t col){
+  row--;  // row start at 1
+  col--;  // col start at 1
   switch(row<<4 | col<<0){
     // There are total row*col=8*15=120 buttons(grids)
     // btn_row_col, from btn_0_0 to btn_3_14
