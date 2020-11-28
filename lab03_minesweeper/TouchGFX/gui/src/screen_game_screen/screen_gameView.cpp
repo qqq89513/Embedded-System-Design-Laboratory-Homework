@@ -12,7 +12,7 @@
 #define RANDOM(min, max) rand() % (max - min + 1) + min
 #define DEBUG_SHOW_ON_GRIDS 0
 
-// Globals
+/*-------Externs from screenView.cpp--------*/
 // Show Unicode string or c-like string on TextArea that has one wildcard
 extern void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touchgfx::Unicode::UnicodeChar *str);
 extern void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, touchgfx::Unicode::UnicodeChar *buffer, const char *str); // show c-like string
@@ -23,11 +23,13 @@ extern touchgfx::Unicode::UnicodeChar buffer_debug[];
 extern char str_bomb[];  // c-like string that will be converted to oprd1 or oprd2
 extern int bomb_cnt;
 
+/*-------Local statics-------------*/
 // Grids table
 static enum screen_gameView::Grid table[ROW+2][COL+2] = {screen_gameView::Grid::GRID_EMPTY};  // +2 for edge condition when placing numbers in table
-
 // Whether to refresh timer on the right-top corner
-int8_t time_stop = 0;
+static int8_t time_stop = 0;
+// Record of whether a grid of table is displayed
+static int8_t displayed[ROW+2][COL+2] = {0};  // An array
 
 screen_gameView::screen_gameView() :
   // In constructor for callback, bind to this view object and bind which function to handle the event.
@@ -186,7 +188,7 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
   // Show the empty and neighbor grids
   if(table[row][col] != GRID_MINE)
     show_blank_nearby(row, col);
-  // Boom! Game loose.
+  // Boom! Game lost.
   else{
     time_stop = 1;   // stop the timer
     txt_bomb.setVisible(true);
@@ -198,6 +200,23 @@ void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
       }
     }
   }
+  
+  // Check for wining condition
+  int8_t displayed_cnt = 0;
+  for(int8_t row=0+1; row < ROW+1; row++){
+    for(int8_t col=0+1; col < COL+1; col++)
+      if(displayed[row][col])
+        displayed_cnt++;
+  }
+  #ifdef SIMULATOR
+    touchgfx_printf("Displayed count:%d, ROW*COL-bomb_cnt:%d\n", displayed_cnt, ROW*COL-bomb_cnt);
+  #endif
+  if(displayed_cnt == ROW*COL-bomb_cnt){
+    time_stop = 1;
+    txt_win.setVisible(true);
+    txt_win.invalidate();
+  }
+
   #ifdef SIMULATOR
     touchgfx_printf("row:%3d, col:%3d\n", row, col);
   #endif
@@ -278,8 +297,6 @@ void screen_gameView::show_btn_grid(int8_t row, int8_t col){
 
 // Recursive display non-mine grids nearby
 void screen_gameView::show_blank_nearby(int8_t row, int8_t col){
-  static int8_t displayed[ROW+2][COL+2] = {0};  // An array
-
   if(row>ROW || row<1 || col>COL || col<1 || displayed[row][col])
     return;
 
