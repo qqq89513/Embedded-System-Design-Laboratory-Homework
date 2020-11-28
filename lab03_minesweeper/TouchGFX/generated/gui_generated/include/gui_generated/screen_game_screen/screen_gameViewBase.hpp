@@ -163,6 +163,9 @@ protected:
     touchgfx::TextArea txt_win;
     touchgfx::TextArea txt_bomb;
     touchgfx::TextAreaWithOneWildcard txt_debug;
+    touchgfx::BoxWithBorder box_bomb_cnt_1;
+    touchgfx::Image img_unclicked;
+    touchgfx::TextAreaWithOneWildcard txt_unclick_cnt;
 
 private:
 

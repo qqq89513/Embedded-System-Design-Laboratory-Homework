@@ -10,38 +10,40 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
-    70, // T_SingleUseId1
-    92, // T_SingleUseId2
-    84, // T_SingleUseId3
-    82, // T_SingleUseId4
-    80, // T_SingleUseId5
-    78, // T_SingleUseId6
-    62, // T_SingleUseId7
-    74, // T_SingleUseId8
-    72, // T_SingleUseId9
-    68, // T_SingleUseId10
-    66, // T_SingleUseId11
-    64, // T_SingleUseId12
-    30, // T_SingleUseId13
-    76, // T_SingleUseId15
-    86, // T_SingleUseId16
-    90, // T_SingleUseId17
-    88, // T_SingleUseId18
-    47, // T_res_txt_debug
-    30, // T_SingleUseId21
-    30, // T_SingleUseId23
-    41, // T_SingleUseId24
-    70, // T_SingleUseId25
-    32, // T_SingleUseId26
+    53, // T_SingleUseId1
+    83, // T_SingleUseId2
+    81, // T_SingleUseId3
+    79, // T_SingleUseId4
+    77, // T_SingleUseId5
+    75, // T_SingleUseId6
+    73, // T_SingleUseId7
+    71, // T_SingleUseId8
+    69, // T_SingleUseId9
+    67, // T_SingleUseId10
+    65, // T_SingleUseId11
+    63, // T_SingleUseId12
+    21, // T_SingleUseId13
+    61, // T_SingleUseId15
+    59, // T_SingleUseId16
+    57, // T_SingleUseId17
+    55, // T_SingleUseId18
+    32, // T_res_txt_debug
+    21, // T_SingleUseId21
+    21, // T_SingleUseId23
+    38, // T_SingleUseId24
+    53, // T_SingleUseId25
+    23, // T_SingleUseId26
     11, // T_SingleUseId27
-    30, // T_SingleUseId28
-    47, // T_SingleUseId29
+    21, // T_SingleUseId28
+    32, // T_SingleUseId29
     0, // T_SingleUseId30
-    30, // T_SingleUseId31
-    21, // T_SingleUseId32
-    30, // T_SingleUseId33
-    58, // T_SingleUseId34
-    53, // T_SingleUseId35
-    30, // T_SingleUseId36
-    47  // T_SingleUseId37
+    21, // T_SingleUseId31
+    53, // T_SingleUseId32
+    21, // T_SingleUseId33
+    49, // T_SingleUseId34
+    44, // T_SingleUseId35
+    21, // T_SingleUseId36
+    32, // T_SingleUseId37
+    21, // T_SingleUseId38
+    53  // T_SingleUseId39
 };

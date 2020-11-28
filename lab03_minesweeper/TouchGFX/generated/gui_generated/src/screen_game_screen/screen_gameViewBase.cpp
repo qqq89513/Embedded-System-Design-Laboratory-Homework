@@ -536,11 +536,26 @@ screen_gameViewBase::screen_gameViewBase()
     txt_bomb.setTypedText(touchgfx::TypedText(T_SINGLEUSEID35));
 
     txt_debug.setXY(53, 42);
+    txt_debug.setVisible(false);
     txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
     txt_debug.setLinespacing(0);
     txt_debug.setWildcard(touchgfx::TypedText(T_SINGLEUSEID37).getText());
     txt_debug.resizeToCurrentText();
     txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID36));
+
+    box_bomb_cnt_1.setPosition(104, 4, 100, 34);
+    box_bomb_cnt_1.setColor(touchgfx::Color::getColorFrom24BitRGB(198, 198, 198));
+    box_bomb_cnt_1.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
+    box_bomb_cnt_1.setBorderSize(2);
+
+    img_unclicked.setXY(108, 8);
+    img_unclicked.setBitmap(touchgfx::Bitmap(BITMAP_UNCLICKED_ID));
+
+    txt_unclick_cnt.setPosition(103, 7, 96, 27);
+    txt_unclick_cnt.setColor(touchgfx::Color::getColorFrom24BitRGB(194, 109, 255));
+    txt_unclick_cnt.setLinespacing(0);
+    txt_unclick_cnt.setWildcard(touchgfx::TypedText(T_SINGLEUSEID39).getText());
+    txt_unclick_cnt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID38));
 
     add(__background);
     add(box_background);
@@ -553,6 +568,9 @@ screen_gameViewBase::screen_gameViewBase()
     add(txt_win);
     add(txt_bomb);
     add(txt_debug);
+    add(box_bomb_cnt_1);
+    add(img_unclicked);
+    add(txt_unclick_cnt);
 }
 
 void screen_gameViewBase::setupScreen()

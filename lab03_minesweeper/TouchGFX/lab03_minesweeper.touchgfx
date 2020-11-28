@@ -3478,6 +3478,77 @@
             "Y": 42,
             "Width": 65,
             "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 198,
+              "Green": 198,
+              "Blue": 198
+            },
+            "BorderColor": {
+              "Red": 194,
+              "Green": 109,
+              "Blue": 255
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "box_bomb_cnt_1",
+            "X": 104,
+            "Y": 4,
+            "Width": 100,
+            "Height": 34,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "unclicked.png",
+            "Alpha": 255,
+            "Name": "img_unclicked",
+            "X": 108,
+            "Y": 8,
+            "Width": 25,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId38",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 194,
+              "Green": 109,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId39",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "txt_unclick_cnt",
+            "X": 103,
+            "Y": 7,
+            "Width": 96,
+            "Height": 27,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -3628,6 +3699,14 @@
       },
       {
         "TextEntryId": "SingleUseId37",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId38",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId39",
         "IsResource": false
       }
     ],
