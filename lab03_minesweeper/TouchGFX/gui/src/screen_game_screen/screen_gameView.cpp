@@ -40,6 +40,9 @@ screen_gameView::screen_gameView() :
 void screen_gameView::setupScreen()
 {
   screen_gameViewBase::setupScreen();
+
+  time_stop = 0;
+
   Unicode::snprintf(buffer_bomb_cnt, TEXTAREA_SIZE, "%d", bomb_cnt);
   showString(txt_bomb_cnt, buffer_bomb_cnt);
 
@@ -47,7 +50,6 @@ void screen_gameView::setupScreen()
     for(int8_t col=0+1; col < COL+1; col++){
       table[row][col] = GRID_EMPTY;
       displayed[row][col] = 0;
-      time_stop = 0;
     }
   }
 
@@ -193,6 +195,9 @@ void screen_gameView::handleTickEvent(){
 
 // Button click implementation
 void screen_gameView::grids_clicked(Button &Btn, ClickEvent &Event){
+  if(time_stop)
+    return;
+
   // Btn.setBitmaps(touchgfx::Bitmap(BITMAP_BOMB_ID), touchgfx::Bitmap(BITMAP_CLICKED_ID));
   int8_t row = Btn.getY()/25 + 1; // row start at 1
   int8_t col = Btn.getX()/25 + 1; // col start at 1
