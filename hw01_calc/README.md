@@ -55,14 +55,14 @@
 I was trying to build an STM32 GUI project with STM32CubeMX and TouchGFX from scratch. The compiler had no error nor warring but the display just didn't go as expected. After a while of struggling, I gave up and surrendered to the ready-to-go template.  
 This project is based on the online templates of TouchGFX with a blank UI. As you can see, it's already configured to STM32F746G DISCO board.  
 > Online templates of TouchGFX with a blank UI  
-> <img src="docs/pics/touchGFX_project_create.png" alt="drawing" width="500"/>  
+> <img src="../docs/pics/touchGFX_project_create.png" alt="drawing" width="500"/>  
 <br>
 
 Make sure that you have TouchGFX 4.15.0 installed, versions above/below this are un-tested.  
 The officail documentations do a great job: [Creating Your Own Application](https://support.touchgfx.com/docs/tutorials/tutorial-02) and [Main Window Guide](https://support.touchgfx.com/docs/development/ui-development/designer-user-guide/main-window), so I won't talk about the basic workflow of touchGFX too much here. Instead, I will cover more about the UI design reviewing of this project.  
 Open the project file of `./TouchGFX/hw01_calc.touchgfx`, you should see  
 > `./TouchGFX/hw01_calc.touchgfx`  
-> <img src="docs/pics/touchGFX_UI_canvas.png" alt="drawing" width="1000"/>
+> <img src="../docs/pics/touchGFX_UI_canvas.png" alt="drawing" width="1000"/>
 - Widgets  
   The widget list is located at the left pannel. The order of the following widgets implies the display layer. For example, `container_txts` is on the top of `container_btns`, so the texts *01234+-*/....* are not covered by buttons.
   1. `txt_school` A static text, required by assignment
