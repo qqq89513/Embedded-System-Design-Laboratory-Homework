@@ -21,8 +21,6 @@
 #include "stm32f7xx.h"
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <CortexMMCUInstrumentation.hpp>
-#include "FreeRTOS.h"
-#include "task.h"
 
 using namespace touchgfx;
 CortexMMCUInstrumentation instrumentation;
@@ -157,21 +155,7 @@ void TouchGFXHAL::enableLCDControllerInterrupt()
     TouchGFXGeneratedHAL::enableLCDControllerInterrupt();
 }
 
-extern "C"
-{
-    portBASE_TYPE IdleTaskHook(void* p)
-    {
-        if ((int)p) //idle task sched out
-        {
-            touchgfx::HAL::getInstance()->setMCUActive(true);
-        }
-        else //idle task sched in
-        {
-            touchgfx::HAL::getInstance()->setMCUActive(false);
-        }
-        return pdTRUE;
-    }
-}
+
 
 /* USER CODE END TouchGFXHAL.cpp */
 

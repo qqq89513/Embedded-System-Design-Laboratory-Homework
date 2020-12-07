@@ -1,5 +1,9 @@
 #include <gui/screen_screen/screenView.hpp>
 
+#include "fatfs.h"
+extern char SDPath[4];   /* SD logical drive path */
+extern FATFS SDFatFS;    /* File system object for SD logical drive */
+
 #include <stdio.h>      // using sprintf() for c-like string
 #include <string.h>     // using strlen()
 #include <stdlib.h>     // using atoi()
@@ -23,6 +27,30 @@ screenView::screenView(){}
 void screenView::setupScreen(){
   screenViewBase::setupScreen();
   
+  TCHAR read_buff[64];
+  FIL MyFile;
+  if(f_mount(&SDFatFS, (TCHAR const*)SDPath, 1) != FR_OK){
+    printf("[Error] Failed to mount SD. @line:%d\r\n", __LINE__);
+  }
+  else
+  {
+    if(f_open(&MyFile, (TCHAR*)"sd_test.txt", FA_WRITE | FA_OPEN_ALWAYS) != FR_OK)
+      printf("[Error] Failed to open file: sd_test.txt. @line:%d\r\n", __LINE__);
+    else
+    {
+      f_printf(&MyFile, (TCHAR*)"Read/Write access to SD card is available.\n");
+      f_close(&MyFile);
+    }
+    if(f_open(&MyFile, (TCHAR*)"sd_test.txt", FA_READ) != FR_OK)
+      printf("[Error] Failed to read file: sd_test.txt. @line:%d\r\n", __LINE__);
+    else
+    {
+      f_gets(read_buff, sizeof(read_buff), &MyFile);
+      printf("%s", read_buff);
+      f_close(&MyFile);
+    }
+  }
+
   // Note that printf() does nothing in touchGFX simulator
   // Use touchgfx_printf() for touchGFX simulator
   printf("TouchGFX screen_screen entered.\r\n");

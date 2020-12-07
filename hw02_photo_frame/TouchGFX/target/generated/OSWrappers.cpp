@@ -14,17 +14,12 @@
   *
   ******************************************************************************
   */
-#include <cassert>
-#include <cmsis_os.h>
-#include <touchgfx/hal/GPIO.hpp>
-#include <touchgfx/hal/HAL.hpp>
+#include <stm32f7xx_hal.h>
+#include <TouchGFXHAL.hpp>
 #include <touchgfx/hal/OSWrappers.hpp>
 
-static osSemaphoreId frame_buffer_sem;      // Semaphore ID
-osSemaphoreDef(frame_buffer_sem);           // Semaphore definition
-
-static osSemaphoreId vsync_sem;             // Semaphore ID
-osSemaphoreDef(vsync_sem);                  // Semaphore definition
+static volatile uint32_t fb_sem;
+static volatile uint32_t vsync_sem;
 
 using namespace touchgfx;
 
@@ -33,11 +28,8 @@ using namespace touchgfx;
  */
 void OSWrappers::initialize()
 {
-    frame_buffer_sem = osSemaphoreCreate(osSemaphore(frame_buffer_sem), 1);
-    assert((frame_buffer_sem != NULL) && "Creation of framebuffer semaphore failed");
-
-    vsync_sem = osSemaphoreCreate(osSemaphore(vsync_sem), 1);
-    assert((vsync_sem != NULL) && "Creation of vsync semaphore failed");
+  fb_sem = 0;
+  vsync_sem = 0;
 }
 
 /*
@@ -45,7 +37,8 @@ void OSWrappers::initialize()
  */
 void OSWrappers::takeFrameBufferSemaphore()
 {
-    osSemaphoreWait(frame_buffer_sem, osWaitForever);
+  while(fb_sem);
+  fb_sem = 1;
 }
 
 /*
@@ -53,7 +46,7 @@ void OSWrappers::takeFrameBufferSemaphore()
  */
 void OSWrappers::giveFrameBufferSemaphore()
 {
-    osSemaphoreRelease(frame_buffer_sem);
+  fb_sem = 0;
 }
 
 /*
@@ -65,7 +58,7 @@ void OSWrappers::giveFrameBufferSemaphore()
  */
 void OSWrappers::tryTakeFrameBufferSemaphore()
 {
-    osSemaphoreWait(frame_buffer_sem, 0);
+  fb_sem = 1;
 }
 
 /*
@@ -77,8 +70,7 @@ void OSWrappers::tryTakeFrameBufferSemaphore()
  */
 void OSWrappers::giveFrameBufferSemaphoreFromISR()
 {
-    // Release of semaphore inside an interrupt is handled by the CMSIS layer
-    osSemaphoreRelease(frame_buffer_sem);
+  fb_sem = 0;
 }
 
 /*
@@ -89,23 +81,43 @@ void OSWrappers::giveFrameBufferSemaphoreFromISR()
  */
 void OSWrappers::signalVSync()
 {
-    // Release of semaphore inside an interrupt is handled by the CMSIS layer
-    osSemaphoreRelease(vsync_sem);
+  vsync_sem = 1;
 }
 
 /*
- * This function blocks until a VSYNC occurs.
+  * Signal that the rendering of the frame has completed. Used by
+  * some systems to avoid using any previous vsync.
+  */
+void OSWrappers::signalRenderingDone()
+{
+    vsync_sem = 0;
+}
+
+/*
+ * This function checks if a VSync occurred after last rendering.
+ * The function is used in systems that cannot wait in  waitForVSync
+ * (because they are also checking other event sources.
  *
- * Note This function must first clear the mutex/queue and then wait for the next one to
- * occur.
+ * @note signalRenderingDone is typically used together with this function.
+ *
+ * @return True if VSync occurred.
+ */
+bool OSWrappers::isVSyncAvailable()
+{
+  return vsync_sem;
+}
+
+/*
+ * This function check if a VSYNC has occured.
+ * If VSYNC has occured, signal TouchGFX to start a rendering
  */
 void OSWrappers::waitForVSync()
 {
-    // First make sure the queue is empty, by trying to remove an element with 0 timeout.
-    osSemaphoreWait(vsync_sem, 0);
-
-    // Then, wait for next VSYNC to occur.
-    osSemaphoreWait(vsync_sem, osWaitForever);
+  if(vsync_sem)
+  {
+    vsync_sem = 0;
+    HAL::getInstance()->backPorchExited();
+  }
 }
 
 /*
@@ -123,7 +135,7 @@ void OSWrappers::waitForVSync()
  */
 void OSWrappers::taskDelay(uint16_t ms)
 {
-    osDelay(static_cast<uint32_t>(ms));
+    HAL_Delay(ms);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

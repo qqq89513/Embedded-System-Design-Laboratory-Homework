@@ -19,6 +19,7 @@
 #include <gui/common/FrontendHeap.hpp>
 #include <BitmapDatabase.hpp>
 #include <platform/driver/lcd/LCD16bpp.hpp>
+#include <touchgfx/hal/OSWrappers.hpp>
 #include <STM32DMA.hpp>
 #include <TouchGFXHAL.hpp>
 #include <STM32TouchController.hpp>
@@ -57,12 +58,14 @@ void touchgfx_init()
 void touchgfx_taskEntry()
 {
  /*
-  * Main event loop. Will wait for VSYNC signal, and then process next frame. Call
-  * this function from your GUI task.
+  * Main event loop will check for VSYNC signal, and then process next frame.
   *
-  * Note This function never returns
+  * Note This function returns immediately if there is no VSYNC signal.
   */
-  hal.taskEntry();
+  if (OSWrappers::isVSyncAvailable())
+  {
+    hal.backPorchExited();
+  }
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
