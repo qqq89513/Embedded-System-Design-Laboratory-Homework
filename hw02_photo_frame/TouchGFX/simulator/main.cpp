@@ -29,8 +29,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     touchgfx::NoDMA dma; //For windows/linux, DMA transfers are simulated
     LCD& lcd = setupLCD();
     touchgfx::SDL2TouchController tc;
-
-    touchgfx::HAL& hal = touchgfx::touchgfx_generic_init<touchgfx::HALSDL2>(dma, lcd, tc, SIM_WIDTH, SIM_HEIGHT, 0, 0);
+    char bmpCache[232000];
+    touchgfx::HAL& hal = touchgfx::touchgfx_generic_init<touchgfx::HALSDL2>(dma, lcd, tc, SIM_WIDTH, SIM_HEIGHT, (uint16_t*)bmpCache, 232000, 1);
 
     setupSimulator(argc, argv, hal);
 

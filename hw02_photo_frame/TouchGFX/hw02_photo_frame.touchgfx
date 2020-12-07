@@ -1226,7 +1226,24 @@
         "CanvasBufferSize": 0
       },
       {
-        "Components": [],
+        "Components": [
+          {
+            "Type": "Image",
+            "RelativeFilename": "",
+            "Alpha": 255,
+            "Name": "img_disp",
+            "X": 0,
+            "Y": 0,
+            "Width": 80,
+            "Height": 80,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
         "Interactions": [],
         "Name": "screen_disp",
         "OverrideDefaultBufferSize": false,

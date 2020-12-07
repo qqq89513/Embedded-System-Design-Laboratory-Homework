@@ -1,8 +1,10 @@
 #include <gui/screen_screen/screenView.hpp>
 
+#ifndef SIMULATOR
 #include "fatfs.h"
 extern char SDPath[4];   /* SD logical drive path */
 extern FATFS SDFatFS;    /* File system object for SD logical drive */
+#endif
 
 #include <stdio.h>      // using sprintf() for c-like string
 #include <string.h>     // using strlen()
@@ -26,7 +28,7 @@ screenView::screenView(){}
 
 void screenView::setupScreen(){
   screenViewBase::setupScreen();
-  
+#ifndef SIMULATOR
   TCHAR read_buff[64];
   FIL MyFile;
   if(f_mount(&SDFatFS, (TCHAR const*)SDPath, 1) != FR_OK){
@@ -50,6 +52,7 @@ void screenView::setupScreen(){
       f_close(&MyFile);
     }
   }
+#endif
 
   // Note that printf() does nothing in touchGFX simulator
   // Use touchgfx_printf() for touchGFX simulator
