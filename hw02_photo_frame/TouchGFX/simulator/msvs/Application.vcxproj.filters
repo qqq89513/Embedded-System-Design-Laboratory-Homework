@@ -237,6 +237,9 @@
     <ClCompile Include="..\..\generated\gui_generated\src\screen_disp_screen\screen_dispViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_disp_screen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\common\BMPFileLoader.cpp">
+      <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx">
@@ -687,6 +690,9 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_disp_screen\screen_dispViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen_disp_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\BMPFileLoader.hpp">
+      <Filter>Header Files\gui\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 /*********************************************************************************/
 #include <gui_generated/screen_disp_screen/screen_dispViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include "BitmapDatabase.hpp"
 
 screen_dispViewBase::screen_dispViewBase()
 {
@@ -10,7 +11,10 @@ screen_dispViewBase::screen_dispViewBase()
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
+    img_disp.setXY(0, 0);
+
     add(__background);
+    add(img_disp);
 }
 
 void screen_dispViewBase::setupScreen()

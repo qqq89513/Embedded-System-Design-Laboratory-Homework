@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen_disp_screen/screen_dispPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class screen_dispViewBase : public touchgfx::View<screen_dispPresenter>
 {
@@ -20,7 +21,12 @@ protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
     }
+
+    /*
+     * Member Declarations
+     */
     touchgfx::Box __background;
+    touchgfx::Image img_disp;
 
 private:
 

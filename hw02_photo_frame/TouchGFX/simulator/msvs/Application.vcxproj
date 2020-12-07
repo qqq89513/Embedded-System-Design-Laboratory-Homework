@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\gui\src\screen_disp_screen\screen_dispPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_disp_screen\screen_dispView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_disp_screen\screen_dispViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\common\BMPFileLoader.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -179,6 +180,7 @@
     <ClInclude Include="..\..\gui\include\gui\screen_disp_screen\screen_dispPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_disp_screen\screen_dispView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_disp_screen\screen_dispViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\BMPFileLoader.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>
