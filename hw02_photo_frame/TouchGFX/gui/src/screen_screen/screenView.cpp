@@ -22,6 +22,10 @@ screenView::screenView(){}
 
 void screenView::setupScreen(){
   screenViewBase::setupScreen();
+  
+  // Note that printf() does nothing in touchGFX simulator
+  // Use touchgfx_printf() for touchGFX simulator
+  printf("TouchGFX screen_screen entered.\r\n");
   str_bomb[0] = '\0'; // Clear the string
 }
 
