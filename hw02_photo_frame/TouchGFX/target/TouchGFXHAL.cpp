@@ -34,6 +34,7 @@ void TouchGFXHAL::initialize()
     // Please note, HAL::initialize() must be called to initialize the framework.
 
     TouchGFXGeneratedHAL::initialize();
+
     setFrameBufferStartAddresses((void*)0xC0000000, (void*)0xC003FC00, (void*)0xC007F800);  //enable the animation storage to allow slide animations
     lockDMAToFrontPorch(false);
     instrumentation.init();
