@@ -9,14 +9,14 @@ extern FATFS SDFatFS;    /* File system object for SD logical drive */
 #include <stdlib.h>     // using atoi()
 
 // Globals
-int bomb_cnt = 0;
+int delay_cnt = 0;
+extern const uint16_t TEXTAREA_SIZE = 16;
 
 
 // String buffer for converting
-extern const uint16_t TEXTAREA_SIZE = 16;
-touchgfx::Unicode::UnicodeChar buffer_bomb_cnt[TEXTAREA_SIZE];
+touchgfx::Unicode::UnicodeChar buffer_delay_cnt[TEXTAREA_SIZE];
 touchgfx::Unicode::UnicodeChar buffer_debug[TEXTAREA_SIZE];
-char str_bomb[TEXTAREA_SIZE];  // c-like string that will be converted to oprd1 or oprd2
+char str_delay[TEXTAREA_SIZE];  // c-like string that will be converted to oprd1 or oprd2
 
 // Show Unicode string or c-like string on TextArea that has one wildcard
 void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touchgfx::Unicode::UnicodeChar *str);
@@ -54,7 +54,7 @@ void screenView::setupScreen(){
   // Note that printf() does nothing in touchGFX simulator
   // Use touchgfx_printf() for touchGFX simulator
   printf("TouchGFX screen_screen entered.\r\n");
-  str_bomb[0] = '\0'; // Clear the string
+  str_delay[0] = '\0'; // Clear the string
 }
 
 void screenView::tearDownScreen(){
@@ -62,55 +62,55 @@ void screenView::tearDownScreen(){
 }
 
 void screenView::btn_0_onclick(){
-  addCharToStr(str_bomb, '0');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '0');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_1_onclick(){
-  addCharToStr(str_bomb, '1');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '1');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_2_onclick(){
-  addCharToStr(str_bomb, '2');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '2');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_3_onclick(){
-  addCharToStr(str_bomb, '3');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '3');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_4_onclick(){
-  addCharToStr(str_bomb, '4');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '4');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_5_onclick(){
-  addCharToStr(str_bomb, '5');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '5');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_6_onclick(){
-  addCharToStr(str_bomb, '6');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '6');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_7_onclick(){
-  addCharToStr(str_bomb, '7');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '7');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_8_onclick(){
-  addCharToStr(str_bomb, '8');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '8');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_9_onclick(){
-  addCharToStr(str_bomb, '9');
-  showString(txt_delay_cnt, buffer_bomb_cnt, str_bomb);
+  addCharToStr(str_delay, '9');
+  showString(txt_delay_cnt, buffer_delay_cnt, str_delay);
 }
 void screenView::btn_engage_onclick(){
-  bomb_cnt = atoi(str_bomb);
-  if(bomb_cnt<5)
-    bomb_cnt = 5;
-  else if(bomb_cnt > 99)
-    bomb_cnt = 99;
+  delay_cnt = atoi(str_delay);
+  if(delay_cnt<5)
+    delay_cnt = 5;
+  else if(delay_cnt > 99)
+    delay_cnt = 99;
 }
 void screenView::btn_clear_onclick(){
-  str_bomb[0] = '\0';
-  showString(txt_delay_cnt, buffer_bomb_cnt, "0");
+  str_delay[0] = '\0';
+  showString(txt_delay_cnt, buffer_delay_cnt, "0");
 }
 
 void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, const touchgfx::Unicode::UnicodeChar *str){
