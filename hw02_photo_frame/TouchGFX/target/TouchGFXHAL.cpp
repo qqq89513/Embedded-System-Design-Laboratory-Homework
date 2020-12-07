@@ -21,10 +21,13 @@
 #include "stm32f7xx.h"
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <CortexMMCUInstrumentation.hpp>
+#include <BitmapDatabase.hpp>
 
 using namespace touchgfx;
 CortexMMCUInstrumentation instrumentation;
 
+uint16_t* cache = (uint16_t*)0xC00BF400;  // External SDRAM address
+uint32_t cache_size = 480*272*3;          // x*y*3byte(24bits depth)
 void TouchGFXHAL::initialize()
 {
     // Calling parent implementation of initialize().
@@ -34,6 +37,9 @@ void TouchGFXHAL::initialize()
     // Please note, HAL::initialize() must be called to initialize the framework.
 
     TouchGFXGeneratedHAL::initialize();
+
+    Bitmap::removeCache();
+    Bitmap::setCache((uint16_t*)cache, cache_size, 1);
 
     setFrameBufferStartAddresses((void*)0xC0000000, (void*)0xC003FC00, (void*)0xC007F800);  //enable the animation storage to allow slide animations
     lockDMAToFrontPorch(false);

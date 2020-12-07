@@ -35,11 +35,9 @@ static ApplicationFontProvider fontProvider;
 static Texts texts;
 static TouchGFXHAL hal(dma, display, tc, 480, 272);
 
-uint16_t* cache = (uint16_t*)0xC00BF400;  // External SDRAM address
-uint32_t cache_size = 480*272*3;          // x*y*3byte(24bits depth)
 void touchgfx_init()
 {
-  Bitmap::registerBitmapDatabase(BitmapDatabase::getInstance(), BitmapDatabase::getInstanceSize(), (uint16_t*)cache, cache_size, 1);
+  Bitmap::registerBitmapDatabase(BitmapDatabase::getInstance(), BitmapDatabase::getInstanceSize());
   TypedText::registerTexts(&texts);
   Texts::setLanguage(0);
 
