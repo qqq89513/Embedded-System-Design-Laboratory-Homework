@@ -11,7 +11,8 @@ screen_dispViewBase::screen_dispViewBase()
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    img_disp.setXY(0, 0);
+    img_disp.setPosition(0, 0, 80, 80);
+    img_disp.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
 
     add(__background);
     add(img_disp);

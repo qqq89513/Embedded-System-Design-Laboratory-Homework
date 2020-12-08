@@ -29,8 +29,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     touchgfx::NoDMA dma; //For windows/linux, DMA transfers are simulated
     LCD& lcd = setupLCD();
     touchgfx::SDL2TouchController tc;
-    char bmpCache[232000];
-    touchgfx::HAL& hal = touchgfx::touchgfx_generic_init<touchgfx::HALSDL2>(dma, lcd, tc, SIM_WIDTH, SIM_HEIGHT, (uint16_t*)bmpCache, 232000, 1);
+    char *bmpCache = (char*) malloc(sizeof(char)*1024*1024*3);
+    touchgfx::HAL& hal = touchgfx::touchgfx_generic_init<touchgfx::HALSDL2>(dma, lcd, tc, SIM_WIDTH, SIM_HEIGHT, (uint16_t*)bmpCache, 1024*1024*3, 1);
 
     setupSimulator(argc, argv, hal);
 
@@ -49,6 +49,6 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     //touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     touchgfx::HAL::getInstance()->taskEntry(); //Never returns
-
+    free(bmpCache);
     return EXIT_SUCCESS;
 }

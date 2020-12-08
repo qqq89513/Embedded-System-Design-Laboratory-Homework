@@ -48,6 +48,7 @@ void screen_dispView::setupScreen()
 
   // Make Image show the loaded bitmap
   img_disp.setBitmap(Bitmap(bmpId));
+  img_disp.setPosition(0, 0, 480, 272);
   img_disp.invalidate();
 
   printf("[Info] Screen_disp entered.\r\n");

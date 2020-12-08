@@ -8,7 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen_disp_screen/screen_dispPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/ScalableImage.hpp>
 
 class screen_dispViewBase : public touchgfx::View<screen_dispPresenter>
 {
@@ -26,7 +26,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Image img_disp;
+    touchgfx::ScalableImage img_disp;
 
 private:
 

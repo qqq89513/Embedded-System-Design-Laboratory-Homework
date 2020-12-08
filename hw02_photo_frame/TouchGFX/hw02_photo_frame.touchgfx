@@ -1228,9 +1228,10 @@
       {
         "Components": [
           {
-            "Type": "Image",
-            "RelativeFilename": "",
+            "Type": "ScalableImage",
+            "Filename": "",
             "Alpha": 255,
+            "ScalingAlgorithm": "Nearest-neighbor",
             "Name": "img_disp",
             "X": 0,
             "Y": 0,

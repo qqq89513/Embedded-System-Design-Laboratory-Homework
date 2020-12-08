@@ -27,7 +27,7 @@ using namespace touchgfx;
 CortexMMCUInstrumentation instrumentation;
 
 uint16_t* cache = (uint16_t*)0xC00BF400;  // External SDRAM address
-uint32_t cache_size = 480*272*3;          // x*y*3byte(24bits depth)
+uint32_t cache_size = 1024*1024*3;        // 3MB cache
 void TouchGFXHAL::initialize()
 {
     // Calling parent implementation of initialize().

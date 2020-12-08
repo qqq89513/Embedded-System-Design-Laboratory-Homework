@@ -1,8 +1,8 @@
 #include <gui/common/BMPFileLoader.hpp>
 #include <touchgfx/Color.hpp>
 
-#define FILE_BUF_SIZE 55
-#define P 16     // how many pixels to read from file at a time, p*3 should be smaller than sizeof(data)
+#define FILE_BUF_SIZE 100
+#define P 32     // how many pixels to read from file at a time, p*3 should be smaller than sizeof(data)
 #if (P*3+3 > FILE_BUF_SIZE)
 #error "Insufficient size of image buffer data. Try to lower p or increase size of data."
 #endif
