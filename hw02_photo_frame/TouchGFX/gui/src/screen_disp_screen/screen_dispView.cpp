@@ -29,7 +29,9 @@ void screen_dispView::setupScreen()
 {
   screen_dispViewBase::setupScreen();
   tk_prev = uwTick;       // Update tick
-  show_bmp(img_disp, bmpId, BMP_LIST[0]);
+  bmpId = BITMAP_INVALID;
+  load_bmp(bmpId, BMP_LIST[0]);
+  resize_show_img(img_disp, bmpId);
   printf("[Info] Screen_disp entered.\r\n");
 }
 
@@ -39,9 +41,12 @@ void screen_dispView::tearDownScreen()
   Bitmap::dynamicBitmapDelete(bmpId);
 }
 
-// Read bmp file from SD card, create dynamic bitmap, resize, and display
-void screen_dispView::show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const char *filename){
-
+// Read bmp file from SD card, create dynamic bitmap
+void screen_dispView::load_bmp(BitmapId &bmpId, const char *filename){
+  if(bmpId != BITMAP_INVALID){
+    printf("[Error] The bitmap id should be invalid. Func:%s, Line:%d\r\n", __func__, __LINE__);
+    return;
+  }
   // Open file
   #ifdef SIMULATOR
     FILE* f = fopen(filename, "rb");
@@ -81,9 +86,31 @@ void screen_dispView::show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const
   #else
   f_close(f);
   #endif
+}
 
+void screen_dispView::handleTickEvent(){
+  static uint8_t index = 1; // index of BMP_LIST
+  if(uwTick-tk_prev > delay_cnt*1000){
+    tk_prev = uwTick;       // Update tick
+    Bitmap::dynamicBitmapDelete(bmpId);
+    bmpId = BITMAP_INVALID;
+    load_bmp(bmpId, BMP_LIST[index]);
+    resize_show_img(img_disp, bmpId);
+    if(++index >= BMP_LIST_CNT) index = 0;
+  }
+}
+
+// Set image on the widget, resize and display
+void screen_dispView::resize_show_img(ScalableImage &img_widget, BitmapId &bmpId){
+  if(bmpId == BITMAP_INVALID){
+    printf("[Error] The bitmap id should not be invalid. Func:%s, Line:%d\r\n", __func__, __LINE__);
+    return;
+  }
+  
   // Set bitmap to widget and resize it
   img_widget.setBitmap(Bitmap(bmpId));
+  uint16_t f_width  = Bitmap(bmpId).getWidth();
+  uint16_t f_height = Bitmap(bmpId).getHeight();
   uint16_t bmp_width  = f_width;
   uint16_t bmp_height = f_height;
   if(f_width > MAX_X || f_height > MAX_Y){
@@ -96,14 +123,4 @@ void screen_dispView::show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const
   }
   img_widget.setPosition((MAX_X-bmp_width)/2, (MAX_Y-bmp_height)/2, bmp_width, bmp_height);
   img_widget.invalidate();
-}
-
-void screen_dispView::handleTickEvent(){
-  static uint8_t index = 1; // index of BMP_LIST
-  if(uwTick-tk_prev > delay_cnt*1000){
-    tk_prev = uwTick;       // Update tick
-    Bitmap::dynamicBitmapDelete(bmpId);
-    show_bmp(img_disp, bmpId, BMP_LIST[index]);
-    if(++index >= BMP_LIST_CNT) index = 0;
-  }
 }

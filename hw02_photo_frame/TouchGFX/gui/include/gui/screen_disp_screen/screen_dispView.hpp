@@ -16,7 +16,8 @@ public:
 protected:
     uint32_t tk_prev; // Previous tick to update picture
     BitmapId bmpId;
-    void show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const char *filename);
+    void load_bmp(BitmapId &bmpId, const char *filename);
+    void resize_show_img(ScalableImage &img_widget, BitmapId &bmpId);
 };
 
 #endif // SCREEN_DISPVIEW_HPP
