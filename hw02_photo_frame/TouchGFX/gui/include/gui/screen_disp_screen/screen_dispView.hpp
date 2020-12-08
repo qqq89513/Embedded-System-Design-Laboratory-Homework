@@ -12,6 +12,7 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 protected:
+    BitmapId bmpId;
 };
 
 #endif // SCREEN_DISPVIEW_HPP

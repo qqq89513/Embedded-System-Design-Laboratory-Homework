@@ -40,7 +40,6 @@ void screen_dispView::setupScreen()
   // Get the image dimensions from the BMP file
   BMPFileLoader::getBMP24Dimensions(f, width, height);
   printf("Width:%d, Height:%d\r\n", width, height);
-  BitmapId bmpId;
 
   // Create (16bit) dynamic bitmap of same dimension
   bmpId = Bitmap::dynamicBitmapCreate(width, height, Bitmap::RGB565);
@@ -60,4 +59,5 @@ void screen_dispView::setupScreen()
 void screen_dispView::tearDownScreen()
 {
   screen_dispViewBase::tearDownScreen();
+  Bitmap::dynamicBitmapDelete(bmpId);
 }
