@@ -11,7 +11,10 @@ public:
     virtual ~screen_dispView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void handleTickEvent();
+
 protected:
+    uint32_t tk_prev; // Previous tick to update picture
     BitmapId bmpId;
     void show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const char *filename);
 };
