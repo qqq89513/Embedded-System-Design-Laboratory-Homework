@@ -37,57 +37,66 @@ void BMPFileLoader::getBMP24Dimensions(FileHdl fileHandle, uint16_t& width, uint
 
 void BMPFileLoader::readBMP24File(Bitmap bitmap, FileHdl fileHandle)
 {
-  uint8_t data[50];
+  uint8_t data[51];
+  const int p = 1;  // how many pixels to read from file at a time, p*3 should be smaller than sizeof(data)
+  #if p*3 + 3 > sizeof(data)
+  #error "Insufficient size of image buffer data. Try to lower p or increase size of data."
+  #endif
+
+ // Read header
   seekFile(fileHandle, 0);
-  readFile(fileHandle, data, 26); //read first part of header.
-
+  readFile(fileHandle, data, 26);
   const uint32_t offset = data[10] | (data[11] << 8) | (data[12] << 16) | (data[12] << 24);
-  const uint32_t width = data[18] | (data[19] << 8) | (data[20] << 16) | (data[21] << 24);
-  const uint32_t height = data[22] | (data[23] << 8) | (data[24] << 16) | (data[25] << 24);
+  const uint32_t f_width = data[18] | (data[19] << 8) | (data[20] << 16) | (data[21] << 24);  // width read  from the bmp file
+  const uint32_t f_height = data[22] | (data[23] << 8) | (data[24] << 16) | (data[25] << 24); // height read from the bmp file
+  readFile(fileHandle, data, offset - 26);  // Skip the rest of header
 
-  readFile(fileHandle, data, offset - 26); //read rest of header.
-
-  //get dynamic bitmap boundaries
-  const uint32_t buffer_width = bitmap.getWidth();
-  const uint32_t buffer_height = bitmap.getHeight();
-
-  const uint32_t rowpadding = (4 - ((width * 3) % 4)) % 4;
+  // Get dynamic bitmap boundaries
+  const uint32_t buffer_width  = bitmap.getWidth();       // width  of the bitmap
+  const uint32_t buffer_height = bitmap.getHeight();      // height of the bitmap
+  const uint32_t rowpadding = (4 - ((f_width*3)%4)) % 4;  // how many unused bytes at the end of a row
 
   const Bitmap::BitmapFormat format = bitmap.getFormat();
-  uint8_t* const  buffer8  = Bitmap::dynamicBitmapGetAddress(bitmap.getId());
-  uint16_t* const buffer16 = (uint16_t*)buffer8;
-
-  for (uint32_t y = 0; y < height; y++){
-    for (uint32_t x = 0; x < width; x++){
-      if (x % 10 == 0){ //read data every 10 pixels = 30 bytes
-        if (x + 10 <= width){ //read 10
-          readFile(fileHandle, data, 10 * 3); //10 pixels
-        }
-        else{
-          readFile(fileHandle, data, (width - x) * 3 + rowpadding); //rest of line
-        }
+  uint8_t* const  buffer8  = Bitmap::dynamicBitmapGetAddress(bitmap.getId()); // Address of the bitmap cache
+  uint16_t* const buffer16 = (uint16_t*)buffer8;                              // Address of the bitmap cache
+  
+  // Read pixels from file and insert to bitmap cache
+  for (uint32_t y = 0; y < f_height; y++){
+    for (uint32_t x = 0; x < f_width; x++){
+      
+      // Read data every 10 pixels
+      if (x % p == 0){
+        if (x + p <= f_width) // Non edge condition
+          readFile(fileHandle, data, p*3); // 1 pixels = 3 bytes
+        else                  // Rest of line
+          readFile(fileHandle, data, (f_width-x)*3 + rowpadding);   // (+rowpadding) to skip the rest of data in the row
       }
-      //insert pixel, if within dynamic bitmap boundaries
-      if (x < buffer_width && ((height - y - 1) < buffer_height)){
+
+      // Insert a pixel if (x,y) within dynamic bitmap boundaries
+      if (x < buffer_width && ((f_height-y-1) < buffer_height)){
         switch (format){
           case Bitmap::RGB565:
-            buffer16[x + (height - y - 1) * buffer_width] =
-              touchgfx::Color::getColorFrom24BitRGB(data[(x % 10) * 3 + 2], data[(x % 10) * 3 + 1], data[(x % 10) * 3]);
+            buffer16[x + (f_height-y-1)*buffer_width] = touchgfx::Color::getColorFrom24BitRGB(
+              data[ (x%p)*3 + 2 ],   // Read
+              data[ (x%p)*3 + 1 ],   // Green
+              data[ (x%p)*3 + 0 ]);  // Blue
+                //[ (ith pixel)*3 + offset]
             break;
+
           case Bitmap::RGB888:{
             //24 bit framebuffer
-            const uint32_t inx = 3 * (x + (height - y - 1) * buffer_width);
-            buffer8[inx + 0] = data[(x % 10) * 3 + 0];
-            buffer8[inx + 1] = data[(x % 10) * 3 + 1];
-            buffer8[inx + 2] = data[(x % 10) * 3 + 2];
+            const uint32_t inx = 3 * (x + (f_height-y-1)*buffer_width);
+            buffer8[inx + 0] = data[ (x%10)*3 + 0] ;
+            buffer8[inx + 1] = data[ (x%10)*3 + 1] ;
+            buffer8[inx + 2] = data[ (x%10)*3 + 2] ;
             break;
           }
           case Bitmap::ARGB8888:{
             //24 bit framebuffer
-            const uint32_t inx = 4 * (x + (height - y - 1) * buffer_width);
-            buffer8[inx + 0] = data[(x % 10) * 3 + 0];
-            buffer8[inx + 1] = data[(x % 10) * 3 + 1];
-            buffer8[inx + 2] = data[(x % 10) * 3 + 2];
+            const uint32_t inx = 4 * (x + (f_height-y-1)*buffer_width);
+            buffer8[inx + 0] = data[ (x%10)*3 + 0 ];
+            buffer8[inx + 1] = data[ (x%10)*3 + 1 ];
+            buffer8[inx + 2] = data[ (x%10)*3 + 2 ];
             buffer8[inx + 3] = 255; //solid
             break;
           }

@@ -34,19 +34,19 @@ void screen_dispView::setupScreen()
   else
     printf("[Info] File opened.\r\n");
 #endif
-  //Get the image dimensions from the BMP file
+  // Get the image dimensions from the BMP file
   BMPFileLoader::getBMP24Dimensions(f, width, height);
   printf("Width:%d, Height:%d\r\n", width, height);
   BitmapId bmpId;
 
-  //Create (16bit) dynamic bitmap of same dimension
+  // Create (16bit) dynamic bitmap of same dimension
   bmpId = Bitmap::dynamicBitmapCreate(width, height, Bitmap::RGB565);
   if(bmpId == BITMAP_INVALID)
     printf("[Error] Failed to create dynamic bitmap. @line:%d\r\n", __LINE__);
-  //Load pixels from BMP file to dynamic bitmap
+  // Load pixels from BMP file to dynamic bitmap
   BMPFileLoader::readBMP24File(Bitmap(bmpId), f);
 
-  //Make Image show the loaded bitmap
+  // Make Image show the loaded bitmap
   img_disp.setBitmap(Bitmap(bmpId));
   img_disp.invalidate();
 
