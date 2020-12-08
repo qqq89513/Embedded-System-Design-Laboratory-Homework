@@ -13,6 +13,7 @@ public:
     virtual void tearDownScreen();
 protected:
     BitmapId bmpId;
+    void show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const char *filename);
 };
 
 #endif // SCREEN_DISPVIEW_HPP
