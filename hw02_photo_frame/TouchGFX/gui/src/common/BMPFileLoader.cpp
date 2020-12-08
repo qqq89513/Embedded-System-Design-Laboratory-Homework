@@ -68,7 +68,7 @@ void BMPFileLoader::readBMP24File(Bitmap bitmap, FileHdl fileHandle)
       
       // Read data every 10 pixels
       if (x % P == 0){
-        if (x + P <= f_width) // Non edge condition
+        if (x + P < f_width) // Non edge condition
           readFile(fileHandle, data, P*3); // 1 pixels = 3 bytes
         else                  // Rest of line
           readFile(fileHandle, data, (f_width-x)*3 + rowpadding);   // (+rowpadding) to skip the rest of data in the row
