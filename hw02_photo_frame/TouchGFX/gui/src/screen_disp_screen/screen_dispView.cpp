@@ -24,7 +24,7 @@ screen_dispView::screen_dispView()
 void screen_dispView::setupScreen()
 {
   screen_dispViewBase::setupScreen();
-  show_bmp(img_disp, bmpId, "ntust_3.bmp");
+  show_bmp(img_disp, bmpId, BMP_LIST[3]);
   printf("[Info] Screen_disp entered.\r\n");
 }
 
@@ -36,29 +36,33 @@ void screen_dispView::tearDownScreen()
 
 // Read bmp file from SD card, create dynamic bitmap, resize, and display
 void screen_dispView::show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const char *filename){
+
+  // Open file
+  #ifdef SIMULATOR
+    FILE* f = fopen(filename, "rb");
+    if(f==NULL)
+      touchgfx_printf("Can't open file: %s\n", filename);
+    else
+      touchgfx_printf("File opened.\n");
+  #else  // HAL
+    FIL f_obj;
+    FIL* f = &f_obj;
+    if(f_open(&f_obj, (TCHAR*)filename, FA_READ) != FR_OK)
+      printf("[Error] Failed to read file: %s. @line:%d\r\n", filename, __LINE__);
+    else
+      printf("[Info] File opened.\r\n");
+  #endif
+
+  // Get the width and height from BMP file
   uint16_t f_width, f_height;   // width and height read from file
-#ifdef SIMULATOR
-  FILE* f = fopen(filename, "rb");
-  if(f==NULL)
-    touchgfx_printf("Can't open file: %s\n", filename);
-  else
-    touchgfx_printf("File opened.\n");
-#else
-  FIL f_obj;
-  FIL* f = &f_obj;
-  if(f_open(&f_obj, (TCHAR*)filename, FA_READ) != FR_OK)
-    printf("[Error] Failed to read file: %s. @line:%d\r\n", filename, __LINE__);
-  else
-    printf("[Info] File opened.\r\n");
-#endif
-  // Get the image dimensions from the BMP file
   BMPFileLoader::getBMP24Dimensions(f, f_width, f_height);
-  printf("Width:%d, Height:%d\r\n", f_width, f_height);
+  printf("[Info] %s: %dx%d\r\n", filename, f_width, f_height);
 
   // Create (16bit) dynamic bitmap of same dimension
   bmpId = Bitmap::dynamicBitmapCreate(f_width, f_height, Bitmap::RGB565);
   if(bmpId == BITMAP_INVALID)
     printf("[Error] Failed to create dynamic bitmap. @line:%d\r\n", __LINE__);
+
   // Load pixels from BMP file to dynamic bitmap
   BMPFileLoader::readBMP24File(Bitmap(bmpId), f);
 
