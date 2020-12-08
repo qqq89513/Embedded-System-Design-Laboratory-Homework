@@ -74,6 +74,13 @@ void screen_dispView::show_bmp(ScalableImage &img_widget, BitmapId &bmpId, const
 
   // Load pixels from BMP file to dynamic bitmap
   BMPFileLoader::readBMP24File(Bitmap(bmpId), f);
+  
+  // Close file
+  #ifdef SIMULATOR
+  fclose(f);
+  #else
+  f_close(f);
+  #endif
 
   // Set bitmap to widget and resize it
   img_widget.setBitmap(Bitmap(bmpId));
