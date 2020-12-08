@@ -28,10 +28,12 @@ screen_dispView::screen_dispView()
 void screen_dispView::setupScreen()
 {
   screen_dispViewBase::setupScreen();
-  tk_prev = uwTick;       // Update tick
+  tk_show = uwTick;       // Update tick
+  tk_load = uwTick;       // Update tick
   bmpId = BITMAP_INVALID;
   load_bmp(bmpId, BMP_LIST[0]);
   resize_show_img(img_disp, bmpId);
+  displayed = 1;
   printf("[Info] Screen_disp entered.\r\n");
 }
 
@@ -90,13 +92,19 @@ void screen_dispView::load_bmp(BitmapId &bmpId, const char *filename){
 
 void screen_dispView::handleTickEvent(){
   static uint8_t index = 1; // index of BMP_LIST
-  if(uwTick-tk_prev > delay_cnt*1000){
-    tk_prev = uwTick;       // Update tick
+  if(uwTick-tk_show > delay_cnt*1000){
+    tk_show = uwTick;       // Update tick
+    tk_load = uwTick;       // Update tick
+    resize_show_img(img_disp, bmpId);
+    displayed = 1;
+    if(++index >= BMP_LIST_CNT) index = 0;
+  }
+  else if(uwTick-tk_load > 50 && displayed){
+    tk_load = uwTick;       // Update tick
+    displayed = 0;
     Bitmap::dynamicBitmapDelete(bmpId);
     bmpId = BITMAP_INVALID;
     load_bmp(bmpId, BMP_LIST[index]);
-    resize_show_img(img_disp, bmpId);
-    if(++index >= BMP_LIST_CNT) index = 0;
   }
 }
 
