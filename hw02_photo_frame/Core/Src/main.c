@@ -167,7 +167,7 @@ int main(void)
   MX_QUADSPI_Init();
   MX_USART1_UART_Init();
   MX_SDMMC1_SD_Init();
-//  MX_FATFS_Init();
+  MX_FATFS_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   printf("MX Initialized.\r\n");

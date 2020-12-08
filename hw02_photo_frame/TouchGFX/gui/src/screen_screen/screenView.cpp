@@ -11,7 +11,7 @@ extern FATFS SDFatFS;    /* File system object for SD logical drive */
 #include <stdlib.h>     // using atoi()
 
 // Globals
-int delay_cnt = 0;
+uint16_t delay_cnt = 0;
 extern const uint16_t TEXTAREA_SIZE = 16;
 
 
@@ -51,7 +51,7 @@ void screenView::setupScreen(){
     else
     {
       f_gets(read_buff, sizeof(read_buff), &MyFile);
-      printf("%s", read_buff);
+      printf("%s\r\n", read_buff);
       f_close(&MyFile);
       showString(txt_debug, buffer_debug, "SD card OK");
     }
@@ -61,7 +61,8 @@ void screenView::setupScreen(){
   // Note that printf() does nothing in touchGFX simulator
   // Use touchgfx_printf() for touchGFX simulator
   printf("TouchGFX screen_screen entered.\r\n");
-  str_delay[0] = '\0'; // Clear the string
+  str_delay[0] = '5';
+  str_delay[1] = '\0';    // Default value: "5"
 }
 
 void screenView::tearDownScreen(){
@@ -110,8 +111,8 @@ void screenView::btn_9_onclick(){
 }
 void screenView::btn_engage_onclick(){
   delay_cnt = atoi(str_delay);
-  if(delay_cnt<5)
-    delay_cnt = 5;
+  if(delay_cnt<1)
+    delay_cnt = 1;
   else if(delay_cnt > 99)
     delay_cnt = 99;
 }
