@@ -31,8 +31,11 @@ void screenView::setupScreen(){
 #ifndef SIMULATOR
   TCHAR read_buff[64];
   FIL MyFile;
+  MX_FATFS_Init();
+  HAL_Delay(100);
   if(f_mount(&SDFatFS, (TCHAR const*)SDPath, 1) != FR_OK){
     printf("[Error] Failed to mount SD. @line:%d\r\n", __LINE__);
+    showString(txt_debug, buffer_debug, "No SD card");
   }
   else
   {
@@ -40,7 +43,7 @@ void screenView::setupScreen(){
       printf("[Error] Failed to open file: sd_test.txt. @line:%d\r\n", __LINE__);
     else
     {
-      f_printf(&MyFile, (TCHAR*)"Read/Write access to SD card is available.\n");
+      f_printf(&MyFile, (TCHAR*)"Read/Write access to SD card is available.\r\n");
       f_close(&MyFile);
     }
     if(f_open(&MyFile, (TCHAR*)"sd_test.txt", FA_READ) != FR_OK)
@@ -50,6 +53,7 @@ void screenView::setupScreen(){
       f_gets(read_buff, sizeof(read_buff), &MyFile);
       printf("%s", read_buff);
       f_close(&MyFile);
+      showString(txt_debug, buffer_debug, "SD card OK");
     }
   }
 #endif

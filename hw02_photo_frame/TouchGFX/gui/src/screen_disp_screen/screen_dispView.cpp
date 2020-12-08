@@ -1,6 +1,9 @@
 #include <gui/screen_disp_screen/screen_dispView.hpp>
 #include <gui/common/BMPFileLoader.hpp>
 
+const char *BMP_LIST[] = {"logo_1.bmp", "logo_2.bmp", "ntust_1.bmp", "ntust_2.bmp", "ntust_3.bmp"}; // bmp file list
+const uint8_t BMP_LIST_CNT = 5; // Picture counts
+
 #ifndef SIMULATOR
 #include "fatfs.h"
 extern char SDPath[4];   /* SD logical drive path */

@@ -1059,6 +1059,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId34",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "txt_debug",
+            "X": 32,
+            "Y": 245,
+            "Width": 122,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "__designer\\Dark_Icons_Refresh_32.png",
+            "Released": "__designer\\Dark_Icons_Refresh_32.png",
+            "Alpha": 255,
+            "Name": "btn_refresh",
+            "X": 0,
+            "Y": 242,
+            "Width": 32,
+            "Height": 30,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -1219,6 +1264,19 @@
               "ScreenTransitionDirection": "East",
               "ActionComponent": "screen_disp"
             }
+          },
+          {
+            "InteractionName": "Interaction_btn_refresh_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_refresh"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "screen"
+            }
           }
         ],
         "Name": "screen",
@@ -1243,9 +1301,68 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "__designer\\Dark_Icons_Refresh_32.png",
+            "Released": "__designer\\Dark_Icons_Refresh_32.png",
+            "Alpha": 255,
+            "Name": "btn_back",
+            "X": 0,
+            "Y": 242,
+            "Width": 32,
+            "Height": 30,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId33",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "txt_debug",
+            "X": 358,
+            "Y": 247,
+            "Width": 122,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction_btn_back_onclick",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_back"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "screen"
+            }
+          }
+        ],
         "Name": "screen_disp",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
@@ -1359,6 +1476,14 @@
       },
       {
         "TextEntryId": "SingleUseId32",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId33",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId34",
         "IsResource": false
       }
     ],

@@ -4,8 +4,10 @@
 #include <gui_generated/screen_disp_screen/screen_dispViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
+#include <texts/TextKeysAndLanguages.hpp>
 
-screen_dispViewBase::screen_dispViewBase()
+screen_dispViewBase::screen_dispViewBase() :
+    buttonCallback(this, &screen_dispViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -14,11 +16,33 @@ screen_dispViewBase::screen_dispViewBase()
     img_disp.setPosition(0, 0, 80, 80);
     img_disp.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
 
+    btn_back.setXY(0, 242);
+    btn_back.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_ICONS_REFRESH_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_REFRESH_32_ID));
+    btn_back.setAction(buttonCallback);
+
+    txt_debug.setPosition(358, 247, 122, 25);
+    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    txt_debug.setLinespacing(0);
+    txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
+
     add(__background);
     add(img_disp);
+    add(btn_back);
+    add(txt_debug);
 }
 
 void screen_dispViewBase::setupScreen()
 {
 
+}
+
+void screen_dispViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &btn_back)
+    {
+        //Interaction_btn_back_onclick
+        //When btn_back clicked change screen to screen
+        //Go to screen with no screen transition
+        application().gotoscreenScreenNoTransition();
+    }
 }

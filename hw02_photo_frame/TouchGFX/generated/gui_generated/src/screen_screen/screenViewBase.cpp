@@ -4,8 +4,10 @@
 #include <gui_generated/screen_screen/screenViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#include "BitmapDatabase.hpp"
 
 screenViewBase::screenViewBase() :
+    buttonCallback(this, &screenViewBase::buttonCallbackHandler),
     flexButtonCallback(this, &screenViewBase::flexButtonCallbackHandler)
 {
 
@@ -201,6 +203,15 @@ screenViewBase::screenViewBase() :
     txt_duration.setLinespacing(0);
     txt_duration.setTypedText(touchgfx::TypedText(T_SINGLEUSEID32));
 
+    txt_debug.setPosition(32, 245, 122, 25);
+    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    txt_debug.setLinespacing(0);
+    txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID34));
+
+    btn_refresh.setXY(0, 242);
+    btn_refresh.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_ICONS_REFRESH_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_REFRESH_32_ID));
+    btn_refresh.setAction(buttonCallback);
+
     add(__background);
     add(box_background);
     add(container_btn);
@@ -210,11 +221,24 @@ screenViewBase::screenViewBase() :
     add(txt_title);
     add(txt_delay_cnt);
     add(txt_duration);
+    add(txt_debug);
+    add(btn_refresh);
 }
 
 void screenViewBase::setupScreen()
 {
 
+}
+
+void screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &btn_refresh)
+    {
+        //Interaction_btn_refresh_onclick
+        //When btn_refresh clicked change screen to screen
+        //Go to screen with no screen transition
+        application().gotoscreenScreenNoTransition();
+    }
 }
 
 void screenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)

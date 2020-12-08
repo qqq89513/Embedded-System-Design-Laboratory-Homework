@@ -6,7 +6,8 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_GOBACK_ID = 0;
+const uint16_t BITMAP_DARK_ICONS_REFRESH_32_ID = 0;
+const uint16_t BITMAP_GOBACK_ID = 1;
 
 namespace BitmapDatabase
 {

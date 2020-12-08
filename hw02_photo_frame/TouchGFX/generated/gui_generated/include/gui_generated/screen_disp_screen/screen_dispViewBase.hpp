@@ -9,6 +9,8 @@
 #include <gui/screen_disp_screen/screen_dispPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/ScalableImage.hpp>
+#include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class screen_dispViewBase : public touchgfx::View<screen_dispPresenter>
 {
@@ -27,8 +29,20 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::ScalableImage img_disp;
+    touchgfx::Button btn_back;
+    touchgfx::TextAreaWithOneWildcard txt_debug;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<screen_dispViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

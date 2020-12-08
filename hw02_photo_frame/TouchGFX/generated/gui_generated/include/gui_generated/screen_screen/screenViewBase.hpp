@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Button.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -125,17 +126,21 @@ protected:
     touchgfx::TextArea txt_title;
     touchgfx::TextAreaWithOneWildcard txt_delay_cnt;
     touchgfx::TextArea txt_duration;
+    touchgfx::TextAreaWithOneWildcard txt_debug;
+    touchgfx::Button btn_refresh;
 
 private:
 
     /*
      * Callback Declarations
      */
+    touchgfx::Callback<screenViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<screenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Callback Handler Declarations
      */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
