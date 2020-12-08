@@ -20,10 +20,9 @@ extern __IO uint32_t uwTick;  // get time tick from stm32f7xx_hal.c, increase by
 #include <string.h>     // using strlen()
 #include <stdlib.h>     // using atoi()
 
-screen_dispView::screen_dispView()
-{
-
-}
+screen_dispView::screen_dispView():
+  // In constructor for callback, bind to this view object and bind which function to handle the event.
+  ClickCallback(this, &screen_dispView::ClickHandler) { }
 
 void screen_dispView::setupScreen()
 {
@@ -34,6 +33,8 @@ void screen_dispView::setupScreen()
   load_bmp(bmpId, BMP_LIST[0]);
   resize_show_img(img_disp, bmpId);
   displayed = 1;
+  paused = 0;
+  img_disp.setClickAction(ClickCallback);
   printf("[Info] Screen_disp entered.\r\n");
 }
 
@@ -92,21 +93,36 @@ void screen_dispView::load_bmp(BitmapId &bmpId, const char *filename){
 
 void screen_dispView::handleTickEvent(){
   static uint8_t index = 1; // index of BMP_LIST
-  if(uwTick-tk_show > delay_cnt*1000){
+  if(uwTick-tk_show > delay_cnt*1000 && !paused){
     tk_show = uwTick;       // Update tick
     tk_load = uwTick;       // Update tick
     resize_show_img(img_disp, bmpId);
     displayed = 1;
     if(++index >= BMP_LIST_CNT) index = 0;
   }
-  else if(uwTick-tk_load > 50 && displayed){
+  else if(uwTick-tk_load > 100 && displayed){
     tk_load = uwTick;       // Update tick
     displayed = 0;
+    // img_disp.setClickAction();
     Bitmap::dynamicBitmapDelete(bmpId);
     bmpId = BITMAP_INVALID;
     load_bmp(bmpId, BMP_LIST[index]);
   }
 }
+
+void screen_dispView::ClickHandler(const ScalableImage &img_widget, const ClickEvent &e){
+  static uint32_t tk_paused = 0; // paused duration
+  if(e.getType() == ClickEvent::RELEASED){
+    paused = !paused;
+    if(!paused){
+      tk_show += uwTick - tk_paused;
+    }
+    else  // paused
+      tk_paused = uwTick;
+  }
+    
+}
+
 
 // Set image on the widget, resize and display
 void screen_dispView::resize_show_img(ScalableImage &img_widget, BitmapId &bmpId){
