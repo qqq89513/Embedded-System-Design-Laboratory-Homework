@@ -1,6 +1,12 @@
 #include <gui/common/BMPFileLoader.hpp>
 #include <touchgfx/Color.hpp>
 
+#define FILE_BUF_SIZE 55
+#define P 16     // how many pixels to read from file at a time, p*3 should be smaller than sizeof(data)
+#if (P*3+3 > FILE_BUF_SIZE)
+#error "Insufficient size of image buffer data. Try to lower p or increase size of data."
+#endif
+
 int BMPFileLoader::readFile(FileHdl hdl, uint8_t* const buffer, uint32_t length)
 {
   #ifdef SIMULATOR
@@ -37,11 +43,7 @@ void BMPFileLoader::getBMP24Dimensions(FileHdl fileHandle, uint16_t& width, uint
 
 void BMPFileLoader::readBMP24File(Bitmap bitmap, FileHdl fileHandle)
 {
-  uint8_t data[51];
-  const int p = 1;  // how many pixels to read from file at a time, p*3 should be smaller than sizeof(data)
-  #if p*3 + 3 > sizeof(data)
-  #error "Insufficient size of image buffer data. Try to lower p or increase size of data."
-  #endif
+  uint8_t data[FILE_BUF_SIZE];
 
  // Read header
   seekFile(fileHandle, 0);
@@ -65,9 +67,9 @@ void BMPFileLoader::readBMP24File(Bitmap bitmap, FileHdl fileHandle)
     for (uint32_t x = 0; x < f_width; x++){
       
       // Read data every 10 pixels
-      if (x % p == 0){
-        if (x + p <= f_width) // Non edge condition
-          readFile(fileHandle, data, p*3); // 1 pixels = 3 bytes
+      if (x % P == 0){
+        if (x + P <= f_width) // Non edge condition
+          readFile(fileHandle, data, P*3); // 1 pixels = 3 bytes
         else                  // Rest of line
           readFile(fileHandle, data, (f_width-x)*3 + rowpadding);   // (+rowpadding) to skip the rest of data in the row
       }
@@ -77,9 +79,9 @@ void BMPFileLoader::readBMP24File(Bitmap bitmap, FileHdl fileHandle)
         switch (format){
           case Bitmap::RGB565:
             buffer16[x + (f_height-y-1)*buffer_width] = touchgfx::Color::getColorFrom24BitRGB(
-              data[ (x%p)*3 + 2 ],   // Read
-              data[ (x%p)*3 + 1 ],   // Green
-              data[ (x%p)*3 + 0 ]);  // Blue
+              data[ (x%P)*3 + 2 ],   // Read
+              data[ (x%P)*3 + 1 ],   // Green
+              data[ (x%P)*3 + 0 ]);  // Blue
                 //[ (ith pixel)*3 + offset]
             break;
 
