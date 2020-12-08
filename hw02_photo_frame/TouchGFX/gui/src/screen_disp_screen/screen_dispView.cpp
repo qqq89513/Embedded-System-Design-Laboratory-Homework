@@ -117,6 +117,7 @@ void screen_dispView::resize_show_img(ScalableImage &img_widget, BitmapId &bmpId
   
   // Set bitmap to widget and resize it
   img_widget.setBitmap(Bitmap(bmpId));
+  img_widget.invalidate();
   uint16_t f_width  = Bitmap(bmpId).getWidth();
   uint16_t f_height = Bitmap(bmpId).getHeight();
   uint16_t bmp_width  = f_width;
@@ -126,8 +127,8 @@ void screen_dispView::resize_show_img(ScalableImage &img_widget, BitmapId &bmpId
     bmp_height = (f_height*MAX_X) / f_width;
     bmp_width  = bmp_width  < MAX_X ? bmp_width  : MAX_X;
     bmp_height = bmp_height < MAX_Y ? bmp_height : MAX_Y;
-    // printf("Before resize W:%d, H:%d\r\n", f_width, f_height);
-    // printf("After resize W:%d, H:%d\r\n", bmp_width, bmp_height);
+    printf("Before resize W:%d, H:%d\r\n", f_width, f_height);
+    printf("After resize W:%d, H:%d\r\n", bmp_width, bmp_height);
   }
   img_widget.setPosition((MAX_X-bmp_width)/2, (MAX_Y-bmp_height)/2, bmp_width, bmp_height);
   img_widget.invalidate();
