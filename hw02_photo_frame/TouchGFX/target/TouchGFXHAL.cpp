@@ -39,7 +39,7 @@ void TouchGFXHAL::initialize()
     TouchGFXGeneratedHAL::initialize();
 
     Bitmap::removeCache();
-    Bitmap::setCache((uint16_t*)cache, cache_size, 1);
+    Bitmap::setCache((uint16_t*)cache, cache_size, 5);
 
     // setFrameBufferStartAddresses((void*)0xC0000000, (void*)0xC003FC00, (void*)0xC007F800);  //enable the animation storage to allow slide animations
     // lockDMAToFrontPorch(false);

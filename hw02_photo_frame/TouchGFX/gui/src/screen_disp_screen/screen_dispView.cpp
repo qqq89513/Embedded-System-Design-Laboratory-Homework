@@ -3,8 +3,6 @@
 
 const uint16_t MAX_X = 480;  // max x (width)
 const uint16_t MAX_Y = 272;  // max y (height)
-const char *BMP_LIST[] = {"logo_1.bmp", "logo_2.bmp", "ntust_1.bmp", "ntust_2.bmp", "ntust_3.bmp"}; // bmp file list
-const uint8_t BMP_LIST_CNT = 5; // Picture counts
 
 extern uint16_t delay_cnt;
 
@@ -29,9 +27,14 @@ void screen_dispView::setupScreen()
   screen_dispViewBase::setupScreen();
   tk_show = uwTick;       // Update tick
   tk_load = uwTick;       // Update tick
-  bmpId = BITMAP_INVALID;
-  load_bmp(bmpId, BMP_LIST[0]);
-  resize_show_img(img_disp, bmpId);
+
+  for(int i=0; i<BMP_LIST_CNT; i++){
+    bmpId[i] = BITMAP_INVALID;
+    load_bmp(bmpId[i], BMP_LIST[i]);
+    printf("[Info] Address of BMP_LIST[%d]: %p.\r\n", i, Bitmap(bmpId[i]).getData());
+  }
+
+
   displayed = 1;
   paused = 0;
   container_img.setClickAction(ClickCallback);
@@ -41,7 +44,8 @@ void screen_dispView::setupScreen()
 void screen_dispView::tearDownScreen()
 {
   screen_dispViewBase::tearDownScreen();
-  Bitmap::dynamicBitmapDelete(bmpId);
+  for(int i=0; i<BMP_LIST_CNT; i++)
+    Bitmap::dynamicBitmapDelete(bmpId[i]);
 }
 
 // Read bmp file from SD card, create dynamic bitmap
@@ -92,22 +96,22 @@ void screen_dispView::load_bmp(BitmapId &bmpId, const char *filename){
 }
 
 void screen_dispView::handleTickEvent(){
-  static uint8_t index = 1; // index of BMP_LIST
+  static uint8_t index = 0; // index of BMP_LIST
   if(uwTick-tk_show > delay_cnt*1000 && !paused){
     tk_show = uwTick;       // Update tick
     tk_load = uwTick;       // Update tick
-    resize_show_img(img_disp, bmpId);
+    printf("[Info] Show BMP_LIST[%d]:%s\r\n", index, BMP_LIST[index]);
+    resize_show_img(img_disp, bmpId[index]);
     displayed = 1;
     if(++index >= BMP_LIST_CNT) index = 0;
   }
-  else if(uwTick-tk_load > 100 && displayed){
-    tk_load = uwTick;       // Update tick
-    displayed = 0;
-    // img_disp.setClickAction();
-    Bitmap::dynamicBitmapDelete(bmpId);
-    bmpId = BITMAP_INVALID;
-    load_bmp(bmpId, BMP_LIST[index]);
-  }
+  // else if(uwTick-tk_load > 100 && displayed){
+  //   tk_load = uwTick;       // Update tick
+  //   displayed = 0;
+  //   Bitmap::dynamicBitmapDelete(bmpId);
+  //   bmpId = BITMAP_INVALID;
+  //   load_bmp(bmpId, BMP_LIST[index]);
+  // }
 }
 
 void screen_dispView::ClickHandler(const Container &container_, const ClickEvent &e){
