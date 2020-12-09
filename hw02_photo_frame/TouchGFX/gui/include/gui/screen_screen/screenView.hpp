@@ -26,6 +26,7 @@ protected:
     virtual void btn_engage_onclick();
     virtual void btn_clear_onclick();
     void addCharToStr( char *str, char c);
+    void load_bmp(BitmapId &bmpId, const char *filename);
 };
 
 #endif // SCREENVIEW_HPP
