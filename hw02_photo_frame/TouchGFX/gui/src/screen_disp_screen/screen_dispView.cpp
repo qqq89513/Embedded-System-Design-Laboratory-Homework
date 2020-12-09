@@ -34,7 +34,7 @@ void screen_dispView::setupScreen()
   resize_show_img(img_disp, bmpId);
   displayed = 1;
   paused = 0;
-  img_disp.setClickAction(ClickCallback);
+  container_img.setClickAction(ClickCallback);
   printf("[Info] Screen_disp entered.\r\n");
 }
 
@@ -110,7 +110,7 @@ void screen_dispView::handleTickEvent(){
   }
 }
 
-void screen_dispView::ClickHandler(const ScalableImage &img_widget, const ClickEvent &e){
+void screen_dispView::ClickHandler(const Container &container_, const ClickEvent &e){
   static uint32_t tk_paused = 0; // paused duration
   if(e.getType() == ClickEvent::RELEASED){
     paused = !paused;

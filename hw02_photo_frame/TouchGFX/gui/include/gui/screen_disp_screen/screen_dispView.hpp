@@ -12,7 +12,7 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
     virtual void handleTickEvent();
-    void ClickHandler(const ScalableImage &img_widget, const ClickEvent &e);
+    void ClickHandler(const Container &container_, const ClickEvent &e);
 
 protected:
     uint32_t tk_show; // Previous tick to update picture
@@ -23,7 +23,7 @@ protected:
     void load_bmp(BitmapId &bmpId, const char *filename);
     void resize_show_img(ScalableImage &img_widget, BitmapId &bmpId);
 
-    Callback<screen_dispView, const ScalableImage &, const ClickEvent &> ClickCallback;
+    Callback<screen_dispView, const Container &, const ClickEvent &> ClickCallback;
 };
 
 #endif // SCREEN_DISPVIEW_HPP
