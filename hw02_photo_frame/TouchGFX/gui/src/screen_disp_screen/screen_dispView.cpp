@@ -5,6 +5,8 @@ const uint16_t MAX_X = 480;  // max x (width)
 const uint16_t MAX_Y = 272;  // max y (height)
 
 extern uint16_t delay_cnt;
+static const uint16_t* cache = (uint16_t*)0xC003FC00;  // External SDRAM address
+static const uint32_t cache_size = 1024*1024*6;        // 6MB cache
 
 #ifndef SIMULATOR
 #include "fatfs.h"
@@ -25,17 +27,29 @@ screen_dispView::screen_dispView():
 void screen_dispView::setupScreen()
 {
   screen_dispViewBase::setupScreen();
+  
+  Bitmap::removeCache();  // kill any dynamic bitmaps
+  Bitmap::setCache((uint16_t*)cache, cache_size, 9);
+  
   tk_show = uwTick;       // Update tick
-  tk_load = uwTick;       // Update tick
 
   for(int i=0; i<BMP_LIST_CNT; i++){
     bmpId[i] = BITMAP_INVALID;
     load_bmp(bmpId[i], BMP_LIST[i]);
     printf("[Info] Address of BMP_LIST[%d]: %p.\r\n", i, Bitmap(bmpId[i]).getData());
+    
+    // Create an unused dynamic bitmap to prevent hardfault
+    /* Without this line:
+      Only 0,2,4 dynamic bitmaps display normally. It's not bmp file dependent.
+      When display one of 1,3 bitmap, it enters hardfault.
+      I think it's the bug between TouchGFX and HAL.
+      The first created bitmap always displayed normally, 
+      the next one is created successfully but fail to be display
+      (entering hardfault, return from hardfault doesn't fix anything).
+    */
+    Bitmap::dynamicBitmapCreate(4, 4, Bitmap::RGB565);
   }
 
-
-  displayed = 1;
   paused = 0;
   container_img.setClickAction(ClickCallback);
   printf("[Info] Screen_disp entered.\r\n");
@@ -44,8 +58,6 @@ void screen_dispView::setupScreen()
 void screen_dispView::tearDownScreen()
 {
   screen_dispViewBase::tearDownScreen();
-  for(int i=0; i<BMP_LIST_CNT; i++)
-    Bitmap::dynamicBitmapDelete(bmpId[i]);
 }
 
 // Read bmp file from SD card, create dynamic bitmap
@@ -99,19 +111,10 @@ void screen_dispView::handleTickEvent(){
   static uint8_t index = 0; // index of BMP_LIST
   if(uwTick-tk_show > delay_cnt*1000 && !paused){
     tk_show = uwTick;       // Update tick
-    tk_load = uwTick;       // Update tick
     printf("[Info] Show BMP_LIST[%d]:%s\r\n", index, BMP_LIST[index]);
     resize_show_img(img_disp, bmpId[index]);
-    displayed = 1;
     if(++index >= BMP_LIST_CNT) index = 0;
   }
-  // else if(uwTick-tk_load > 100 && displayed){
-  //   tk_load = uwTick;       // Update tick
-  //   displayed = 0;
-  //   Bitmap::dynamicBitmapDelete(bmpId);
-  //   bmpId = BITMAP_INVALID;
-  //   load_bmp(bmpId, BMP_LIST[index]);
-  // }
 }
 
 void screen_dispView::ClickHandler(const Container &container_, const ClickEvent &e){

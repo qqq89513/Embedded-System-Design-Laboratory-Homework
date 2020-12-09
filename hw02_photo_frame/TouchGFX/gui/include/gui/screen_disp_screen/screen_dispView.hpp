@@ -16,8 +16,6 @@ public:
 
 protected:
     uint32_t tk_show; // Previous tick to update picture
-    uint32_t tk_load; // Previous tick to load picture
-    bool displayed;   // To indicate if Bitmap(bmpId) is displayed
     bool paused;
 
     void load_bmp(BitmapId &bmpId, const char *filename);
