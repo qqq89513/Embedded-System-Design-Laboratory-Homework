@@ -116,9 +116,12 @@ void screen_dispView::ClickHandler(const Container &container_, const ClickEvent
     paused = !paused;
     if(!paused){
       tk_show += uwTick - tk_paused;
+      printf("[Info] Screen touched, slides resume.\r\n");
     }
-    else  // paused
+    else{  // paused
       tk_paused = uwTick;
+      printf("[Info] Screen touched, slides paused.\r\n");
+    }
   }
     
 }
@@ -143,8 +146,8 @@ void screen_dispView::resize_show_img(ScalableImage &img_widget, BitmapId &bmpId
     bmp_height = (f_height*MAX_X) / f_width;
     bmp_width  = bmp_width  < MAX_X ? bmp_width  : MAX_X;
     bmp_height = bmp_height < MAX_Y ? bmp_height : MAX_Y;
-    printf("Before resize W:%d, H:%d\r\n", f_width, f_height);
-    printf("After resize W:%d, H:%d\r\n", bmp_width, bmp_height);
+    // printf("Before resize W:%d, H:%d\r\n", f_width, f_height);
+    // printf("After resize W:%d, H:%d\r\n", bmp_width, bmp_height);
   }
   img_widget.setPosition((MAX_X-bmp_width)/2, (MAX_Y-bmp_height)/2, bmp_width, bmp_height);
   img_widget.invalidate();

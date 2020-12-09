@@ -26,8 +26,8 @@
 using namespace touchgfx;
 CortexMMCUInstrumentation instrumentation;
 
-uint16_t* cache = (uint16_t*)0xC00BF400;  // External SDRAM address
-uint32_t cache_size = 1024*1024*3;        // 3MB cache
+uint16_t* cache = (uint16_t*)0xC003FC00;  // External SDRAM address
+uint32_t cache_size = 1024*1024*6;        // 6MB cache
 void TouchGFXHAL::initialize()
 {
     // Calling parent implementation of initialize().
@@ -41,11 +41,11 @@ void TouchGFXHAL::initialize()
     Bitmap::removeCache();
     Bitmap::setCache((uint16_t*)cache, cache_size, 1);
 
-    setFrameBufferStartAddresses((void*)0xC0000000, (void*)0xC003FC00, (void*)0xC007F800);  //enable the animation storage to allow slide animations
-    lockDMAToFrontPorch(false);
-    instrumentation.init();
-    setMCUInstrumentation(&instrumentation);
-    enableMCULoadCalculation(true);
+    // setFrameBufferStartAddresses((void*)0xC0000000, (void*)0xC003FC00, (void*)0xC007F800);  //enable the animation storage to allow slide animations
+    // lockDMAToFrontPorch(false);
+    // instrumentation.init();
+    // setMCUInstrumentation(&instrumentation);
+    // enableMCULoadCalculation(true);
 }
 
 /**
