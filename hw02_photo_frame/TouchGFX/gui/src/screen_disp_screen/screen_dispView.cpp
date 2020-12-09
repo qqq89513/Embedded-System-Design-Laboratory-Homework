@@ -4,6 +4,9 @@
 static const uint16_t MAX_X = 480;  // max x (width)
 static const uint16_t MAX_Y = 272;  // max y (height)
 
+extern touchgfx::Unicode::UnicodeChar buffer_debug[];
+extern void showString(touchgfx::TextAreaWithOneWildcard &txtWidget, touchgfx::Unicode::UnicodeChar *buffer, const char *str);
+
 extern uint16_t delay_cnt;
 extern uint8_t BMP_LIST_CNT; // Picture counts
 extern BitmapId bmpId[];     // dynamic bit map loaded at screen(screen 1)
@@ -56,10 +59,12 @@ void screen_dispView::ClickHandler(const Container &container_, const ClickEvent
     if(!paused){
       tk_show += uwTick - tk_paused;
       printf("[Info] Screen touched, slides resume.\r\n");
+      showString(txt_debug, buffer_debug, "");
     }
     else{  // paused
       tk_paused = uwTick;
       printf("[Info] Screen touched, slides paused.\r\n");
+      showString(txt_debug, buffer_debug, "Paused");
     }
   }
 }

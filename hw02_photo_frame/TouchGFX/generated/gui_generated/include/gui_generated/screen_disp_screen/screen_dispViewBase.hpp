@@ -8,9 +8,9 @@
 #include <mvp/View.hpp>
 #include <gui/screen_disp_screen/screen_dispPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/ScalableImage.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
@@ -30,9 +30,9 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::TextAreaWithOneWildcard txt_debug;
     touchgfx::ClickListener< touchgfx::Container > container_img;
     touchgfx::ScalableImage img_disp;
+    touchgfx::TextAreaWithOneWildcard txt_debug;
     touchgfx::Button btn_back;
 
 private:

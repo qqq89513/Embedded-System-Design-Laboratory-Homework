@@ -3,8 +3,8 @@
 /*********************************************************************************/
 #include <gui_generated/screen_disp_screen/screen_dispViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
+#include <texts/TextKeysAndLanguages.hpp>
 
 screen_dispViewBase::screen_dispViewBase() :
     buttonCallback(this, &screen_dispViewBase::buttonCallbackHandler)
@@ -13,24 +13,24 @@ screen_dispViewBase::screen_dispViewBase() :
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    txt_debug.setPosition(358, 247, 122, 25);
-    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    txt_debug.setLinespacing(0);
-    txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
-
     container_img.setPosition(0, 0, 480, 272);
 
     img_disp.setPosition(0, 0, 80, 80);
     img_disp.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
     container_img.add(img_disp);
 
+    txt_debug.setPosition(358, 247, 122, 25);
+    txt_debug.setColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
+    txt_debug.setLinespacing(0);
+    txt_debug.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
+
     btn_back.setXY(0, 242);
     btn_back.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_ICONS_REFRESH_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_REFRESH_32_ID));
     btn_back.setAction(buttonCallback);
 
     add(__background);
-    add(txt_debug);
     add(container_img);
+    add(txt_debug);
     add(btn_back);
 }
 
