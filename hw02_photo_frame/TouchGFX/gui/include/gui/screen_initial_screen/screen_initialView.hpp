@@ -11,7 +11,9 @@ public:
     virtual ~screen_initialView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void handleTickEvent();
 protected:
+    uint32_t tk_next_screen;
 };
 
 #endif // SCREEN_INITIALVIEW_HPP
