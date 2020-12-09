@@ -324,6 +324,16 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_disp_screen/screen_dispView.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/screen_initialPresenter.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_initial_screen/screen_initialPresenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/screen_initialView.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_initial_screen/screen_initialView.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/screenPresenter.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/screen_screen/screenPresenter.cpp</locationURI>
@@ -354,6 +364,11 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_0.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_10.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_10.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_12.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_12.cpp</locationURI>
@@ -367,6 +382,11 @@
 			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_14.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_14.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_17.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_GenYoMinTW_Heavy_20_4bpp_17.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Font_GenYoMinTW_Heavy_20_4bpp_18.cpp</name>
@@ -422,6 +442,11 @@
 			<name>Application/User/generated/screen_dispViewBase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen_disp_screen/screen_dispViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/screen_initialViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen_initial_screen/screen_initialViewBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/screenViewBase.cpp</name>

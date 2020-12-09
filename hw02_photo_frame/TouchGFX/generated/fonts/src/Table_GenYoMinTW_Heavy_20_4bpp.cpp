@@ -6,27 +6,41 @@ FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_GenYoMinTW_Heavy_20_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE =
 {
     {     0, 0x0020,   0,   0,   0,   0,   5,   0,   0, 0x00 },
-    {     0, 0x003F,   8,  16,  16,   1,  10,   0,   1, 0x00 },
-    {    64, 0x0044,  16,  15,  15,   0,  16,   1,   1, 0x00 },
-    {   184, 0x0046,  13,  15,  15,   0,  13,   2,   1, 0x00 },
-    {   289, 0x004E,  16,  15,  15,   0,  16,   3,   1, 0x00 },
-    {   409, 0x0053,  11,  15,  15,   1,  12,   0,   0, 0x00 },
-    {   499, 0x0054,  14,  15,  15,   0,  14,   4,   4, 0x00 },
-    {   604, 0x0055,  16,  15,  15,   0,  17,   8,   9, 0x00 },
-    {   724, 0x0061,  12,  11,  11,   0,  12,  17,   5, 0x00 },
-    {   790, 0x0065,  11,  11,  11,   0,  12,  22,   4, 0x00 },
-    {   856, 0x0067,  12,  16,  11,   0,  12,  26,   4, 0x00 },
-    {   952, 0x0069,   7,  16,  16,   0,   7,  30,   2, 0x00 },
-    {  1016, 0x006C,   7,  17,  17,   0,   7,  32,   1, 0x00 },
-    {  1084, 0x006D,  20,  11,  11,   0,  20,  33,   4, 0x00 },
-    {  1194, 0x0072,  11,  11,  11,   0,  10,  37,   4, 0x00 },
-    {  1260, 0x0074,   8,  14,  14,   0,   8,  41,   2, 0x00 },
-    {     0, 0x4F4D,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {     0, 0x002E,   5,   4,   4,   1,   7,   0,  10, 0x00 },
+    {    12, 0x003F,   8,  16,  16,   1,  10,  10,   4, 0x00 },
+    {    76, 0x0042,  14,  15,  15,   0,  15,  14,   3, 0x00 },
+    {   181, 0x0044,  16,  15,  15,   0,  16,  17,   3, 0x00 },
+    {   301, 0x0046,  13,  15,  15,   0,  13,  20,   3, 0x00 },
+    {   406, 0x004C,  13,  15,  15,   0,  13,  23,   3, 0x00 },
+    {   511, 0x004E,  16,  15,  15,   0,  16,  26,   3, 0x00 },
+    {   631, 0x0050,  14,  15,  15,   0,  14,  29,   3, 0x00 },
+    {   736, 0x0053,  11,  15,  15,   1,  12,  32,   1, 0x00 },
+    {   826, 0x0054,  14,  15,  15,   0,  14,  33,  10, 0x00 },
+    {   931, 0x0055,  16,  15,  15,   0,  17,  43,  17, 0x00 },
+    {  1051, 0x0061,  12,  11,  11,   0,  12,  60,   6, 0x00 },
+    {  1117, 0x0064,  13,  17,  17,   0,  13,  66,   6, 0x00 },
+    {  1236, 0x0065,  11,  11,  11,   0,  12,  72,   6, 0x00 },
+    {  1302, 0x0066,  11,  16,  16,   0,   8,  78,   4, 0x00 },
+    {  1398, 0x0067,  12,  16,  11,   0,  12,  82,   5, 0x00 },
+    {  1494, 0x0069,   7,  16,  16,   0,   7,  87,   3, 0x00 },
+    {  1558, 0x006C,   7,  17,  17,   0,   7,  90,   2, 0x00 },
+    {  1626, 0x006D,  20,  11,  11,   0,  20,  92,   4, 0x00 },
+    {  1736, 0x006E,  14,  11,  11,   0,  14,  96,   4, 0x00 },
+    {  1813, 0x006F,  12,  11,  11,   0,  13, 100,   6, 0x00 },
+    {  1879, 0x0070,  14,  16,  11,   0,  14, 106,   5, 0x00 },
+    {  1991, 0x0072,  11,  11,  11,   0,  10, 111,   4, 0x00 },
+    {  2057, 0x0073,  10,  11,  11,   0,  10, 115,   4, 0x00 },
+    {  2112, 0x0074,   8,  14,  14,   0,   8, 119,   3, 0x00 },
+    {  2168, 0x0077,  19,  11,  11,  -1,  18, 122,   8, 0x00 },
+    {     0, 0x4E2D,  19,  19,  17,   1,  20,   0,   0, 0x00 },
+    {   190, 0x4F4D,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {     0, 0x5165,  20,  19,  17,   0,  20,   0,   0, 0x00 },
     {     0, 0x6578,  20,  20,  17,   0,  20,   0,   0, 0x00 },
     {   200, 0x6797,  20,  19,  17,   0,  20,   0,   0, 0x00 },
     {     0, 0x6846,  20,  20,  18,   0,  20,   0,   0, 0x00 },
     {     0, 0x7428,  20,  20,  17,   0,  20,   0,   0, 0x00 },
     {   200, 0x76F8,  20,  19,  17,   0,  20,   0,   0, 0x00 },
+    {     0, 0x8F09,  20,  20,  18,   0,  20,   0,   0, 0x00 },
     {     0, 0x9716,  20,  20,  18,   0,  20,   0,   0, 0x00 }
 };
 
@@ -34,9 +48,11 @@ KEEP extern const touchgfx::GlyphNode glyphs_GenYoMinTW_Heavy_20_4bpp[] FONT_TAB
 extern const touchgfx::GlyphNode glyphs_GenYoMinTW_Heavy_20_4bpp[];
 extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_0[];
 extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_9[];
+extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_10[];
 extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_12[];
 extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_13[];
 extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_14[];
+extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_17[];
 extern const uint8_t unicodes_GenYoMinTW_Heavy_20_4bpp_18[];
 extern const uint8_t* const unicodes_GenYoMinTW_Heavy_20_4bpp[] =
 {
@@ -50,14 +66,14 @@ extern const uint8_t* const unicodes_GenYoMinTW_Heavy_20_4bpp[] =
     0,
     0,
     unicodes_GenYoMinTW_Heavy_20_4bpp_9,
-    0,
+    unicodes_GenYoMinTW_Heavy_20_4bpp_10,
     0,
     unicodes_GenYoMinTW_Heavy_20_4bpp_12,
     unicodes_GenYoMinTW_Heavy_20_4bpp_13,
     unicodes_GenYoMinTW_Heavy_20_4bpp_14,
     0,
     0,
-    0,
+    unicodes_GenYoMinTW_Heavy_20_4bpp_17,
     unicodes_GenYoMinTW_Heavy_20_4bpp_18
 };
 extern const touchgfx::KerningNode kerning_GenYoMinTW_Heavy_20_4bpp[];
@@ -66,6 +82,6 @@ touchgfx::GeneratedFont& getFont_GenYoMinTW_Heavy_20_4bpp();
 
 touchgfx::GeneratedFont& getFont_GenYoMinTW_Heavy_20_4bpp()
 {
-    static touchgfx::GeneratedFont GenYoMinTW_Heavy_20_4bpp(glyphs_GenYoMinTW_Heavy_20_4bpp, 23, 20, 5, 4, 1, 0, 1, unicodes_GenYoMinTW_Heavy_20_4bpp, kerning_GenYoMinTW_Heavy_20_4bpp, 63, 0, 0);
+    static touchgfx::GeneratedFont GenYoMinTW_Heavy_20_4bpp(glyphs_GenYoMinTW_Heavy_20_4bpp, 37, 20, 5, 4, 1, 1, 3, unicodes_GenYoMinTW_Heavy_20_4bpp, kerning_GenYoMinTW_Heavy_20_4bpp, 63, 0, 0);
     return GenYoMinTW_Heavy_20_4bpp;
 }

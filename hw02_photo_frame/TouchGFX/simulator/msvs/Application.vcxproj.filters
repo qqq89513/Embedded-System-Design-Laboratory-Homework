@@ -190,6 +190,18 @@
     <Filter Include="Header Files\generated\gui_generated\screen_disp_screen">
       <UniqueIdentifier>A8FA4A15-E4AC-789E-C4B3-AC086429E1DB</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\screen_initial_screen">
+      <UniqueIdentifier>F6AAA04A-9FB5-F6F6-CBDC-862395C19FD8</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_initial_screen">
+      <UniqueIdentifier>0A376384-9E28-7D91-A0C0-E5B6A72CEA3D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_initial_screen">
+      <UniqueIdentifier>F8B94813-BDF6-7A8C-EA17-1F064D75C0F7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_initial_screen">
+      <UniqueIdentifier>F1F72F1C-EDD6-EB40-0214-0383EE738298</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -239,6 +251,15 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\common\BMPFileLoader.cpp">
       <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_initial_screen\screen_initialPresenter.cpp">
+      <Filter>Source Files\gui\screen_initial_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_initial_screen\screen_initialView.cpp">
+      <Filter>Source Files\gui\screen_initial_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_initial_screen\screen_initialViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_initial_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -693,6 +714,15 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\common\BMPFileLoader.hpp">
       <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_initial_screen\screen_initialPresenter.hpp">
+      <Filter>Header Files\gui\screen_initial_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_initial_screen\screen_initialView.hpp">
+      <Filter>Header Files\gui\screen_initial_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_initial_screen\screen_initialViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_initial_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,9 @@ public:
     FrontendApplicationBase(Model& m, FrontendHeap& heap);
     virtual ~FrontendApplicationBase() { }
 
+    // screen_initial
+    void gotoscreen_initialScreenNoTransition();
+
     // screen
     void gotoscreenScreenNoTransition();
 
@@ -25,6 +28,9 @@ protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
+
+    // screen_initial
+    void gotoscreen_initialScreenNoTransitionImpl();
 
     // screen
     void gotoscreenScreenNoTransitionImpl();
