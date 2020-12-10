@@ -1343,7 +1343,7 @@
                 "Type": "ScalableImage",
                 "Filename": "",
                 "Alpha": 255,
-                "ScalingAlgorithm": "Nearest-neighbor",
+                "ScalingAlgorithm": "Bilinear Interpolation",
                 "Name": "img_disp",
                 "X": 0,
                 "Y": 0,

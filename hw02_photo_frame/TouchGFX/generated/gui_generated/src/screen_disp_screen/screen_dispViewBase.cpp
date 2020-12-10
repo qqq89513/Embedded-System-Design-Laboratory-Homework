@@ -16,7 +16,7 @@ screen_dispViewBase::screen_dispViewBase() :
     container_img.setPosition(0, 0, 480, 272);
 
     img_disp.setPosition(0, 0, 80, 80);
-    img_disp.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
+    img_disp.setScalingAlgorithm(touchgfx::ScalableImage::BILINEAR_INTERPOLATION);
     container_img.add(img_disp);
 
     txt_debug.setPosition(358, 247, 122, 25);
