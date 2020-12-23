@@ -157,6 +157,11 @@ void screenView::addCharToStr(char *str, char c){
   } 
   str[ l ] = c;
   str[ l+1 ] = '\0';
+  if(atoi(str) > 99){
+    str[0] = '9';
+    str[1] = '9';
+    str[2] = '\0';
+  }
 }
 
 // Read bmp file from SD card, create dynamic bitmap
