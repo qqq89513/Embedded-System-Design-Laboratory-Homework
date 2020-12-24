@@ -1,7 +1,7 @@
 {
     "_allocate_inputs": 0,
     "_allocate_outputs": 0,
-    "cli_parameters": "validate --name network_mnist -m D:/USER/desktop/floating/projectS/MCU/ARM/stm32f7_discovery/embeded_system_lab/lab04_AI_recogn_handwriting/model.h5 --type keras --compression 1 --verbosity 1 --workspace C:\\Users\\QM\\AppData\\Local\\Temp\\mxAI_workspace370894318402001729178566504548412 --output C:\\Users\\QM\\.stm32cubemx --mode stm32 --desc 115200",
+    "cli_parameters": "validate --name network_mnist -m D:/USER/desktop/floating/projectS/MCU/ARM/stm32f7_discovery/embeded_system_lab/lab04_AI_recogn_handwriting/model.h5 --type keras --compression 1 --verbosity 1 --workspace C:\\Users\\QM\\AppData\\Local\\Temp\\mxAI_workspace68607772379700955185490805168820 --output C:\\Users\\QM\\.stm32cubemx --mode stm32 --desc 115200",
     "cli_version": {
         "major": 1,
         "micro": 0,
@@ -12,7 +12,7 @@
         "factor": null,
         "layers": {}
     },
-    "date_time": "Thu Dec 24 19:05:41 2020",
+    "date_time": "Fri Dec 25 03:50:51 2020",
     "error": 0,
     "error_str": [],
     "evaluation_measures": [
@@ -27,7 +27,7 @@
     ],
     "evaluation_status": "X-cross #1: acc=100.00%,rmse=0.000000,mae=0.000000;L2r status: l2r=4.87905027e-07,status=PASSED;",
     "exec_cmd": "validate",
-    "exec_duration": 7.8724188804626465,
+    "exec_duration": 7.404280424118042,
     "hash": "412799c966fd57f1e048ddd0050a1d75",
     "inputs": [
         "input_0"

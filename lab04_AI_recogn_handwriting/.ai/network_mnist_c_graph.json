@@ -372,10 +372,10 @@
             "c_forward": "forward_dense",
             "c_id": 0,
             "exec_time": {
-                "cycles": 287329,
-                "cycles_by_macc": 5.726422991071429,
-                "duration_ms": 1.4366479873657227,
-                "percentage": 89.40471845793401
+                "cycles": 293682,
+                "cycles_by_macc": 5.8530373086734695,
+                "duration_ms": 1.4684099912643434,
+                "percentage": 89.68643562941926
             },
             "m_id": 1,
             "macc": 50176,
@@ -401,10 +401,10 @@
             "c_forward": "forward_relu",
             "c_id": 1,
             "exec_time": {
-                "cycles": 612,
-                "cycles_by_macc": 9.5625,
-                "duration_ms": 0.003060499927960336,
-                "percentage": 0.19045941441893785
+                "cycles": 622,
+                "cycles_by_macc": 9.71875,
+                "duration_ms": 0.0031099999556317925,
+                "percentage": 0.18995022676746107
             },
             "m_id": 1,
             "macc": 64,
@@ -427,10 +427,10 @@
             "c_forward": "forward_dense",
             "c_id": 2,
             "exec_time": {
-                "cycles": 25793,
-                "cycles_by_macc": 6.297119140625,
-                "duration_ms": 0.12896800190210342,
-                "percentage": 8.02586855064073
+                "cycles": 25568,
+                "cycles_by_macc": 6.2421875,
+                "duration_ms": 0.12784199714660643,
+                "percentage": 7.808236879369929
             },
             "m_id": 3,
             "macc": 4096,
@@ -456,10 +456,10 @@
             "c_forward": "forward_relu",
             "c_id": 3,
             "exec_time": {
-                "cycles": 632,
-                "cycles_by_macc": 9.875,
-                "duration_ms": 0.0031644999980926514,
-                "percentage": 0.196931491832163
+                "cycles": 614,
+                "cycles_by_macc": 9.59375,
+                "duration_ms": 0.0030730000231415032,
+                "percentage": 0.18769037285518556
             },
             "m_id": 3,
             "macc": 64,
@@ -482,10 +482,10 @@
             "c_forward": "forward_dense",
             "c_id": 4,
             "exec_time": {
-                "cycles": 4510,
-                "cycles_by_macc": 7.046875,
-                "duration_ms": 0.022551999986171724,
-                "percentage": 1.4034441471804624
+                "cycles": 4433,
+                "cycles_by_macc": 6.9265625,
+                "duration_ms": 0.02216900009661913,
+                "percentage": 1.3540214326804418
             },
             "m_id": 5,
             "macc": 640,
@@ -511,10 +511,10 @@
             "c_forward": "forward_sm",
             "c_id": 5,
             "exec_time": {
-                "cycles": 2502,
-                "cycles_by_macc": 16.68,
-                "duration_ms": 0.012510999944061041,
-                "percentage": 0.7785779379937013
+                "cycles": 2533,
+                "cycles_by_macc": 16.886666666666667,
+                "duration_ms": 0.012667000107467175,
+                "percentage": 0.7736654589077149
             },
             "m_id": 5,
             "macc": 150,
@@ -537,12 +537,12 @@
     "c_name": "network_mnist",
     "c_nodes_n": 6,
     "c_tensors_n": 14,
-    "date_time": "Thu Dec 24 19:05:41 2020",
+    "date_time": "Fri Dec 25 03:50:51 2020",
     "exec_time": {
-        "cycles": 321380.8059692383,
-        "cycles_by_macc": 5.823170972444977,
+        "cycles": 327454.23316955566,
+        "cycles_by_macc": 5.933216763354877,
         "device": "0x449/STM32F74xxx @200MHz/200MHz (FPU is present) lat=6 Core:I$/D$ ART:",
-        "duration_ms": 1.6069040298461914
+        "duration_ms": 1.6372711658477783
     },
     "inputs": [
         "input_0_output"

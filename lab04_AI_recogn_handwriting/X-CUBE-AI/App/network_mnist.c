@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    network_mnist.c
   * @author  AST Embedded Analytics Research Platform
-  * @date    Thu Dec 24 18:56:13 2020
+  * @date    Fri Dec 25 03:49:36 2020
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
@@ -55,7 +55,7 @@
 #endif
 
 #undef AI_TOOLS_DATE_TIME
-#define AI_TOOLS_DATE_TIME   "Thu Dec 24 18:56:13 2020"
+#define AI_TOOLS_DATE_TIME   "Fri Dec 25 03:49:36 2020"
 
 #undef AI_TOOLS_COMPILE_TIME
 #define AI_TOOLS_COMPILE_TIME    __DATE__ " " __TIME__

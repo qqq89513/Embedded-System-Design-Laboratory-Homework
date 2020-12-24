@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    network_mnist.h
   * @author  AST Embedded Analytics Research Platform
-  * @date    Thu Dec 24 18:56:13 2020
+  * @date    Fri Dec 25 03:49:36 2020
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
