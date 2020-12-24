@@ -38,6 +38,18 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+#define LCD_MAX_X    480
+#define LCD_MAX_Y    272
+
+#define TK_TOUCH      50  // Period for reading touch data, in millis second
+
+// Rectangle
+#define RECT_DIM     225  // Draw two rectangle, each is RECT_DIM*RECT_DIM
+#define RECT_Y        24  // y-coordinate of both rectangle
+#define RECT_X_L       8  // x-coordinate of left rectangle
+#define RECT_X_R     245  // x-coordinate of right rectangle
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -166,16 +178,18 @@ int main(void)
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
   BSP_LCD_SetFont(&Font12);
+  BSP_LCD_DrawRect(RECT_X_L, RECT_Y, RECT_DIM, RECT_DIM);   // L rectangle
+  BSP_LCD_DrawRect(RECT_X_R, RECT_Y, RECT_DIM, RECT_DIM);   // R rectangle
 
   // Touch Screen initail
-  BSP_TS_Init(480, 272);
+  BSP_TS_Init(LCD_MAX_X, LCD_MAX_Y);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint32_t tk_disp_cord = 0;  // the previous tick refresh display of touch screen coordinates.
-  uint32_t tk_now = HAL_GetTick();
-  char str[32];   // format string buffer
+  char str[32];                 // format string buffer
+  uint32_t tk_disp_cord = 0;    // the previous tick refresh display of touch screen coordinates.
+  uint32_t tk_now = 0;          // tick to the closest update(begining of while(1))
   printf("Initialized. Entering while(1)......................\r\n");
   while (1)
   {
@@ -184,16 +198,14 @@ int main(void)
       tk_disp_cord = tk_now;
       BSP_TS_GetState(&TS_State); // polling for touch screen state
       if(TS_State.touchDetected){ // at least one touch point detected
-        for(uint8_t i=0; i<TS_MAX_NB_TOUCH; i++){
-          sprintf(str, "x[%d]:%03d, y[%d]:%03d", i, TS_State.touchX[i], i, TS_State.touchY[i]);
-          BSP_LCD_DisplayStringAtLine(i, (uint8_t*)str);
-          TS_State.touchX[i] = TS_State.touchY[i] = 0;
-        }
+        sprintf(str, "x:%03d, y:%03d", TS_State.touchX[0], TS_State.touchY[0]);
+        BSP_LCD_DisplayStringAtLine(0, (uint8_t*)str);  // Display coordinates for debug
       }
     }
     /* USER CODE END WHILE */
 
-  MX_X_CUBE_AI_Process();
+    // This will be uncommented after code generation by CubeMX.
+    // MX_X_CUBE_AI_Process(); // This never returns!
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
