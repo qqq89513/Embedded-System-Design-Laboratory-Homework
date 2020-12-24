@@ -30,6 +30,8 @@
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_ts.h"
 #include "ft5336.h"
+#include "network_mnist.h"
+#include "network_mnist_data.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -85,9 +87,16 @@ UART_HandleTypeDef huart6;
 SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
-/** @brief using printf() as HAL_UART_Transmit() */
+// AI relating
+/* Global handle to reference an instantiated C-model */
+static ai_handle network_mnist = AI_HANDLE_NULL;
+AI_ALIGNED(4) // Align memory for performance
+/* Global c-array to handle the activations buffer */
+static ai_u8 activations[AI_NETWORK_MNIST_DATA_ACTIVATIONS_SIZE];
+
 TS_StateTypeDef TS_State; // type of touch screen state
 
+/** @brief using printf() as HAL_UART_Transmit() */
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
  set to 'Yes') calls __io_putchar() */
@@ -120,6 +129,9 @@ void MX_USART6_UART_Init(void);
 static void MX_CRC_Init(void);
 /* USER CODE BEGIN PFP */
 
+// Copy from Official doc: Embedded Inference Client API, Getting Started
+int aiRun(const void *in_data, void *out_data);
+int aiInit(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -194,11 +206,16 @@ int main(void)
   char str[32];                 // format string buffer
   uint32_t tk_disp_cord = 0;    // the previous tick refresh display of touch screen coordinates.
   uint32_t tk_now = 0;          // tick to the closest update(begining of while(1))
-  uint8_t draw_in[NN_IN_DIM][NN_IN_DIM];  // Input from the user, drawing on touch screen, NN_IN_DIM*NN_IN_DIM to match the NN input
+  ai_float draw_in[NN_IN_DIM][NN_IN_DIM];       // Input from the user, drawing on touch screen, NN_IN_DIM*NN_IN_DIM to match the NN input
+  ai_float nn_result[AI_NETWORK_MNIST_OUT_1_SIZE]; // The output result of NN
   for(int i=0; i<NN_IN_DIM; i++){
     for(int j=0; j<NN_IN_DIM; j++)
       draw_in[i][j] = 0;
   }
+  // Init the network_mnist(declared in main.c)
+  aiInit();
+  
+  // ENTERING while(1)                  ---------------------------------
   printf("Initialized. Entering while(1)......................\r\n");
   while (1)
   {
@@ -230,14 +247,32 @@ int main(void)
         // Touch at right leftangle
         // Print the table and clean it
         if( RECT_X_R+6 <= x && x <= RECT_X_R+RECT_DIM-6 &&
-                    RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
+            RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
+
+          // Print the table of 28*28
           printf("This is the bitmap table(%d*%d)\r\n", NN_IN_DIM, NN_IN_DIM);
           for(int i=0; i<NN_IN_DIM; i++){
             for(int j=0; j<NN_IN_DIM; j++){
-              printf("%c", draw_in[i][j] ? '1':' ');
+              printf("%c", draw_in[i][j]>0 ? '1':' ');
             }
             printf("\r\n");
           }
+          
+          // Calculation of the network
+          aiRun(draw_in, nn_result);
+
+          // Pick the biggest output of the network
+          // as the writing recognition result
+          ai_float max = 0.0;
+          int max_index = -1;
+          for(int i=0; i<AI_NETWORK_MNIST_OUT_1_SIZE; i++){
+            if(nn_result[i] > max){
+              max = nn_result[i];
+              max_index = i;
+            }
+            printf("nn_result[%d]:%3f\r\n", i, nn_result[i]);
+          }
+          printf("The most possible digit:%d\r\n", max_index);
 
           // Cleaning, wait for next recognition
           for(int i=0; i<NN_IN_DIM; i++){
@@ -247,12 +282,13 @@ int main(void)
           BSP_LCD_Clear(LCD_COLOR_BLACK);
           BSP_LCD_DrawRect(RECT_X_L, RECT_Y, RECT_DIM, RECT_DIM);   // L rectangle
           BSP_LCD_DrawRect(RECT_X_R, RECT_Y, RECT_DIM, RECT_DIM);   // R rectangle
+          HAL_Delay(100);  // Debounce of touch screen
         }
       }
     }
     /* USER CODE END WHILE */
 
-  // MX_X_CUBE_AI_Process();
+    // MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -1146,7 +1182,55 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+// Copy from Official doc: Embedded Inference Client API, Getting Started
+int aiRun(const void *in_data, void *out_data)
+{
+  ai_i32 n_batch;
+  ai_error err;
 
+  /* 1 - Create the AI buffer IO handlers with the default definition */
+  ai_buffer ai_input[AI_NETWORK_MNIST_IN_NUM] = AI_NETWORK_MNIST_IN ;
+  ai_buffer ai_output[AI_NETWORK_MNIST_OUT_NUM] = AI_NETWORK_MNIST_OUT ;
+  
+  /* 2 - Update IO handlers with the data payload */
+  ai_input[0].n_batches = 1;
+  ai_input[0].data = AI_HANDLE_PTR(in_data);
+  ai_output[0].n_batches = 1;
+  ai_output[0].data = AI_HANDLE_PTR(out_data);
+
+  /* 3 - Perform the inference */
+  n_batch = ai_network_mnist_run(network_mnist, &ai_input[0], &ai_output[0]);
+  if (n_batch != 1) {
+      err = ai_network_mnist_get_error(network_mnist);
+      printf("E: AI ai_network_run error - type=%d code=%d\r\n", err.type, err.code);
+      return -1;
+  };
+  
+  return 0;
+}
+int aiInit(void) {
+  ai_error err;
+
+  /* 1 - Create an instance of the model */
+  err = ai_network_mnist_create(&network_mnist, AI_NETWORK_MNIST_DATA_CONFIG /* or NULL */);
+  if (err.type != AI_ERROR_NONE) {
+    printf("E: AI ai_network_create error - type=%d code=%d\r\n", err.type, err.code);
+    return -1;
+    };
+
+  /* 2 - Initialize the instance */
+  const ai_network_params params = {
+      AI_NETWORK_MNIST_DATA_WEIGHTS(ai_network_mnist_data_weights_get()),
+      AI_NETWORK_MNIST_DATA_ACTIVATIONS(activations) };
+
+  if (!ai_network_mnist_init(network_mnist, &params)) {
+      err = ai_network_mnist_get_error(network_mnist);
+      printf("E: AI ai_network_init error - type=%d code=%d\r\n", err.type, err.code);
+      return -1;
+    }
+
+  return 0;
+}
 /* USER CODE END 4 */
 
 /**
