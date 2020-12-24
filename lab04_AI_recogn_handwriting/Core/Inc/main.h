@@ -385,7 +385,6 @@ void Error_Handler(void);
 #define ARDUINO_MOSI_PWM_D11_Pin GPIO_PIN_15
 #define ARDUINO_MOSI_PWM_D11_GPIO_Port GPIOB
 void   MX_USART1_UART_Init(void);
-void   MX_USART6_UART_Init(void);
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

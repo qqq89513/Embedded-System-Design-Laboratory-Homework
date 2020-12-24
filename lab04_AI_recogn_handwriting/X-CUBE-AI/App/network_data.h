@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    network_data.h
   * @author  AST Embedded Analytics Research Platform
-  * @date    Thu Dec 24 00:39:21 2020
+  * @date    Thu Dec 24 10:26:52 2020
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention

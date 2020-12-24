@@ -204,8 +204,7 @@ int main(void)
     }
     /* USER CODE END WHILE */
 
-    // This will be uncommented after code generation by CubeMX.
-    // MX_X_CUBE_AI_Process(); // This never returns!
+  MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
