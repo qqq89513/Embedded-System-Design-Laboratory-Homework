@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    network.c
+  * @file    network_mnist.c
   * @author  AST Embedded Analytics Research Platform
-  * @date    Thu Dec 24 10:26:52 2020
+  * @date    Thu Dec 24 18:56:13 2020
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
@@ -19,7 +19,7 @@
   */
 
 
-#include "network.h"
+#include "network_mnist.h"
 
 #include "ai_platform_interface.h"
 #include "ai_math_helpers.h"
@@ -45,23 +45,23 @@
 #define AI_TOOLS_API_VERSION_MICRO 0
 
 #undef AI_NET_OBJ_INSTANCE
-#define AI_NET_OBJ_INSTANCE g_network
+#define AI_NET_OBJ_INSTANCE g_network_mnist
  
-#undef AI_NETWORK_MODEL_SIGNATURE
-#define AI_NETWORK_MODEL_SIGNATURE     "412799c966fd57f1e048ddd0050a1d75"
+#undef AI_NETWORK_MNIST_MODEL_SIGNATURE
+#define AI_NETWORK_MNIST_MODEL_SIGNATURE     "412799c966fd57f1e048ddd0050a1d75"
 
 #ifndef AI_TOOLS_REVISION_ID
 #define AI_TOOLS_REVISION_ID     "(rev-5.2.0)"
 #endif
 
 #undef AI_TOOLS_DATE_TIME
-#define AI_TOOLS_DATE_TIME   "Thu Dec 24 10:26:52 2020"
+#define AI_TOOLS_DATE_TIME   "Thu Dec 24 18:56:13 2020"
 
 #undef AI_TOOLS_COMPILE_TIME
 #define AI_TOOLS_COMPILE_TIME    __DATE__ " " __TIME__
 
-#undef AI_NETWORK_N_BATCHES
-#define AI_NETWORK_N_BATCHES         (1)
+#undef AI_NETWORK_MNIST_N_BATCHES
+#define AI_NETWORK_MNIST_N_BATCHES         (1)
 
 /**  Forward network declaration section  *************************************/
 AI_STATIC ai_network AI_NET_OBJ_INSTANCE;
@@ -393,19 +393,19 @@ AI_NETWORK_OBJ_DECLARE(
   AI_BUFFER_OBJ_INIT(AI_BUFFER_FORMAT_U8,
                      1, 1, 512, 1,
                      NULL),
-  AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_NETWORK_IN_NUM, &input_0_output),
-  AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_NETWORK_OUT_NUM, &dense_3_nl_output),
+  AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_NETWORK_MNIST_IN_NUM, &input_0_output),
+  AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_NETWORK_MNIST_OUT_NUM, &dense_3_nl_output),
   &dense_1_layer, 0, NULL)
 
 
 
 AI_DECLARE_STATIC
-ai_bool network_configure_activations(
+ai_bool network_mnist_configure_activations(
   ai_network* net_ctx, const ai_buffer* activation_buffer)
 {
   AI_ASSERT(net_ctx &&  activation_buffer && activation_buffer->data)
 
-  ai_ptr activations = AI_PTR(AI_PTR_ALIGN(activation_buffer->data, AI_NETWORK_ACTIVATIONS_ALIGNMENT));
+  ai_ptr activations = AI_PTR(AI_PTR_ALIGN(activation_buffer->data, AI_NETWORK_MNIST_ACTIVATIONS_ALIGNMENT));
   AI_ASSERT(activations)
   AI_UNUSED(net_ctx)
 
@@ -433,7 +433,7 @@ ai_bool network_configure_activations(
 
 
 AI_DECLARE_STATIC
-ai_bool network_configure_weights(
+ai_bool network_mnist_configure_weights(
   ai_network* net_ctx, const ai_buffer* weights_buffer)
 {
   AI_ASSERT(net_ctx &&  weights_buffer && weights_buffer->data)
@@ -472,7 +472,7 @@ ai_bool network_configure_weights(
 /**  PUBLIC APIs SECTION  *****************************************************/
 
 AI_API_ENTRY
-ai_bool ai_network_get_info(
+ai_bool ai_network_mnist_get_info(
   ai_handle network, ai_network_report* report)
 {
   ai_network* net_ctx = AI_NETWORK_ACQUIRE_CTX(network);
@@ -480,8 +480,8 @@ ai_bool ai_network_get_info(
   if ( report && net_ctx )
   {
     ai_network_report r = {
-      .model_name        = AI_NETWORK_MODEL_NAME,
-      .model_signature   = AI_NETWORK_MODEL_SIGNATURE,
+      .model_name        = AI_NETWORK_MNIST_MODEL_NAME,
+      .model_signature   = AI_NETWORK_MNIST_MODEL_SIGNATURE,
       .model_datetime    = AI_TOOLS_DATE_TIME,
       
       .compile_datetime  = AI_TOOLS_COMPILE_TIME,
@@ -519,13 +519,13 @@ ai_bool ai_network_get_info(
 }
 
 AI_API_ENTRY
-ai_error ai_network_get_error(ai_handle network)
+ai_error ai_network_mnist_get_error(ai_handle network)
 {
   return ai_platform_network_get_error(network);
 }
 
 AI_API_ENTRY
-ai_error ai_network_create(
+ai_error ai_network_mnist_create(
   ai_handle* network, const ai_buffer* network_config)
 {
   return ai_platform_network_create(
@@ -535,21 +535,21 @@ ai_error ai_network_create(
 }
 
 AI_API_ENTRY
-ai_handle ai_network_destroy(ai_handle network)
+ai_handle ai_network_mnist_destroy(ai_handle network)
 {
   return ai_platform_network_destroy(network);
 }
 
 AI_API_ENTRY
-ai_bool ai_network_init(
+ai_bool ai_network_mnist_init(
   ai_handle network, const ai_network_params* params)
 {
   ai_network* net_ctx = ai_platform_network_init(network, params);
   if ( !net_ctx ) return false;
 
   ai_bool ok = true;
-  ok &= network_configure_weights(net_ctx, &params->params);
-  ok &= network_configure_activations(net_ctx, &params->activations);
+  ok &= network_mnist_configure_weights(net_ctx, &params->params);
+  ok &= network_mnist_configure_activations(net_ctx, &params->activations);
 
   ok &= ai_platform_network_post_init(network);
 
@@ -558,14 +558,14 @@ ai_bool ai_network_init(
 
 
 AI_API_ENTRY
-ai_i32 ai_network_run(
+ai_i32 ai_network_mnist_run(
   ai_handle network, const ai_buffer* input, ai_buffer* output)
 {
   return ai_platform_network_process(network, input, output);
 }
 
 AI_API_ENTRY
-ai_i32 ai_network_forward(ai_handle network, const ai_buffer* input)
+ai_i32 ai_network_mnist_forward(ai_handle network, const ai_buffer* input)
 {
   return ai_platform_network_process(network, input, NULL);
 }
@@ -573,7 +573,7 @@ ai_i32 ai_network_forward(ai_handle network, const ai_buffer* input)
 
 
 
-#undef AI_NETWORK_MODEL_SIGNATURE
+#undef AI_NETWORK_MNIST_MODEL_SIGNATURE
 #undef AI_NET_OBJ_INSTANCE
 #undef AI_TOOLS_VERSION_MAJOR
 #undef AI_TOOLS_VERSION_MINOR

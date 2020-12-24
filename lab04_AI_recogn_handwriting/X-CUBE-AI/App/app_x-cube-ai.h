@@ -54,13 +54,13 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "ai_platform.h"
-#include "network.h"
-#include "network_data.h"
+#include "network_mnist.h"
+#include "network_mnist_data.h"
 
 #define MIN_HEAP_SIZE 0x2000
 #define MIN_STACK_SIZE 0x4000
 
-#define AI_MNETWORK_IN_1_SIZE_BYTES AI_NETWORK_IN_1_SIZE_BYTES
+#define AI_MNETWORK_IN_1_SIZE_BYTES AI_NETWORK_MNIST_IN_1_SIZE_BYTES
 #define AI_MNETWORK_IN_NUM 1
 #define DEF_DATA_IN \
   AI_ALIGNED(4) ai_i8 data_in_1[AI_MNETWORK_IN_1_SIZE_BYTES]; \
@@ -68,7 +68,7 @@
     data_in_1 \
   }; \
 
-#define AI_MNETWORK_OUT_1_SIZE_BYTES AI_NETWORK_OUT_1_SIZE_BYTES
+#define AI_MNETWORK_OUT_1_SIZE_BYTES AI_NETWORK_MNIST_OUT_1_SIZE_BYTES
 #define AI_MNETWORK_OUT_NUM 1
 #define DEF_DATA_OUT \
   AI_ALIGNED(4) ai_i8 data_out_1[AI_MNETWORK_OUT_1_SIZE_BYTES]; \
@@ -76,9 +76,9 @@
     data_out_1 \
   }; \
 
-#define AI_NETWORK_DATA_ACTIVATIONS_START_ADDR 0xFFFFFFFF
+#define AI_NETWORK_MNIST_DATA_ACTIVATIONS_START_ADDR 0xFFFFFFFF
 
-#define AI_MNETWORK_DATA_ACTIVATIONS_INT_SIZE AI_NETWORK_DATA_ACTIVATIONS_SIZE
+#define AI_MNETWORK_DATA_ACTIVATIONS_INT_SIZE AI_NETWORK_MNIST_DATA_ACTIVATIONS_SIZE
 
 void MX_X_CUBE_AI_Init(void);
 void MX_X_CUBE_AI_Process(void);

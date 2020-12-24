@@ -1,15 +1,15 @@
 Neural Network Tools for STM32 v1.4.0 (AI tools v5.2.0)
-Created date       : 2020-12-24 10:26:52
-Parameters         : generate --name network -m D:/USER/desktop/floating/projectS/MCU/ARM/stm32f7_discovery/embeded_system_lab/lab04_AI_recogn_handwriting/model.h5 --type keras --compression 1 --verbosity 1 --workspace C:\Users\QM\AppData\Local\Temp\mxAI_workspace59520519925005607616002919468141 --output C:\Users\QM\.stm32cubemx
+Created date       : 2020-12-24 18:56:14
+Parameters         : generate --name network_mnist -m D:/USER/desktop/floating/projectS/MCU/ARM/stm32f7_discovery/embeded_system_lab/lab04_AI_recogn_handwriting/model.h5 --type keras --compression 1 --verbosity 1 --workspace C:\Users\QM\AppData\Local\Temp\mxAI_workspace365217349447007583054841678382709 --output C:\Users\QM\.stm32cubemx
 
-Exec/report summary (generate dur=0.83s err=0)
+Exec/report summary (generate dur=1.33s err=0)
 ------------------------------------------------------------------------------------------------------------------------
 model file         : D:\USER\desktop\floating\projectS\MCU\ARM\stm32f7_discovery\embeded_system_lab\lab04_AI_recogn_handwriting\model.h5
 type               : keras (keras_dump) - tf.keras 2.4.0
-c_name             : network
+c_name             : network_mnist
 compression        : None
 quantize           : None
-workspace dir      : C:\Users\QM\AppData\Local\Temp\mxAI_workspace59520519925005607616002919468141
+workspace dir      : C:\Users\QM\AppData\Local\Temp\mxAI_workspace365217349447007583054841678382709
 output dir         : C:\Users\QM\.stm32cubemx
 
 model_name         : model
@@ -46,7 +46,7 @@ model p=55050(215.04 KBytes) macc=55190 rom=215.04 KBytes ram=512 B io_ram=3.10 
 Generated C-graph summary
 ------------------------------------------------------------------------------------------------------------------------
 model name         : model
-c-name             : network
+c-name             : network_mnist
 c-node #           : 6
 c-array #          : 13
 activations size   : 512
