@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "stm32746g_discovery_sdram.h"
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_ts.h"
@@ -42,13 +43,16 @@
 #define LCD_MAX_X    480
 #define LCD_MAX_Y    272
 
-#define TK_TOUCH      50  // Period for reading touch data, in millis second
+#define TK_TOUCH       1  // Period for reading touch data, in millis second
+
+#define NN_IN_DIM    28   // Input to NN is 28*28(MINST dataset)
 
 // Rectangle
-#define RECT_DIM     225  // Draw two rectangle, each is RECT_DIM*RECT_DIM
+#define RECT_DIM     224  // Draw two rectangle, each is RECT_DIM*RECT_DIM
 #define RECT_Y        24  // y-coordinate of both rectangle
 #define RECT_X_L       8  // x-coordinate of left rectangle
 #define RECT_X_R     245  // x-coordinate of right rectangle
+#define RECT_BASE    (RECT_DIM/NN_IN_DIM)
 
 /* USER CODE END PD */
 
@@ -190,21 +194,65 @@ int main(void)
   char str[32];                 // format string buffer
   uint32_t tk_disp_cord = 0;    // the previous tick refresh display of touch screen coordinates.
   uint32_t tk_now = 0;          // tick to the closest update(begining of while(1))
+  uint8_t draw_in[NN_IN_DIM][NN_IN_DIM];  // Input from the user, drawing on touch screen, NN_IN_DIM*NN_IN_DIM to match the NN input
+  for(int i=0; i<NN_IN_DIM; i++){
+    for(int j=0; j<NN_IN_DIM; j++)
+      draw_in[i][j] = 0;
+  }
   printf("Initialized. Entering while(1)......................\r\n");
   while (1)
   {
     tk_now = HAL_GetTick();
-    if(tk_now-tk_disp_cord > 50){
+
+    // Refresh touch data
+    if(tk_now-tk_disp_cord > TK_TOUCH){
       tk_disp_cord = tk_now;
       BSP_TS_GetState(&TS_State); // polling for touch screen state
       if(TS_State.touchDetected){ // at least one touch point detected
-        sprintf(str, "x:%03d, y:%03d", TS_State.touchX[0], TS_State.touchY[0]);
+        uint16_t x = TS_State.touchX[0];
+        uint16_t y = TS_State.touchY[0];
+        sprintf(str, "x:%03d, y:%03d", x, y);
         BSP_LCD_DisplayStringAtLine(0, (uint8_t*)str);  // Display coordinates for debug
+
+        // Touch at left rectangle
+        // Drawing digits at the left rectanlge
+        if( RECT_X_L+6 <= x && x <= RECT_X_L+RECT_DIM-6 &&
+            RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
+
+          BSP_LCD_FillCircle(x, y, RECT_BASE);
+          uint16_t nn_bitmap_x = (x-RECT_X_L)/RECT_BASE-1;
+          uint16_t nn_bitmap_y = (y-RECT_Y)/RECT_BASE;
+          printf("X:%2d, Y:%2d, index:%3d\r\n", nn_bitmap_x, nn_bitmap_y, nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x);
+          // draw_in[nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x] = 1;
+          draw_in[nn_bitmap_y][nn_bitmap_x] = 1;
+        }
+
+        // Touch at right leftangle
+        // Print the table and clean it
+        if( RECT_X_R+6 <= x && x <= RECT_X_R+RECT_DIM-6 &&
+                    RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
+          printf("This is the bitmap table(%d*%d)\r\n", NN_IN_DIM, NN_IN_DIM);
+          for(int i=0; i<NN_IN_DIM; i++){
+            for(int j=0; j<NN_IN_DIM; j++){
+              printf("%c", draw_in[i][j] ? '1':' ');
+            }
+            printf("\r\n");
+          }
+
+          // Cleaning, wait for next recognition
+          for(int i=0; i<NN_IN_DIM; i++){
+            for(int j=0; j<NN_IN_DIM; j++)
+              draw_in[i][j] = 0;
+          }
+          BSP_LCD_Clear(LCD_COLOR_BLACK);
+          BSP_LCD_DrawRect(RECT_X_L, RECT_Y, RECT_DIM, RECT_DIM);   // L rectangle
+          BSP_LCD_DrawRect(RECT_X_R, RECT_Y, RECT_DIM, RECT_DIM);   // R rectangle
+        }
       }
     }
     /* USER CODE END WHILE */
 
-  MX_X_CUBE_AI_Process();
+  // MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
