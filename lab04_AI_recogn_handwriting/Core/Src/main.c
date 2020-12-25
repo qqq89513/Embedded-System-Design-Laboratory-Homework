@@ -242,6 +242,16 @@ int main(void)
           printf("X:%2d, Y:%2d, index:%3d\r\n", nn_bitmap_x, nn_bitmap_y, nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x);
           // draw_in[nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x] = 1;
           draw_in[nn_bitmap_y][nn_bitmap_x] = 1;
+
+          // Draw grayscale with in boundary
+          if(1<=nn_bitmap_x<=NN_IN_DIM-1 && 1<=nn_bitmap_y<=NN_IN_DIM-1){
+            for(int8_t i=-1; i<2; i++){
+              for(int8_t j=-1; j<2; j++){
+                if(i!=j)
+                  draw_in[nn_bitmap_y+i][nn_bitmap_x+j] += draw_in[nn_bitmap_y+i][nn_bitmap_x+j]+0.1 >= 1 ? 0 : 0.1;
+              }
+            }
+          }
         }
 
         // Touch at right leftangle
@@ -253,7 +263,24 @@ int main(void)
           printf("This is the bitmap table(%d*%d)\r\n", NN_IN_DIM, NN_IN_DIM);
           for(int i=0; i<NN_IN_DIM; i++){
             for(int j=0; j<NN_IN_DIM; j++){
-              printf("%c", draw_in[i][j]>0 ? '1':' ');
+              char c;
+
+              // Determine what to 
+              if(draw_in[i][j] >= 1){
+                draw_in[i][j] = 1;
+                c = 'X';
+              }
+              else if(draw_in[i][j] >= 0.9)   c = 9 + '0';
+              else if(draw_in[i][j] >= 0.8)   c = 8 + '0';
+              else if(draw_in[i][j] >= 0.7)   c = 7 + '0';
+              else if(draw_in[i][j] >= 0.6)   c = 6 + '0';
+              else if(draw_in[i][j] >= 0.5)   c = 5 + '0';
+              else if(draw_in[i][j] >= 0.4)   c = 4 + '0';
+              else if(draw_in[i][j] >= 0.3)   c = 3 + '0';
+              else if(draw_in[i][j] >= 0.2)   c = 2 + '0';
+              else if(draw_in[i][j] >= 0.1)   c = 1 + '0';
+              else                            c = ' ';
+              printf("%c", c);
             }
             printf("\r\n");
           }
@@ -1295,3 +1322,4 @@ void assert_failed(uint8_t *file, uint32_t line)
 #endif /* USE_FULL_ASSERT */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
