@@ -273,10 +273,10 @@ int main(void)
           }
         }
 
-        // Touch at right leftangle
+        // Touch at right tangle
         // Print the table and clean it
-        if( RECT_X_R+6 <= x && x <= RECT_X_R+RECT_DIM-6 &&
-            RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
+        if( RECT_X_R+6 <= x && x <= RECT_X_R+RECT_DIM-6 && in_x_prev!=-1 &&
+            RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6)   {
           
           // Clear previous indeices of draw_in
           in_x_prev = -1;
@@ -1269,7 +1269,7 @@ void shift_to_middle(ai_float bitmap[NN_IN_DIM][NN_IN_DIM]){
 
   int8_t center = NN_IN_DIM/2;
   int8_t width  = x_max - x_min;
-  int8_t height = y_max - y_min;
+  // int8_t height = y_max - y_min;
   int8_t x_shift = center - (x_min + width/2);
   // int8_t y_shift = center - (y_min + height/2);
   printf("x_shift:%d, x_min:%d, x_max:%d\r\n", x_shift, x_min, x_max);
