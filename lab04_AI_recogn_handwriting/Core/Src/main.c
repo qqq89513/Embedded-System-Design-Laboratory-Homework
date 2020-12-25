@@ -49,6 +49,7 @@
 #define TK_TOUCH       1  // Period for reading touch data, in millis second
 
 #define NN_IN_DIM    28   // Input to NN is 28*28(MINST dataset)
+#define GRAYSCALE_STEP (ai_float)0.3
 
 // Rectangle
 #define RECT_DIM     224  // Draw two rectangle, each is RECT_DIM*RECT_DIM
@@ -207,12 +208,18 @@ int main(void)
   char str[32];                 // format string buffer
   uint32_t tk_disp_cord = 0;    // the previous tick refresh display of touch screen coordinates.
   uint32_t tk_now = 0;          // tick to the closest update(begining of while(1))
+  
+  // Bitmap relating
+  int16_t nn_bitmap_x_prev = -1;
+  int16_t nn_bitmap_y_prev = -1;
   ai_float draw_in[NN_IN_DIM][NN_IN_DIM];       // Input from the user, drawing on touch screen, NN_IN_DIM*NN_IN_DIM to match the NN input
   ai_float nn_result[AI_NETWORK_MNIST_OUT_1_SIZE]; // The output result of NN
   for(int i=0; i<NN_IN_DIM; i++){
     for(int j=0; j<NN_IN_DIM; j++)
       draw_in[i][j] = 0;
   }
+  
+  
   // Init the network_mnist(declared in main.c)
   aiInit();
   
@@ -239,16 +246,25 @@ int main(void)
           BSP_LCD_FillCircle(x, y, RECT_BASE);
           uint16_t nn_bitmap_x = (x-RECT_X_L)/RECT_BASE-1;
           uint16_t nn_bitmap_y = (y-RECT_Y)/RECT_BASE;
-          printf("X:%2d, Y:%2d, index:%3d\r\n", nn_bitmap_x, nn_bitmap_y, nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x);
-          // draw_in[nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x] = 1;
-          draw_in[nn_bitmap_y][nn_bitmap_x] = 1;
 
-          // Draw grayscale with in boundary
-          if(1<=nn_bitmap_x<=NN_IN_DIM-1 && 1<=nn_bitmap_y<=NN_IN_DIM-1){
-            for(int8_t i=-1; i<2; i++){
-              for(int8_t j=-1; j<2; j++){
-                if(i!=j)
-                  draw_in[nn_bitmap_y+i][nn_bitmap_x+j] += draw_in[nn_bitmap_y+i][nn_bitmap_x+j]+0.1 >= 1 ? 0 : 0.1;
+          // TODO: Comments
+          if(nn_bitmap_x!=nn_bitmap_x_prev || nn_bitmap_y!=nn_bitmap_y_prev){
+            printf("X:%2d, Y:%2d\r\n", nn_bitmap_x, nn_bitmap_y);
+            nn_bitmap_x_prev = nn_bitmap_x;
+            nn_bitmap_y_prev = nn_bitmap_y;
+
+            // draw_in[nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x] = 1;
+            draw_in[nn_bitmap_y][nn_bitmap_x] = 1;
+
+            // Draw grayscale with in boundary
+            if(1<=nn_bitmap_x && nn_bitmap_x<=NN_IN_DIM-1 && 
+               1<=nn_bitmap_y && nn_bitmap_y<=NN_IN_DIM-1){
+              for(int8_t i=-1; i<2; i++){
+                for(int8_t j=-1; j<2; j++){
+                  if(i!=j)
+                    draw_in[nn_bitmap_y+i][nn_bitmap_x+j] += 
+                      draw_in[nn_bitmap_y+i][nn_bitmap_x+j]+GRAYSCALE_STEP >= 1 ? 0 : GRAYSCALE_STEP;
+                }
               }
             }
           }
@@ -258,6 +274,10 @@ int main(void)
         // Print the table and clean it
         if( RECT_X_R+6 <= x && x <= RECT_X_R+RECT_DIM-6 &&
             RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
+          
+          // Clear previous indeices of draw_in
+          nn_bitmap_x_prev = -1;
+          nn_bitmap_y_prev = -1;
 
           // Print the table of 28*28
           printf("This is the bitmap table(%d*%d)\r\n", NN_IN_DIM, NN_IN_DIM);
