@@ -133,6 +133,9 @@ void MX_USART6_UART_Init(void);
 static void MX_CRC_Init(void);
 /* USER CODE BEGIN PFP */
 
+// Shift the bitmap to the middle of NN_IN_DIM*NN_IN_DIM
+void shift_to_middle(ai_float bitmap[NN_IN_DIM][NN_IN_DIM]);
+
 // Copy from Official doc: Embedded Inference Client API, Getting Started
 int aiRun(const void *in_data, void *out_data);
 int aiInit(void);
@@ -278,6 +281,10 @@ int main(void)
           // Clear previous indeices of draw_in
           in_x_prev = -1;
           in_y_prev = -1;
+
+          // Shift x of the bitmap to middle
+          shift_to_middle(draw_in);
+
 
           // Print the table of 28*28
           printf("This is the bitmap table(%d*%d)\r\n", NN_IN_DIM, NN_IN_DIM);
@@ -1240,6 +1247,42 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+/* Shift x of the bitmap to middle
+   by searching the most left and right non zero pixels*/
+void shift_to_middle(ai_float bitmap[NN_IN_DIM][NN_IN_DIM]){
+  uint16_t x_min = NN_IN_DIM - 1;
+  uint16_t y_min = NN_IN_DIM - 1;
+  uint16_t x_max = 0;
+  uint16_t y_max = 0;
+
+  // Find the edge of the graph
+  for(uint16_t y=0; y<NN_IN_DIM; y++){
+    for(uint16_t x=0; x<NN_IN_DIM; x++)
+      if(bitmap[y][x] > 0.1){
+        if      (x_min > x) x_min = x;
+        else if (x_max < x) x_max = x;
+        if      (y_min > y) y_min = y;
+        else if (y_max < y) y_max = y;
+      }
+  }
+
+  int8_t center = NN_IN_DIM/2;
+  int8_t width  = x_max - x_min;
+  int8_t height = y_max - y_min;
+  int8_t x_shift = center - (x_min + width/2);
+  // int8_t y_shift = center - (y_min + height/2);
+  printf("x_shift:%d, x_min:%d, x_max:%d\r\n", x_shift, x_min, x_max);
+  for(int8_t y=0; y<=y_max; y++){
+    for(int8_t x=0; x<NN_IN_DIM; x++){
+      if(x_shift < 0)  // Shift left
+        bitmap[y][x] = (0<=x+x_shift && x+x_shift<NN_IN_DIM) ? bitmap[y][x-x_shift] : 0.0;
+      else             // Shift right, NN_IN_DIM-1-x let it starts from the end
+        bitmap[y][NN_IN_DIM-1-x] = (0<=(NN_IN_DIM-1-x)+x_shift && (NN_IN_DIM-1-x)+x_shift<NN_IN_DIM) ? bitmap[y][NN_IN_DIM-1-x-x_shift] : 0.0;
+    }
+  }
+}
+
 // Copy from Official doc: Embedded Inference Client API, Getting Started
 int aiRun(const void *in_data, void *out_data)
 {
