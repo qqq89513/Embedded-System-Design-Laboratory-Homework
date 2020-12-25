@@ -30,6 +30,7 @@
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_ts.h"
 #include "ft5336.h"
+#include "../../Utilities/Fonts/font57.c"  // Stupid way to include
 #include "network_mnist.h"
 #include "network_mnist_data.h"
 /* USER CODE END Includes */
@@ -193,7 +194,7 @@ int main(void)
   BSP_LCD_Clear(LCD_COLOR_BLACK);
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
-  BSP_LCD_SetFont(&Font12);
+  BSP_LCD_SetFont(&Font57);
   BSP_LCD_DrawRect(RECT_X_L, RECT_Y, RECT_DIM, RECT_DIM);   // L rectangle
   BSP_LCD_DrawRect(RECT_X_R, RECT_Y, RECT_DIM, RECT_DIM);   // R rectangle
 
@@ -229,7 +230,6 @@ int main(void)
         uint16_t x = TS_State.touchX[0];
         uint16_t y = TS_State.touchY[0];
         sprintf(str, "x:%03d, y:%03d", x, y);
-        BSP_LCD_DisplayStringAtLine(0, (uint8_t*)str);  // Display coordinates for debug
 
         // Touch at left rectangle
         // Drawing digits at the left rectanlge
@@ -273,6 +273,17 @@ int main(void)
             printf("nn_result[%d]:%3f\r\n", i, nn_result[i]);
           }
           printf("The most possible digit:%d\r\n", max_index);
+          
+          // Display the most possible digit at the cneter of right rectangle
+          BSP_LCD_DisplayChar(RECT_X_R+RECT_DIM/2-Font57.Width/2, 
+                              RECT_Y  +RECT_DIM/2-Font57.Height/2, 
+                              max_index+'0');
+
+          // Wait for another touch to clear the result
+          do {
+            BSP_TS_GetState(&TS_State);
+            HAL_Delay(50);
+          } while(TS_State.touchDetected==0);
 
           // Cleaning, wait for next recognition
           for(int i=0; i<NN_IN_DIM; i++){
@@ -288,7 +299,7 @@ int main(void)
     }
     /* USER CODE END WHILE */
 
-  MX_X_CUBE_AI_Process();
+  // MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

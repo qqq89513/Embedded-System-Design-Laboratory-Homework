@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    font24.c
+  * @file    font57.c
   * @author  MCD Application Team
   * @version V1.0.0
   * @date    18-February-2014
-  * @brief   This file provides text font24 for STM32xx-EVAL's LCD driver. 
+  * @brief   This file provides text font57 for STM32xx-EVAL's LCD driver. 
   ******************************************************************************
   * @attention
   *
@@ -36,14 +36,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdint.h>
-typedef struct _tFont
-{    
-  const uint8_t *table;
-  uint16_t Width;
-  uint16_t Height;
-  
-} sFONT;
+#include "fonts.h"
 /** @addtogroup Utilities
   * @{
   */
@@ -57,7 +50,7 @@ typedef struct _tFont
   */
 
 /** @addtogroup FONTS
-  * @brief      This file provides text font24 for STM32xx-EVAL's LCD driver.
+  * @brief      This file provides text font57 for STM32xx-EVAL's LCD driver.
   * @{
   */  
 
