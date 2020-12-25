@@ -46,17 +46,17 @@
 #define LCD_MAX_X    480
 #define LCD_MAX_Y    272
 
-#define TK_TOUCH       1  // Period for reading touch data, in millis second
+#define TK_TOUCH                          1  // Period for reading touch data, in millis second
 
-#define NN_IN_DIM    28   // Input to NN is 28*28(MINST dataset)
-#define GRAYSCALE_STEP (ai_float)0.3
+#define NN_IN_DIM                        28   // Input to NN is 28*28(MINST dataset)
+#define GRAYSCALE_STEP       (ai_float)0.30
 
 // Rectangle
-#define RECT_DIM     224  // Draw two rectangle, each is RECT_DIM*RECT_DIM
-#define RECT_Y        24  // y-coordinate of both rectangle
-#define RECT_X_L       8  // x-coordinate of left rectangle
-#define RECT_X_R     245  // x-coordinate of right rectangle
-#define RECT_BASE    (RECT_DIM/NN_IN_DIM)
+#define RECT_DIM                        224  // Draw two rectangle, each is RECT_DIM*RECT_DIM
+#define RECT_Y                           24  // y-coordinate of both rectangle
+#define RECT_X_L                          8  // x-coordinate of left rectangle
+#define RECT_X_R                        245  // x-coordinate of right rectangle
+#define RECT_BASE      (RECT_DIM/NN_IN_DIM)  // bitmap_cords = (touch cords - rect_shifting)/(RECT_BASE)
 
 /* USER CODE END PD */
 
@@ -89,6 +89,8 @@ UART_HandleTypeDef huart6;
 SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
+
+// Copy from Official doc: Embedded Inference Client API, Getting Started
 // AI relating
 /* Global handle to reference an instantiated C-model */
 static ai_handle network_mnist = AI_HANDLE_NULL;
@@ -244,10 +246,10 @@ int main(void)
             RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
 
           BSP_LCD_FillCircle(x, y, RECT_BASE);
-          uint16_t nn_bitmap_x = (x-RECT_X_L)/RECT_BASE-1;
+          uint16_t nn_bitmap_x = (x-RECT_X_L)/RECT_BASE;
           uint16_t nn_bitmap_y = (y-RECT_Y)/RECT_BASE;
 
-          // TODO: Comments
+          // Update pixels in draw_in when the cords are different from previoud update
           if(nn_bitmap_x!=nn_bitmap_x_prev || nn_bitmap_y!=nn_bitmap_y_prev){
             printf("X:%2d, Y:%2d\r\n", nn_bitmap_x, nn_bitmap_y);
             nn_bitmap_x_prev = nn_bitmap_x;
