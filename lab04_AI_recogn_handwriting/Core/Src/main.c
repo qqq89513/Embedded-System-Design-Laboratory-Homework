@@ -212,8 +212,8 @@ int main(void)
   uint32_t tk_now = 0;          // tick to the closest update(begining of while(1))
   
   // Bitmap relating
-  int16_t nn_bitmap_x_prev = -1;
-  int16_t nn_bitmap_y_prev = -1;
+  int16_t in_x_prev = -1;
+  int16_t in_y_prev = -1;
   ai_float draw_in[NN_IN_DIM][NN_IN_DIM];       // Input from the user, drawing on touch screen, NN_IN_DIM*NN_IN_DIM to match the NN input
   ai_float nn_result[AI_NETWORK_MNIST_OUT_1_SIZE]; // The output result of NN
   for(int i=0; i<NN_IN_DIM; i++){
@@ -246,26 +246,24 @@ int main(void)
             RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
 
           BSP_LCD_FillCircle(x, y, RECT_BASE);
-          uint16_t nn_bitmap_x = (x-RECT_X_L)/RECT_BASE;
-          uint16_t nn_bitmap_y = (y-RECT_Y)/RECT_BASE;
+          uint16_t in_x = (x-RECT_X_L)/RECT_BASE;
+          uint16_t in_y = (y-RECT_Y)/RECT_BASE;
 
           // Update pixels in draw_in when the cords are different from previoud update
-          if(nn_bitmap_x!=nn_bitmap_x_prev || nn_bitmap_y!=nn_bitmap_y_prev){
-            printf("X:%2d, Y:%2d\r\n", nn_bitmap_x, nn_bitmap_y);
-            nn_bitmap_x_prev = nn_bitmap_x;
-            nn_bitmap_y_prev = nn_bitmap_y;
+          if(in_x!=in_x_prev || in_y!=in_y_prev){
+            printf("X:%2d, Y:%2d\r\n", in_x, in_y);
+            in_x_prev = in_x;
+            in_y_prev = in_y;
 
-            // draw_in[nn_bitmap_y*(NN_IN_DIM-1) + nn_bitmap_x] = 1;
-            draw_in[nn_bitmap_y][nn_bitmap_x] = 1;
+            // draw_in[in_y*(NN_IN_DIM-1) + in_x] = 1;
+            draw_in[in_y][in_x] = 1;
 
             // Draw grayscale with in boundary
-            if(1<=nn_bitmap_x && nn_bitmap_x<=NN_IN_DIM-1 && 
-               1<=nn_bitmap_y && nn_bitmap_y<=NN_IN_DIM-1){
+            if(1<=in_x && in_x<=NN_IN_DIM-1 && 1<=in_y && in_y<=NN_IN_DIM-1){
               for(int8_t i=-1; i<2; i++){
                 for(int8_t j=-1; j<2; j++){
                   if(i!=j)
-                    draw_in[nn_bitmap_y+i][nn_bitmap_x+j] += 
-                      draw_in[nn_bitmap_y+i][nn_bitmap_x+j]+GRAYSCALE_STEP >= 1 ? 0 : GRAYSCALE_STEP;
+                    draw_in[in_y+i][in_x+j] += draw_in[in_y+i][in_x+j]+GRAYSCALE_STEP >= 1 ? 0 : GRAYSCALE_STEP;
                 }
               }
             }
@@ -278,8 +276,8 @@ int main(void)
             RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
           
           // Clear previous indeices of draw_in
-          nn_bitmap_x_prev = -1;
-          nn_bitmap_y_prev = -1;
+          in_x_prev = -1;
+          in_y_prev = -1;
 
           // Print the table of 28*28
           printf("This is the bitmap table(%d*%d)\r\n", NN_IN_DIM, NN_IN_DIM);
@@ -287,7 +285,7 @@ int main(void)
             for(int j=0; j<NN_IN_DIM; j++){
               char c;
 
-              // Determine what to 
+              // Determine what to print for different grayscaling
               if(draw_in[i][j] >= 1){
                 draw_in[i][j] = 1;
                 c = 'X';
