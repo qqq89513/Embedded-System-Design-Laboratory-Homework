@@ -248,17 +248,20 @@ int main(void)
         if( RECT_X_L+6 <= x && x <= RECT_X_L+RECT_DIM-6 &&
             RECT_Y  +6 <= y && y <= RECT_Y  +RECT_DIM-6 )   {
 
-          BSP_LCD_FillCircle(x, y, RECT_BASE);
           uint16_t in_x = (x-RECT_X_L)/RECT_BASE;
           uint16_t in_y = (y-RECT_Y)/RECT_BASE;
 
           // Update pixels in draw_in when the cords are different from previoud update
           if(in_x!=in_x_prev || in_y!=in_y_prev){
+
+            // Paint on the LCD
+            BSP_LCD_FillCircle(x, y, RECT_BASE);
+
             printf("X:%2d, Y:%2d\r\n", in_x, in_y);
             in_x_prev = in_x;
             in_y_prev = in_y;
 
-            // draw_in[in_y*(NN_IN_DIM-1) + in_x] = 1;
+            // draw_in[in_y*(NN_IN_DIM-1) + in_x] = 1; // This is for 1D array
             draw_in[in_y][in_x] = 1;
 
             // Draw grayscale with in boundary
@@ -337,7 +340,12 @@ int main(void)
           do {
             BSP_TS_GetState(&TS_State);
             HAL_Delay(50);
+          } while(TS_State.touchDetected==1);
+          do {
+            BSP_TS_GetState(&TS_State);
+            HAL_Delay(50);
           } while(TS_State.touchDetected==0);
+          HAL_Delay(100);  // Stupid touch screen debounce
 
           // Cleaning, wait for next recognition
           for(int i=0; i<NN_IN_DIM; i++){
