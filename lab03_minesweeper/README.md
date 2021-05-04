@@ -1,5 +1,7 @@
 # Touchscreen 💣Minesweeper with TouchGFX
-
+A Minesweeper💣 with custom mine counts and timer showing how much time you've played.  
+GUI is implemented with touchGFX.  
+<img src="../docs/pics/lab03_preview.gif" alt="drawing" width="600"/>
 
 ## Enviroment
 - IDE: STM32CubeIDE 1.4.0  
@@ -11,7 +13,7 @@
 ## File Structures
 - Folder Tree
   ```c
-  lab03_calc/
+  lab03_minesweeper/
   ├── Core            // Top layer, main entry
   │   ├── Inc         // top layer header files
   │   └── Src         // main.c and interrupt subroutines here
